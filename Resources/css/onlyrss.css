@@ -3,6 +3,20 @@ body{
     padding: 0px;
 }
 
-.main{
-    background-color: red;
+.wrap{
+
+}
+
+.left{
+    position: absolute;
+    width: 200px;
+    border: 1px solid #dddddd;
+}
+
+.right{
+    margin-left: 200px;
+}
+
+.clear{
+    clear: both;
 }
