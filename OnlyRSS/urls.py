@@ -1,6 +1,8 @@
 from django.conf.urls import patterns, include, url
 
 from OnlyRSSMain.views import index
+from OnlyRSSMain.views import get_all_feed_list
+from OnlyRSSMain.views import get_feed_content
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
@@ -18,4 +20,6 @@ urlpatterns = patterns('',
     ('^resources/(?P<path>.*)', "django.views.static.serve", {'document_root': './Resources'}),
     url(r'^$', index),
     url(r'^index/$', index),
+    url(r'^get_all_feed_list/$', get_all_feed_list),
+    url(r'^get_feed_content/$', get_feed_content),
 )

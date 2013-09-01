@@ -1,10 +1,40 @@
-body{
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+
+
+body, ul{
+    font-size: 14px;
     margin: 0px;
     padding: 0px;
 }
 
-.wrap{
+li{
+    cursor: pointer;
+    margin: 5px 0px 0px 10px;
+    list-style: none;
+}
 
+.header{
+    background-color: black;
+    color: white;
+    font-family: 'PT Sans Narrow', sans-serif;
+    padding: 0px 10px 0px 10px;
+}
+
+.logo{
+    cursor: pointer;
+    float: left;
+    font-size: 40px;
+
+}
+
+.title{
+    float: left;
+    margin-top: 23px;
+    padding-left:10px;
+}
+
+.wrap{
+    padding: 0px 10px 0px 10px;
 }
 
 .left{
