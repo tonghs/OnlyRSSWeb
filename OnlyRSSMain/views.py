@@ -4,7 +4,7 @@ from django.core import serializers
 from django.http import HttpResponse
 import feedparser
 import json
-from models import Feed
+from models import *
 
 
 def index(request):
@@ -24,7 +24,6 @@ def get_all_feed_list(request):
 
 def get_feed_list():
     feed_list = Feed.objects.all()
-    #feeds_json = json.dumps(list(feed_list))
     feeds_json = serializers.serialize("json", feed_list)
 
     return feeds_json
@@ -32,7 +31,8 @@ def get_feed_list():
 
 def get_feed_content(request):
     url = request.GET.get('url')
-    feed_dic = feedparser.parse(url)
-    html = json.dumps(feed_dic.entries)
+    id = request.GET.get('id')
+    item_list = Item.objects.filter(feed_id=id)
+    items_json = serializers.serialize("json", item_list)
 
-    return HttpResponse(html)
+    return HttpResponse(items_json)
