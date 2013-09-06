@@ -1,8 +1,10 @@
 #coding=utf-8
 from django.shortcuts import render_to_response
+from django.core import serializers
 from django.http import HttpResponse
 import feedparser
 import json
+from models import Feed
 
 
 def index(request):
@@ -21,9 +23,9 @@ def get_all_feed_list(request):
 
 
 def get_feed_list():
-    feed_list = [{'url':'http://www.v2ex.com/index.xml', 'name': 'V2EX'},
-        {'url':'http://www.engadget.com/rss.xml', 'name': 'Engadget'}]
-    feeds_json = json.dumps(feed_list)
+    feed_list = Feed.objects.all()
+    #feeds_json = json.dumps(list(feed_list))
+    feeds_json = serializers.serialize("json", feed_list)
 
     return feeds_json
 

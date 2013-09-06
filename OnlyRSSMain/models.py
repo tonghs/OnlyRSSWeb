@@ -11,6 +11,22 @@ class Feed(models.Model):
     title = models.CharField(max_length=100)
     url = models.CharField(max_length=500)
 
+    def __unicode__(self):
+        return '%s' % (self.title)
+
+
+    def toJSON(self):
+        fields = []
+        for field in self._meta.fields:
+            fields.append(field.name)
+
+        d = {}
+        for attr in fields:
+            d[attr] = getattr(self, attr)
+
+        import json
+        return json.dumps(d)
+
 
 class Item(models.Model):
     title = models.CharField(max_length=100)
