@@ -36,7 +36,6 @@ a:hover{
     cursor: pointer;
     float: left;
     font-size: 40px;
-
 }
 
 .title{
@@ -106,4 +105,15 @@ a:hover{
     height: 25px;
     line-height: 25px;
     padding: 0px 10px 0px 10px;
+}
+
+.loading{
+    color: #ffffff;
+}
+
+.loading_logo{
+    color: #ffffff;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
 }

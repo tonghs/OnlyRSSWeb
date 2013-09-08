@@ -1,4 +1,5 @@
 function getFeedByUrl(url, id, obj){
+    showLoad('正在加载...');
     $('#content').empty();
     $.ajax({
         url: '/get_feed_content?url=' + url + '&id=' + id
@@ -19,9 +20,33 @@ function getFeedByUrl(url, id, obj){
     });
 
     obj.style.backgroundColor = '#dddddd';
+    closeLoad();
 }
 
+function showLoad(tipInfo) {
+    if ($("#tipDiv").size() == 0){
+        var eTip = document.createElement('div');
+        eTip.setAttribute('id', 'tipDiv');
+        eTip.style.position = 'absolute';
+        eTip.style.display = 'none';
+        eTip.style.border = 'solid 0px #D1D1D1';
+        eTip.style.backgroundColor = '#4B981D';
+        eTip.style.padding = '5px 15px';
+        eTip.style.left = ($('html').width() - 170) / 2 + 'px';
+        eTip.style.top = ($('html').height() - 10) / 2 + 'px';
+        eTip.style.width = '170px';
 
-function goto(url){
+        eTip.innerHTML = '<span class="loading_logo">Only RSS</span>&nbsp;&nbsp;'
+            +'<span class="loading">' + tipInfo + '</span>';
+        try {
+            document.body.appendChild(eTip);
+        } catch (e) { }
+        $("#tipDiv").css("z-index", "99");
+    }
 
+    $('#tipDiv').fadeIn();
+}
+
+function closeLoad() {
+    $('#tipDiv').fadeOut();
 }
