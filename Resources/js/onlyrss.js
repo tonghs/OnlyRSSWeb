@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    var height = $('html').height() - $('.header').height() - 15;
+    $('.right').height(height);
     $.ajax({
         url: '/get_all_feed_list'
     }).done(function (data){

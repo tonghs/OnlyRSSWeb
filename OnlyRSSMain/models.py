@@ -35,3 +35,4 @@ class Item(models.Model):
     content = models.TextField()
     feed = models.ForeignKey(Feed)
     user = models.ForeignKey(User)
+    state = models.IntegerField()

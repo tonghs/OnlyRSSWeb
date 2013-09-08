@@ -42,3 +42,10 @@ def get_feed_content(request):
     items_json = json.dumps(list)
 
     return HttpResponse(items_json)
+
+def add_feed(request):
+    d = feedparser.parse('http://www.v2ex.com/index.xml')
+    for entry in d.entries:
+        feed = Item(title=entry.title, url=entry.link, content=entry.description, feed_id=1, user_id=1, state=0)
+        feed.save()
+
