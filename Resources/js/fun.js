@@ -50,3 +50,11 @@ function showLoad(tipInfo) {
 function closeLoad() {
     $('#tipDiv').fadeOut();
 }
+
+function setHeightAndWidth(){
+    var height = $('html').height() - $('.header').height() - 15;
+    $('.right').height(height);
+
+    $("#tipDiv").css('left', ($('html').width() - 170) / 2 + 'px');
+    $("#tipDiv").css('top', ($('html').height() - 10) / 2 + 'px');
+}
