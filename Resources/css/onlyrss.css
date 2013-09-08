@@ -2,15 +2,25 @@
 
 
 body, ul{
+    border: 0px;
     font-size: 14px;
     margin: 0px;
     padding: 0px;
 }
 
 li{
+    border: 0px;
     cursor: pointer;
-    margin: 5px 0px 0px 10px;
     list-style: none;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
 }
 
 .header{
@@ -34,19 +44,45 @@ li{
 }
 
 .wrap{
-    padding: 0px 10px 0px 10px;
+    padding: 0px;
 }
 
 .left{
     position: absolute;
     width: 200px;
-    border: 1px solid #dddddd;
+    border-width: 0px 10px 1px 0px;
+    border-color: #dddddd;
+    border-style: solid ;
 }
 
 .right{
-    margin-left: 210px;
+    margin-left: 220px;
 }
 
 .clear{
     clear: both;
+}
+
+.feed_item{
+    padding: 5px 0px 5px 10px;
+}
+
+.feed_item:hover{
+     background-color: gray;
+}
+
+.item_title{
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.item_content{
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.item_from{
+
 }

@@ -32,7 +32,13 @@ def get_feed_list():
 def get_feed_content(request):
     url = request.GET.get('url')
     id = request.GET.get('id')
-    item_list = Item.objects.filter(feed_id=id)
-    items_json = serializers.serialize("json", item_list)
+    item_list = Item.objects.select_related().filter(feed_id=id)
+    list = []
+
+    for item in item_list:
+        dicItem = {'title': item.title, 'content': item.content, 'url': item.url, 'feed_title': item.feed.title, 'feed_url': item.feed.url}
+        list.append(dicItem)
+
+    items_json = json.dumps(list)
 
     return HttpResponse(items_json)

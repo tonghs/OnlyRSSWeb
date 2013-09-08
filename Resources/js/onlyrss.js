@@ -4,9 +4,10 @@ $(document).ready(function(){
     }).done(function (data){
             arrObj = JSON.parse(data);
             for (var i = 0; i < arrObj.length; i++){
-                $('#feed_list ul').append('<li onclick=\"getFeedByUrl(\''
-                    + arrObj[i].fields.url + '\', ' + arrObj[i].pk + ')\">'
-                    + arrObj[i].fields.title + '</li>')
+                $('#feed_list ul').append('<li class="feed" onclick=\"getFeedByUrl(\''
+                    + arrObj[i].fields.feed_url + '\', ' + arrObj[i].pk + ', this)\">'
+                    + '<div class="feed_item">'
+                    + arrObj[i].fields.title + '</div></li>')
             }
         });
 });

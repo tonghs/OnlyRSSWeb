@@ -10,6 +10,7 @@ class User(models.Model):
 class Feed(models.Model):
     title = models.CharField(max_length=100)
     url = models.CharField(max_length=500)
+    feed_url = models.CharField(max_length=500)
 
     def __unicode__(self):
         return '%s' % (self.title)

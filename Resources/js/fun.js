@@ -1,12 +1,26 @@
-function getFeedByUrl(url, id){
+function getFeedByUrl(url, id, obj){
+    $('#content').empty();
     $.ajax({
         url: '/get_feed_content?url=' + url + '&id=' + id
     }).done(function (data){
             arrObj = JSON.parse(data);
-            $('#content').empty();
+
             for (var i = 0; i < arrObj.length; i++){
-                $('#content').append('<div>' + arrObj[i].fields.title + '</div>'
-                    + '<div>' + arrObj[i].fields.content + '</div>')
+                $('#content').append('<div class="item_title"><a href=" ' + arrObj[i].url + ' " target="_blank">'
+                    + arrObj[i].title + '</a></div>'
+                    + '<div class="item_content">' + arrObj[i].content + '</div>'
+                    + '<div><a href="' + arrObj[i].feed_url + '" target="_blank">来自:'
+                    + arrObj[i].feed_title + '</a></div>')
             }
         });
+    $('.feed').each(function(){
+        $(this).css('background', '');
+    });
+
+    obj.style.backgroundColor = '#dddddd';
+}
+
+
+function goto(url){
+
 }
