@@ -43,9 +43,21 @@ def get_feed_content(request):
 
     return HttpResponse(items_json)
 
+def get_all_feed_content(request):
+    item_list = Item.objects.select_related().all()
+    list = []
+
+    for item in item_list:
+        dicItem = {'title': item.title, 'content': item.content, 'url': item.url, 'feed_title': item.feed.title, 'feed_url': item.feed.url}
+        list.append(dicItem)
+
+    items_json = json.dumps(list)
+
+    return HttpResponse(items_json)
+
 def add_feed(request):
-    d = feedparser.parse('http://www.v2ex.com/index.xml')
+    d = feedparser.parse('http://cn.engadget.com/rss.xml')
     for entry in d.entries:
-        feed = Item(title=entry.title, url=entry.link, content=entry.description, feed_id=1, user_id=1, state=0)
+        feed = Item(title=entry.title, url=entry.link, content=entry.description, feed_id=2, user_id=1, state=0)
         feed.save()
 
