@@ -32,9 +32,9 @@ function showLoad(tipInfo) {
         eTip.style.border = 'solid 0px #D1D1D1';
         eTip.style.backgroundColor = '#4B981D';
         eTip.style.padding = '5px 15px';
-        eTip.style.left = ($('html').width() - 170) / 2 + 'px';
+        eTip.style.left = ($('html').width() - 140) / 2 + 'px';
         eTip.style.top = ($('html').height() - 10) / 2 + 'px';
-        eTip.style.width = '170px';
+        eTip.style.width = '140px';
 
         eTip.innerHTML = '<span class="loading_logo">Only RSS</span>&nbsp;&nbsp;'
             +'<span class="loading">' + tipInfo + '</span>';
