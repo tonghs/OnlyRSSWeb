@@ -18,13 +18,25 @@
     <div class="left">
         <div id="feed_list">
             <ul>
-
+                <li class="feed" style="background-color: #dddddd" onclick="changeBgColor(this)">
+                    <div  class="feed_item bold" style="padding-left: 10px;"  onclick="getAllFeedContent(true);">查看所有</div>
+                </li>
             </ul>
         </div>
     </div>
     <div class="right">
-        <div id="content">
+        <div id="ops">
+            <a href="#">未读文章</a>
+            <a href="#">已读文章</a>
+            |
+            <a href="#">全部标记为已读</a>
+            <a class="float_right" href="#">标题查看</a>
+            <a class="float_right" href="#">全文查看</a>
+        </div>
+        <div id="content_container">
+            <div id="content">
 
+            </div>
         </div>
     </div>
 </div>

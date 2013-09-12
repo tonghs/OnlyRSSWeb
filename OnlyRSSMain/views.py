@@ -58,6 +58,6 @@ def get_all_feed_content(request):
 def add_feed(request):
     d = feedparser.parse('http://cn.engadget.com/rss.xml')
     for entry in d.entries:
-        feed = Item(title=entry.title, url=entry.link, content=entry.description, feed_id=2, user_id=1, state=0)
+        feed = Item(title=entry.title, url=entry.link, content=entry.description, icon='/favicon.ico'.join(entry.link), feed_id=2, user_id=1, state=0)
         feed.save()
 
