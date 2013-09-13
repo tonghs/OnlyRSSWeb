@@ -1,4 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+
 html{
     height: 100%;
 }
@@ -38,7 +40,7 @@ a:hover{
     background-color: black;
     box-shadow: 0px 2px 5px black;
     color: white;
-    font-family: 'PT Sans Narrow';
+    font-family: 'Open Sans Condensed', sans-serif;
     margin-bottom: 7px;
     margin-left: -5px;
     padding: 0px 10px 0px 10px;
@@ -134,7 +136,7 @@ a:hover{
 
 .loading_logo{
     color: #ffffff;
-    font-family: 'PT Sans Narrow', sans-serif;
+    font-family: 'Open Sans Condensed', sans-serif;
     font-size: 20px;
 }
 
