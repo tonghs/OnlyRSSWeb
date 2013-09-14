@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from django.views.generic.base import RedirectView
 
 from OnlyRSSMain.views import index
 from OnlyRSSMain.views import get_all_feed_list
@@ -21,6 +22,7 @@ urlpatterns = patterns('',
     # url(r'^admin/', include(admin.site.urls)),
     ('^resources/(?P<path>.*)', "django.views.static.serve", {'document_root': './Resources'}),
     url(r'^$', index),
+    (r'^favicon\.ico$', RedirectView.as_view(url='resources/image/favicon.ico')),
     url(r'^index/$', index),
     url(r'^get_all_feed_list/$', get_all_feed_list),
     url(r'^get_feed_content/$', get_feed_content),
