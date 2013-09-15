@@ -98,8 +98,42 @@ function show_add_feed_container(){
 
 }
 
-function add_feed(){
-    var value = $("#txt_feed").val();
+function addFeed(){
+    showLoad('正在加载...');
+    var url = $("#txt_feed").val();
     $("#txt_feed_container").css("display", "none");
-    alert(value);
+
+    if (url != null){
+        $('#content').empty();
+        $.ajax({
+            url: '/add_feed?url=' + url
+        }).done(function (data){
+                if (data == "success"){
+                    getAllFeedContent(false);
+                    getAllFeedList();
+                }
+
+                closeLoad();
+            });
+    }
+
+}
+
+function getAllFeedList(){
+    $.ajax({
+        url: '/get_all_feed_list'
+    }).done(function (data){
+            $('#feed_list ul').empty();
+            arrObj = JSON.parse(data);
+            $('#feed_list ul').append('<li class="feed" style="background-color: #dddddd" onclick="changeBgColor(this)">'
+                    + '<div  class="feed_item bold" style="padding-left: 10px;"  onclick="getAllFeedContent(true);">查看所有</div>'
+                    + '</li>');
+            for (var i = 0; i < arrObj.length; i++){
+                $('#feed_list ul').append('<li class="feed" onclick=\"getFeedByUrl(\''
+                    + arrObj[i].fields.feed_url + '\', ' + arrObj[i].pk + ', this)\">'
+                    + '<div class="feed_item" style="background-image: url(\'' + arrObj[i].fields.icon + '\')">'
+                    + arrObj[i].fields.title + '</div></li>')
+            }
+        });
+
 }
