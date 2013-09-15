@@ -4,6 +4,7 @@ from django.core import serializers
 from django.http import HttpResponse
 import feedparser
 import json
+import time
 from models import *
 
 
@@ -32,7 +33,7 @@ def get_feed_list():
 def get_feed_content(request):
     url = request.GET.get('url')
     id = request.GET.get('id')
-    item_list = Item.objects.select_related().filter(feed_id=id)
+    item_list = Item.objects.select_related().filter(feed_id=id).order_by('-pub_date')
     list = []
 
     for item in item_list:
@@ -44,7 +45,7 @@ def get_feed_content(request):
     return HttpResponse(items_json)
 
 def get_all_feed_content(request):
-    item_list = Item.objects.select_related().all()
+    item_list = Item.objects.select_related().all().order_by('-pub_date')
     list = []
 
     for item in item_list:
@@ -56,15 +57,32 @@ def get_all_feed_content(request):
     return HttpResponse(items_json)
 
 def add_feed(request):
+    """
+
+    :param request:
+    """
     url = request.GET.get('url')
     d = feedparser.parse(url)
 
-    feed = Feed(title=d.feed.title, url=d.feed.link, feed_url=url, icon=d.feed.link + '/favicon.ico')
-    feed.save()
+    feed_list = Feed.objects.filter(feed_url=url)
+    if feed_list.count() == 0:
+        index = d.feed.link.find('/', 8)
+        if index == -1:
+            index = d.feed.link.find('?', 8)
+            if index == -1:
+                home_url = d.feed.link[0:]
+            else:
+                home_url = d.feed.link[0:index]
+        else:
+            home_url = d.feed.link[0:index]
 
-    for entry in d.entries:
-        item = Item(title=entry.title, url=entry.link, content=entry.description, feed_id=feed.id, user_id=1, state=0)
-        item.save()
+        feed = Feed(title=d.feed.title, url=d.feed.link, feed_url=url, icon=home_url + '/favicon.ico')
+        feed.save()
+
+        for entry in d.entries:
+            pub_date = time.strftime('%Y-%m-%d %X', entry.published_parsed)
+            item = Item(title=entry.title, url=entry.link, content=entry.description, pub_date=pub_date, feed_id=feed.id, user_id=1, state=0)
+            item.save()
 
     return HttpResponse('success')
 

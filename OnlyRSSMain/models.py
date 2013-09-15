@@ -31,9 +31,10 @@ class Feed(models.Model):
 
 
 class Item(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=500)
     url = models.CharField(max_length=500)
     content = models.TextField()
     feed = models.ForeignKey(Feed)
+    pub_date = models.DateTimeField()
     user = models.ForeignKey(User)
     state = models.IntegerField()

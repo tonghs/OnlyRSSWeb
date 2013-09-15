@@ -19,9 +19,9 @@
         <div id="feed_ops">
             <ul>
                 <li id="add_area">
-                    <a href="javascript:void(0);" onclick="show_add_feed_container()">添加</a>
+                    <a href="javascript:void(0);" onclick="showAddFeedContainer()">添加</a>
                     <div id="txt_feed_container">
-                        <input type="text" id="txt_feed"/>
+                        <input type="text" id="txt_feed" onkeypress="keyboardHandler(13, addFeed)"/>
                         <a href="javascript:void(0);" onclick="addFeed()">添加</a>
                     </div>
                 </li>

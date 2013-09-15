@@ -89,9 +89,10 @@ function setHeightAndWidth(){
     $("#tipDiv").css('top', ($('html').height() - 10) / 2 + 'px');
 }
 
-function show_add_feed_container(){
+function showAddFeedContainer(){
     if ($("#txt_feed_container").css("display") == "none"){
         $("#txt_feed_container").css("display", "block");
+        $("#txt_feed").focus();
     } else {
         $("#txt_feed_container").css("display", "none");
     }
@@ -104,7 +105,6 @@ function addFeed(){
     $("#txt_feed_container").css("display", "none");
 
     if (url != null){
-        $('#content').empty();
         $.ajax({
             url: '/add_feed?url=' + url
         }).done(function (data){
@@ -112,7 +112,7 @@ function addFeed(){
                     getAllFeedContent(false);
                     getAllFeedList();
                 }
-
+                $("#txt_feed").val("");
                 closeLoad();
             });
     }
@@ -136,4 +136,10 @@ function getAllFeedList(){
             }
         });
 
+}
+
+function keyboardHandler(keyCode, fun){
+    if (event.keyCode == keyCode){
+        fun();
+    }
 }
