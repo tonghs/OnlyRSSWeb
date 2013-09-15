@@ -88,3 +88,18 @@ function setHeightAndWidth(){
     $("#tipDiv").css('left', ($('html').width() - 170) / 2 + 'px');
     $("#tipDiv").css('top', ($('html').height() - 10) / 2 + 'px');
 }
+
+function show_add_feed_container(){
+    if ($("#txt_feed_container").css("display") == "none"){
+        $("#txt_feed_container").css("display", "block");
+    } else {
+        $("#txt_feed_container").css("display", "none");
+    }
+
+}
+
+function add_feed(){
+    var value = $("#txt_feed").val();
+    $("#txt_feed_container").css("display", "none");
+    alert(value);
+}

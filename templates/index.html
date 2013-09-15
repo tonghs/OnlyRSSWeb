@@ -16,6 +16,19 @@
 
 <div class="wrap">
     <div class="left">
+        <div id="feed_ops">
+            <ul>
+                <li id="add_area">
+                    <a href="javascript:void(0);" onclick="show_add_feed_container()">添加</a>
+                    <div id="txt_feed_container">
+                        <input type="text" id="txt_feed"/>
+                        <a href="javascript:void(0);" onclick="add_feed()">添加</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <br>
         <div id="feed_list">
             <ul>
                 <li class="feed" style="background-color: #dddddd" onclick="changeBgColor(this)">
