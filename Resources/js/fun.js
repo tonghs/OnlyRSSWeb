@@ -1,24 +1,25 @@
-function getFeedByUrl(url, id, obj){
-    showLoad('正在加载...');
-    if (url != null && id != null){
-        $('#content').empty();
-        $.ajax({
-            url: '/get_feed_content?url=' + url + '&id=' + id
-        }).done(function (data){
-                arrObj = JSON.parse(data);
-
-                for (var i = 0; i < arrObj.length; i++){
-                    $('#content').append('<div class="item"><div class="item_title"><a href=" ' + arrObj[i].url + ' " target="_blank">'
-                        + arrObj[i].title + '</a></div>'
-                        + '<div class="item_content">' + arrObj[i].content + '</div>'
-                        + '<div class="item_ops"><a href="' + arrObj[i].feed_url + '" target="_blank">来自:'
-                        + arrObj[i].feed_title + '</a>'
-                        + '&nbsp;&nbsp;<a href="#">收藏</a></div></div>')
-                }
-            });
+function getItem(id, obj, isShowLoading){
+    if (isShowLoading == null || isShowLoading){
+        showLoad('正在加载...');
     }
-    changeBgColor(obj);
-    closeLoad();
+
+    $('#content_container').empty();
+    var url = '';
+    if (id != null){
+        url = '/get_feed_content?id=' + id;
+    } else {
+        url = '/get_all_feed_content';
+    }
+
+    ajaxRequest(url, parseContent);
+
+    if (obj != null){
+        changeBgColor(obj);
+    }
+
+    if (isShowLoading == null || isShowLoading){
+        closeLoad();
+    }
 }
 
 function changeBgColor(obj){
@@ -26,68 +27,14 @@ function changeBgColor(obj){
         $(this).css('background', '');
     });
 
-    obj.style.backgroundColor = '#dddddd';
-}
-
-function showLoad(tipInfo) {
-    if ($("#tipDiv").size() == 0){
-        var eTip = document.createElement('div');
-        eTip.setAttribute('id', 'tipDiv');
-        eTip.style.position = 'absolute';
-        eTip.style.display = 'none';
-        eTip.style.textAlign = 'center';
-        eTip.style.border = 'solid 0px #D1D1D1';
-        eTip.style.backgroundColor = '#4B981D';
-        eTip.style.padding = '5px 15px';
-        eTip.style.left = ($('html').width() - 190) / 2 + 'px';
-        eTip.style.top = ($('html').height() - 10) / 2 + 'px';
-        eTip.style.width = '190px';
-        eTip.innerHTML = '<span class="loading_logo bold">Only RSS</span>&nbsp;&nbsp;'
-            +'<span class="loading">' + tipInfo + '</span>';
-        try {
-            document.body.appendChild(eTip);
-        } catch (e) { }
-        $("#tipDiv").css("z-index", "99");
+    if(obj.style != null){
+        obj.style.backgroundColor = '#dddddd';
+    } else {
+        obj.css('background', '#dddddd');
     }
 
-    $('#tipDiv').fadeIn();
 }
 
-function closeLoad() {
-    $('#tipDiv').fadeOut();
-}
-function getAllFeedContent(isShowLoading){
-    if (isShowLoading){
-        showLoad('正在加载...');
-    }
-    $('#content').empty();
-    $.ajax({
-        url: '/get_all_feed_content'
-    }).done(function (data){
-            arrObj = JSON.parse(data);
-
-            for (var i = 0; i < arrObj.length; i++){
-                $('#content').append('<div class="item"><div class="item_title"><a href=" ' + arrObj[i].url + ' " target="_blank">'
-                    + arrObj[i].title + '</a></div>'
-                    + '<div class="item_content">' + arrObj[i].content + '</div>'
-                    + '<div class="item_ops">来自:<a href="' + arrObj[i].feed_url + '" target="_blank">'
-                    + arrObj[i].feed_title + '</a>'
-                    + '&nbsp;&nbsp;<a href="#">收藏</a></div></div>')
-            }
-        });
-    if (isShowLoading){
-        closeLoad();
-    }
-}
-
-
-function setHeightAndWidth(){
-    var height = $('html').height() - $('.header').height() - 30;
-    $('#content_container').height(height);
-
-    $("#tipDiv").css('left', ($('html').width() - 170) / 2 + 'px');
-    $("#tipDiv").css('top', ($('html').height() - 10) / 2 + 'px');
-}
 
 function showAddFeedContainer(){
     if ($("#txt_feed_container").css("display") == "none"){
@@ -105,9 +52,7 @@ function addFeed(){
     $("#txt_feed_container").css("display", "none");
 
     if (url != null){
-        $.ajax({
-            url: '/add_feed?url=' + url
-        }).done(function (data){
+        ajaxRequest('/add_feed?url=' + url, function (data){
                 if (data == "success"){
                     getAllFeedContent(false);
                     getAllFeedList();
@@ -120,17 +65,15 @@ function addFeed(){
 }
 
 function getAllFeedList(){
-    $.ajax({
-        url: '/get_all_feed_list'
-    }).done(function (data){
+    ajaxRequest('/get_all_feed_list', function (data){
             $('#feed_list ul').empty();
-            arrObj = JSON.parse(data);
-            $('#feed_list ul').append('<li class="feed" style="background-color: #dddddd" onclick="changeBgColor(this)">'
-                    + '<div  class="feed_item bold" style="padding-left: 10px;"  onclick="getAllFeedContent(true);">查看所有</div>'
+            var arrObj = JSON.parse(data);
+            $('#feed_list ul').append('<li class="feed" id="get_all" style="background-color: #dddddd" onclick="getItem(null, this);">'
+                    + '<div class="feed_item bold" style="padding-left: 10px;" '
+                    + '>查看所有</div>'
                     + '</li>');
             for (var i = 0; i < arrObj.length; i++){
-                $('#feed_list ul').append('<li class="feed" onclick=\"getFeedByUrl(\''
-                    + arrObj[i].fields.feed_url + '\', ' + arrObj[i].pk + ', this)\">'
+                $('#feed_list ul').append('<li class="feed" onclick=\"getItem(' + arrObj[i].pk + ', this)\">'
                     + '<div class="feed_item" style="background-image: url(\'' + arrObj[i].fields.icon + '\')">'
                     + arrObj[i].fields.title + '</div></li>')
             }
@@ -138,8 +81,26 @@ function getAllFeedList(){
 
 }
 
-function keyboardHandler(keyCode, fun){
-    if (event.keyCode == keyCode){
-        fun();
+//设置未读状态
+function setStatus(){
+    $('.unread').each(function(){
+        if ($(this).offset().top <= 300 && this.className != 'read'){
+            this.className = 'read';
+        }
+    });
+}
+
+function parseContent(data){
+    arrObj = JSON.parse(data);
+    for (var i = 0; i < arrObj.length; i++){
+        $('#content_container').append('<div class="item" id="'
+            + arrObj[i].id
+            + '"><div class="unread">&nbsp;</div><div class="item_title"><a href=" '
+            + arrObj[i].url + ' " target="_blank">'
+            + arrObj[i].title + '</a></div>'
+            + '<div class="item_content">' + arrObj[i].content + '</div>'
+            + '<div class="item_ops">来自:<a href="' + arrObj[i].feed_url + '" target="_blank">'
+            + arrObj[i].feed_title + '</a>'
+            + '&nbsp;&nbsp;<a href="#">收藏</a></div></div>')
     }
 }

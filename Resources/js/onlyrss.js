@@ -3,6 +3,7 @@ $(document).ready(function(){
     $(window).resize(setHeightAndWidth);
     setHeightAndWidth();
     getAllFeedList();
-    getAllFeedContent(false);
+    getItem(null, $('#get_all'), false);
     closeLoad();
 });
+

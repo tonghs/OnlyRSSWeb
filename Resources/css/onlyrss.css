@@ -11,6 +11,7 @@ body, ul{
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 li{
@@ -158,4 +159,19 @@ a:hover{
     background-color: white;
     border: 1px solid #dddddd;
     width: 200px;
+}
+
+.unread{
+    background-color: black;
+    float: left;
+    height: 16px;
+    width: 5px;
+}
+
+
+.read{
+    background-color: #dddddd;
+    float: left;
+    height: 16px;
+    width: 5px;
 }
