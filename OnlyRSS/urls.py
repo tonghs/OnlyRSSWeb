@@ -6,6 +6,8 @@ from OnlyRSSMain.views import get_all_feed_list
 from OnlyRSSMain.views import get_feed_content
 from OnlyRSSMain.views import get_all_feed_content
 from OnlyRSSMain.views import add_feed
+from OnlyRSSMain.views import del_item
+from OnlyRSSMain.views import update_content
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
@@ -28,4 +30,6 @@ urlpatterns = patterns('',
     url(r'^get_feed_content/$', get_feed_content),
     url(r'^get_all_feed_content/$', get_all_feed_content),
     url(r'^add_feed/$', add_feed),
+    url(r'^del_item/$', del_item),
+    url(r'^update_content/$', update_content),
 )

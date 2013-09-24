@@ -54,7 +54,7 @@ function addFeed(){
     if (url != null){
         ajaxRequest('/add_feed?url=' + url, function (data){
                 if (data == "success"){
-                    getAllFeedContent(false);
+                    getItem(null, $('#get_all'), false);
                     getAllFeedList();
                 }
                 $("#txt_feed").val("");
@@ -68,8 +68,8 @@ function getAllFeedList(){
     ajaxRequest('/get_all_feed_list', function (data){
             $('#feed_list ul').empty();
             var arrObj = JSON.parse(data);
-            $('#feed_list ul').append('<li class="feed" id="get_all" style="background-color: #dddddd" onclick="getItem(null, this);">'
-                    + '<div class="feed_item bold" style="padding-left: 10px;" '
+            $('#feed_list ul').append('<li class="feed" id="get_all" style="background-color: #dddddd" onclick="updateItem();">'
+                    + '<div class="feed_item bold" style="padding-left: 10px;"'
                     + '>查看所有</div>'
                     + '</li>');
             for (var i = 0; i < arrObj.length; i++){
@@ -85,17 +85,45 @@ function getAllFeedList(){
 function setStatus(){
     $('.unread').each(function(){
         if ($(this).offset().top <= 300 && this.className != 'read'){
-            this.className = 'read';
+            delItem(this.id, this);
         }
     });
 }
 
+function delItem(id, obj){
+    ajaxRequest('/del_item?id=' + id, null, function(req, msg, errorThrown){
+        if (req.status != 404){
+            showErr();
+        }
+    });
+    if (obj != null){
+        obj.className = 'read';
+    }
+}
+
+function delAllItem(){
+    showLoad('正在加载...');
+    ajaxRequest('/del_item', function(data){
+        getItem(null, $('#get_all'), false);
+    }, function(req, msg, errorThrown){
+        if (req.status != 404){
+            showErr();
+        }
+    });
+
+    closeLoad();
+}
+
 function parseContent(data){
-    arrObj = JSON.parse(data);
+    var arrObj = JSON.parse(data);
     for (var i = 0; i < arrObj.length; i++){
-        $('#content_container').append('<div class="item" id="'
+        $('#content_container').append('<div class="item" onclick="delItem('
             + arrObj[i].id
-            + '"><div class="unread">&nbsp;</div><div class="item_title"><a href=" '
+            + ', document.getElementById(\''
+            + arrObj[i].id
+            + '\'))"><div class="unread" id="'
+            + arrObj[i].id
+            + '">&nbsp;</div><div class="item_title"><a href=" '
             + arrObj[i].url + ' " target="_blank">'
             + arrObj[i].title + '</a></div>'
             + '<div class="item_content">' + arrObj[i].content + '</div>'
@@ -103,4 +131,17 @@ function parseContent(data){
             + arrObj[i].feed_title + '</a>'
             + '&nbsp;&nbsp;<a href="#">收藏</a></div></div>')
     }
+}
+
+function updateItem(){
+    showLoad('正在加载...');
+    changeBgColor($('#get_all'));
+    ajaxRequest('/update_content', function(data){
+        if (data == 'success'){
+            getItem(null, $('#get_all'), false);
+            closeLoad();
+        }
+
+    });
+
 }

@@ -1,10 +1,11 @@
 #coding=utf-8
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.core import serializers
 from django.http import HttpResponse
 import feedparser
 import json
 import time
+import threading
 from models import *
 
 
@@ -82,11 +83,7 @@ def add_feed(request):
         feed = Feed(title=d.feed.title, url=d.feed.link, feed_url=url, icon=home_url + '/favicon.ico')
         feed.save()
 
-        for entry in d.entries:
-            pub_date = time.strftime('%Y-%m-%d %X', entry.updated_parsed)
-            item = Item(title=entry.title, url=entry.link, content=entry.description, pub_date=pub_date,
-                        feed_id=feed.id, user_id=1, state=0)
-            item.save()
+        insert_to_item(d, feed.id)
 
     return HttpResponse('success')
 
@@ -119,3 +116,64 @@ def get_home_url(link):
         home_url = link[0:index]
 
     return home_url
+
+
+def del_item(request):
+    """
+    删除文章
+    """
+    item_id = request.GET.get('id')
+    if item_id and int(item_id) > 0:
+        item = get_object_or_404(Item, pk=int(item_id))
+        item.delete()
+    else:
+        item = Item.objects.all()
+        item.delete()
+
+    return HttpResponse('success')
+
+
+def update_content(request):
+    feed_list = Feed.objects.all()
+    th_list = []
+    for feed in feed_list:
+        th = threading.Thread(target=thread_handler, args=(feed,))
+        th.start()
+        th_list.append(th)
+
+    #等待线程结束
+    for th in th_list:
+        while th.isAlive():
+            continue
+
+    return HttpResponse('success')
+
+
+def thread_handler(feed):
+    url = feed.feed_url
+    d = feedparser.parse(url)
+
+    insert_to_item(d, feed.id)
+
+
+def insert_to_item(d, feed_id):
+    f_list = Feed.objects.filter(id=feed_id)
+    f = f_list[0]
+    local_date = f.update_date
+
+    if d.entries[0].updated_parsed:
+        remote_date = time.strftime('%Y-%m-%d %X', d.entries[0].updated_parsed)
+    else:
+        remote_date = time.strftime('%Y-%m-%d %X', d.entries[0].published_parsed)
+
+    if local_date < remote_date:
+        f.update_date = remote_date
+        f.save()
+        for entry in d.entries:
+            if entry.updated_parsed:
+                pub_date = time.strftime('%Y-%m-%d %X', entry.updated_parsed)
+            else:
+                pub_date = time.strftime('%Y-%m-%d %X', entry.published_parsed)
+            item = Item(title=entry.title, url=entry.link, content=entry.description, pub_date=pub_date,
+                        feed_id=feed_id, user_id=1, state=0)
+            item.save()
