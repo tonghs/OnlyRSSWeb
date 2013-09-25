@@ -189,3 +189,7 @@ def setting(request):
 def about(request):
 
     return render_to_response('about.html')
+
+def app(request):
+
+    return render_to_response('app.html')

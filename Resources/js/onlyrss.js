@@ -7,4 +7,3 @@ $(document).ready(function(){
     setInterval(updateItem, 60000);
     closeLoad();
 });
-
