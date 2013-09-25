@@ -138,3 +138,11 @@ function updateItem(){
     ajaxRequest('/update_content');
 
 }
+
+function showTitleMode(){
+    $('.item_content').fadeOut();
+}
+
+function showContentMode(){
+    $('.item_content').fadeIn();
+}
