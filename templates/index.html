@@ -1,20 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Only RSS</title>
-    <link rel="stylesheet" href="/resources/css/onlyrss.css">
-    <script type="text/javascript" src="/resources/js/jquery.js"></script>
-    <script type="text/javascript" src="/resources/js/util.js"></script>
-    <script type="text/javascript" src="/resources/js/fun.js"></script>
-    <script type="text/javascript" src="/resources/js/onlyrss.js"></script>
+{% include 'header.html' %}
 </head>
 <body>
-<div class="header">
-    <div class="logo" title="Only RSS" onclick="window.location.href='/'">Only RSS</div>
-    <div class="title">做好阅读这件事</div>
-    <div class="clear"></div>
-</div>
-
+{% include 'menu.html' %}
 <div class="wrap">
     <div class="left">
         <div id="feed_ops">
@@ -26,6 +16,7 @@
                         <a href="javascript:void(0);" onclick="addFeed()">添加</a>
                     </div>
                 </li>
+
             </ul>
             <div class="clear"></div>
         </div>

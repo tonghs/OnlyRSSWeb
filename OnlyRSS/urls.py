@@ -27,4 +27,6 @@ urlpatterns = patterns('',
     url(r'^add_feed/$', add_feed),
     url(r'^del_item/$', del_item),
     url(r'^update_content/$', update_content),
+    url(r'^setting/$', setting),
+    url(r'^about/$', about),
 )

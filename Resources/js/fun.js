@@ -64,19 +64,21 @@ function addFeed(){
 
 }
 
+function delFeed(feedId){
+
+}
+
 function getAllFeedList(){
     ajaxRequest('/get_all_feed_list', function (data){
             $('#feed_list ul').empty();
             var arrObj = JSON.parse(data);
-            $('#feed_list ul').append('<li class="feed" id="get_all" style="background-color: #dddddd">'
-                    + '<div class="feed_item bold"  onclick="getItem(null, $(\'#get_all\'), true);"'
-                    + ' style="padding-left: 10px;"'
-                    + '>查看所有</div>'
-                    + '</li>');
+            $('#feed_list ul').append('<li class="feed" id="get_all" style="background-color: #dddddd">' +
+                '<div class="feed_item bold"  onclick="getItem(null, $(\'#get_all\'), true);"' +
+                ' style="padding-left: 10px;">查看所有</div></li>');
             for (var i = 0; i < arrObj.length; i++){
-                $('#feed_list ul').append('<li class="feed" onclick=\"getItem(' + arrObj[i].pk + ', this)\">'
-                    + '<div class="feed_item" style="background-image: url(\'' + arrObj[i].fields.icon + '\')">'
-                    + arrObj[i].fields.title + '</div></li>')
+                $('#feed_list ul').append('<li class="feed" onclick=\"getItem(' + arrObj[i].pk + ', this)\">' +
+                    '<div class="feed_item" style="background-image: url(\'' + arrObj[i].fields.icon + '\')">' +
+                    arrObj[i].fields.title + '</div></li>')
             }
         });
 

@@ -179,3 +179,13 @@ def insert_to_item(d, feed_id):
                 feed.update_date = pub_date
                 feed.save()
                 i += 1
+
+
+def setting(request):
+
+    return render_to_response('setting.html')
+
+
+def about(request):
+
+    return render_to_response('about.html')
