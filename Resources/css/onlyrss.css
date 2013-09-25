@@ -149,6 +149,10 @@ a:hover{
     padding-right: 15px;
 }
 
+#feed_ops{
+    padding-left:10px;
+}
+
 #feed_ops ul{
     float: left;
     position: absolute;

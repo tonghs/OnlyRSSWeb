@@ -68,8 +68,9 @@ function getAllFeedList(){
     ajaxRequest('/get_all_feed_list', function (data){
             $('#feed_list ul').empty();
             var arrObj = JSON.parse(data);
-            $('#feed_list ul').append('<li class="feed" id="get_all" style="background-color: #dddddd" onclick="updateItem();">'
-                    + '<div class="feed_item bold" style="padding-left: 10px;"'
+            $('#feed_list ul').append('<li class="feed" id="get_all" style="background-color: #dddddd">'
+                    + '<div class="feed_item bold"  onclick="getItem(null, $(\'#get_all\'), true);"'
+                    + ' style="padding-left: 10px;"'
                     + '>查看所有</div>'
                     + '</li>');
             for (var i = 0; i < arrObj.length; i++){
@@ -134,14 +135,6 @@ function parseContent(data){
 }
 
 function updateItem(){
-    showLoad('正在加载...');
-    changeBgColor($('#get_all'));
-    ajaxRequest('/update_content', function(data){
-        if (data == 'success'){
-            getItem(null, $('#get_all'), false);
-            closeLoad();
-        }
-
-    });
+    ajaxRequest('/update_content');
 
 }

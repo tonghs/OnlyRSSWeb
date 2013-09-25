@@ -6,6 +6,7 @@ import feedparser
 import json
 import time
 import threading
+import datetime
 from models import *
 
 
@@ -157,23 +158,21 @@ def thread_handler(feed):
 
 
 def insert_to_item(d, feed_id):
-    f_list = Feed.objects.filter(id=feed_id)
-    f = f_list[0]
-    local_date = f.update_date
-
-    if d.entries[0].updated_parsed:
-        remote_date = time.strftime('%Y-%m-%d %X', d.entries[0].updated_parsed)
-    else:
-        remote_date = time.strftime('%Y-%m-%d %X', d.entries[0].published_parsed)
-
-    if local_date < remote_date:
-        f.update_date = remote_date
-        f.save()
-        for entry in d.entries:
-            if entry.updated_parsed:
-                pub_date = time.strftime('%Y-%m-%d %X', entry.updated_parsed)
-            else:
-                pub_date = time.strftime('%Y-%m-%d %X', entry.published_parsed)
+    feed = Feed.objects.get(pk=feed_id)
+    #f = f_list[0]
+    local_date = feed.update_date.encode()
+    i = 0
+    for entry in d.entries:
+        if hasattr(entry, 'published_parsed'):
+            pub_date = time.strftime('%Y-%m-%d %X', entry.published_parsed)
+        else:
+            pub_date = time.strftime('%Y-%m-%d %X', entry.updated_parsed)
+        #比较更新时间
+        if local_date is None or pub_date > local_date:
             item = Item(title=entry.title, url=entry.link, content=entry.description, pub_date=pub_date,
                         feed_id=feed_id, user_id=1, state=0)
             item.save()
+            if i == 0:
+                feed.update_date = pub_date
+                feed.save()
+                i += 1

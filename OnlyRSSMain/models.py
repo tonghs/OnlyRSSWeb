@@ -12,7 +12,7 @@ class Feed(models.Model):
     url = models.CharField(max_length=500)
     feed_url = models.CharField(max_length=500)
     icon = models.CharField(max_length=100)
-    update_date = models.DateTimeField()
+    update_date = models.CharField(max_length=20)
 
     def __unicode__(self):
         return '%s' % (self.title)
