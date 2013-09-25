@@ -2,12 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.views.generic.base import RedirectView
 
 from OnlyRSSMain.views import index
-from OnlyRSSMain.views import get_all_feed_list
-from OnlyRSSMain.views import get_feed_content
-from OnlyRSSMain.views import get_all_feed_content
-from OnlyRSSMain.views import add_feed
-from OnlyRSSMain.views import del_item
-from OnlyRSSMain.views import update_content
+from OnlyRSSMain.views import *
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()

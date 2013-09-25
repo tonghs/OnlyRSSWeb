@@ -1,12 +1,11 @@
 #coding=utf-8
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core import serializers
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 import feedparser
 import json
 import time
 import threading
-import datetime
 from models import *
 
 
@@ -123,15 +122,19 @@ def del_item(request):
     """
     删除文章
     """
+    msg = 'success'
     item_id = request.GET.get('id')
     if item_id and int(item_id) > 0:
-        item = get_object_or_404(Item, pk=int(item_id))
-        item.delete()
+        try:
+            item = get_object_or_404(Item, pk=int(item_id))
+            item.delete()
+        except Http404 as e:
+            msg = ''
     else:
         item = Item.objects.all()
         item.delete()
 
-    return HttpResponse('success')
+    return HttpResponse(msg)
 
 
 def update_content(request):
