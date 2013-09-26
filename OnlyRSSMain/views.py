@@ -1,12 +1,15 @@
 #coding=utf-8
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core import serializers
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.template import RequestContext
 import feedparser
 import json
 import time
 import threading
+import xml.dom.minidom
 from models import *
+from forms import UploadFileForm
 
 
 def index(request):
@@ -40,7 +43,8 @@ def get_feed_content(request):
     list_temp = []
 
     for item in item_list:
-        dicItem = {'id': item.id, 'title': item.title, 'content': item.content, 'url': item.url, 'feed_title': item.feed.title,
+        dicItem = {'id': item.id, 'title': item.title, 'content': item.content, 'url': item.url,
+                   'feed_title': item.feed.title,
                    'feed_url': item.feed.url}
         list_temp.append(dicItem)
 
@@ -59,7 +63,8 @@ def get_all_feed_content(request):
     list_temp = []
 
     for item in item_list:
-        dicItem = {'id': item.id, 'title': item.title, 'content': item.content, 'url': item.url, 'feed_title': item.feed.title,
+        dicItem = {'id': item.id, 'title': item.title, 'content': item.content, 'url': item.url,
+                   'feed_title': item.feed.title,
                    'feed_url': item.feed.url}
         list_temp.append(dicItem)
 
@@ -139,16 +144,16 @@ def del_item(request):
 
 def update_content(request):
     feed_list = Feed.objects.all()
-    th_list = []
+    #th_list = []
     for feed in feed_list:
         th = threading.Thread(target=thread_handler, args=(feed,))
         th.start()
-        th_list.append(th)
+        #th_list.append(th)
 
     #等待线程结束
-    for th in th_list:
-        while th.isAlive():
-            continue
+    #for th in th_list:
+    #    while th.isAlive():
+    #        continue
 
     return HttpResponse('success')
 
@@ -170,7 +175,7 @@ def insert_to_item(d, feed_id):
             pub_date = time.strftime('%Y-%m-%d %X', entry.published_parsed)
         else:
             pub_date = time.strftime('%Y-%m-%d %X', entry.updated_parsed)
-        #比较更新时间
+            #比较更新时间
         if local_date is None or pub_date > local_date:
             item = Item(title=entry.title, url=entry.link, content=entry.description, pub_date=pub_date,
                         feed_id=feed_id, user_id=1, state=0)
@@ -182,14 +187,50 @@ def insert_to_item(d, feed_id):
 
 
 def setting(request):
-
-    return render_to_response('setting.html')
+    return render_to_response('setting.html', context_instance=RequestContext(request))
 
 
 def about(request):
-
     return render_to_response('about.html')
 
-def app(request):
 
+def app(request):
     return render_to_response('app.html')
+
+
+def import_opml(request):
+    """
+
+    @param request:
+    @return:
+    """
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_opml(request.FILES['file'])
+    return HttpResponseRedirect('/')
+
+
+def handle_opml(f):
+    try:
+        xml_str = f.read()
+        doc = xml.dom.minidom.parseString(xml_str)
+        th_list = []
+        for node in doc.getElementsByTagName('outline'):
+            feed_list = Feed.objects.filter(feed_url=node.getAttribute('xmlUrl'))
+            if feed_list.count() == 0:
+                home_url = get_home_url(node.getAttribute('htmlUrl'))
+
+                feed = Feed(title=node.getAttribute('title'), url=home_url, feed_url=node.getAttribute('xmlUrl'),
+                            icon=home_url + '/favicon.ico')
+                feed.save()
+
+                th = threading.Thread(target=thread_handler, args=(feed,))
+                th_list.append(th)
+                th.start()
+
+        for th in th_list:
+            while th.isAlive():
+                continue
+    except Exception as e:
+        return

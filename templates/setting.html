@@ -6,6 +6,22 @@
 </head>
 <body>
 {% include 'menu.html' %}
-setting
+<div class="wrap">
+    <div>导入</div>
+    <div>
+        <form enctype="multipart/form-data" method="post" action="/import_opml/">{% csrf_token %}
+            <input type="file" name="file"/>
+            <input type="submit" value="导入" onclick="showLoad('正在加载...')"/>
+        </form>
+    </div>
+    <div class="hr"></div>
+    <div>导出</div>
+    <div>
+        <a href="#">导出</a>
+    </div>
+    <div class="hr"></div>
+    <div>管理</div>
+    <div></div>
+</div>
 </body>
 </html>

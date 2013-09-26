@@ -202,11 +202,68 @@ a:hover{
 }
 
 .app_content{
-    background: url('/resources/image/phone.png') no-repeat;
-    background-position: 200px 0;
-    border-bottom: 5px solid #dddddd;
-
-    margin: 80px 0 0 0;
+    background: url('/resources/image/phone.png') no-repeat 0 80px;
+    height: 530px;
+    margin: auto;
+    width: 900px;
     overflow-y: hidden;
+}
 
+
+#app_content_screen{
+    padding: 160px 0 0 22px;
+}
+
+#app_content_main{
+    float:left;
+    margin-left: 100px;
+}
+
+#app_title{
+    font-family: 'Open Sans Condensed';
+    font-size: 50px;
+}
+
+.store{
+    float: left;
+    height:62px;
+    margin-right:50px;
+    width:170px;
+
+}
+
+#app_store{
+    background: url('/resources/image/AppStore.png') no-repeat;
+    background-size: 170px 62px;
+
+}
+
+#google_play{
+    background: url('/resources/image/GooglePlay.png') no-repeat;
+    background-size: 170px 62px;
+}
+
+.hr{
+    border-bottom: 5px solid #dddddd;
+    margin: 0 0 5px 0;
+    width: 100%;
+}
+
+
+#app_platform{
+    color: black;
+    margin: auto;
+    text-align: center;
+    width: 80%;
+}
+
+.app_platform_content{
+    float: left;
+    font-family: 'Open Sans Condensed';
+    font-size: 30px;
+    width: 50%;
+}
+
+.app_platform_content_title{
+    font-weight: bold;
 }

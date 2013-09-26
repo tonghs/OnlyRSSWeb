@@ -3,9 +3,12 @@ from django.views.generic.base import RedirectView
 
 from OnlyRSSMain.views import index
 from OnlyRSSMain.views import *
+from Common.views import *
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
+
+handler404 = 'Common.views.page_not_found'
 
 urlpatterns = patterns('',
     # Examples:
@@ -30,4 +33,6 @@ urlpatterns = patterns('',
     url(r'^setting/$', setting),
     url(r'^app/$', app),
     url(r'^about/$', about),
+    url(r'^import_opml/$', import_opml),
+    url(r'^404/$', page_not_found),
 )
