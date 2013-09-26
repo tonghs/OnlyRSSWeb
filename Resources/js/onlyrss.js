@@ -3,7 +3,6 @@ $(document).ready(function(){
     $(window).resize(setHeightAndWidth);
     setHeightAndWidth();
     getAllFeedList();
-    getItem(null, $('#get_all'), false);
     setInterval(updateItem, 60000);
-    closeLoad();
+
 });

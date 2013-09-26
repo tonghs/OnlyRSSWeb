@@ -38,28 +38,14 @@ def get_feed_content(request):
     :param request:
     :return:
     """
-    feed_id = request.GET.get('id')
-    item_list = Item.objects.select_related().filter(feed_id=feed_id).order_by('-pub_date')
-    list_temp = []
+    feed_id = int(request.GET.get('id'))
+    page = int(request.GET.get('page'))
+    page_size = 100
 
-    for item in item_list:
-        dicItem = {'id': item.id, 'title': item.title, 'content': item.content, 'url': item.url,
-                   'feed_title': item.feed.title,
-                   'feed_url': item.feed.url}
-        list_temp.append(dicItem)
-
-    items_json = json.dumps(list_temp)
-
-    return HttpResponse(items_json)
-
-
-def get_all_feed_content(request):
-    """
-    获取所有订阅文章
-    :param request:
-    :return:
-    """
-    item_list = Item.objects.select_related().all().order_by('-pub_date')
+    if feed_id != 0:
+        item_list = Item.objects.select_related().filter(feed_id=feed_id).order_by('-pub_date')[page * page_size:(page + 1) * page_size]
+    else:
+        item_list = Item.objects.select_related().all().order_by('-pub_date')[page * page_size:(page + 1) * page_size]
     list_temp = []
 
     for item in item_list:

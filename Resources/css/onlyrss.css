@@ -267,3 +267,22 @@ a:hover{
 .app_platform_content_title{
     font-weight: bold;
 }
+
+.next{
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.next:hover{
+    background-color: #dddddd;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
