@@ -9,7 +9,7 @@ class User(models.Model):
 
 class Feed(models.Model):
     title = models.CharField(max_length=100)
-    url = models.CharField(max_length=500)
+    url = models.TextField()
     feed_url = models.CharField(max_length=500)
     icon = models.CharField(max_length=100)
     update_date = models.CharField(max_length=20)

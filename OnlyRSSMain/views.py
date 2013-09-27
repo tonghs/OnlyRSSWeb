@@ -41,11 +41,13 @@ def get_feed_content(request):
     feed_id = int(request.GET.get('id'))
     page = int(request.GET.get('page'))
     page_size = 100
+    start = page * page_size
+    end = (page + 1) * page_size - 1
 
     if feed_id != 0:
-        item_list = Item.objects.select_related().filter(feed_id=feed_id).order_by('-pub_date')[page * page_size:(page + 1) * page_size]
+        item_list = Item.objects.select_related().filter(feed_id=feed_id).order_by('-pub_date')[start:end]
     else:
-        item_list = Item.objects.select_related().all().order_by('-pub_date')[page * page_size:(page + 1) * page_size]
+        item_list = Item.objects.select_related().all().order_by('-pub_date')[start:end]
     list_temp = []
 
     for item in item_list:
@@ -154,7 +156,7 @@ def thread_handler(feed):
 def insert_to_item(d, feed_id):
     feed = Feed.objects.get(pk=feed_id)
     #f = f_list[0]
-    local_date = feed.update_date.encode()
+    local_date = feed.update_date
     i = 0
     for entry in d.entries:
         if hasattr(entry, 'published_parsed'):
@@ -163,9 +165,12 @@ def insert_to_item(d, feed_id):
             pub_date = time.strftime('%Y-%m-%d %X', entry.updated_parsed)
             #比较更新时间
         if local_date is None or pub_date > local_date:
-            item = Item(title=entry.title, url=entry.link, content=entry.description, pub_date=pub_date,
-                        feed_id=feed_id, user_id=1, state=0)
-            item.save()
+            try:
+                item = Item(title=entry.title, url=entry.link, content=entry.description, pub_date=pub_date,
+                            feed_id=feed_id, user_id=1, state=0)
+                item.save()
+            except Exception as e:
+                print e.message + ';' + entry.link
             if i == 0:
                 feed.update_date = pub_date
                 feed.save()

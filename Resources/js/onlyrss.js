@@ -4,5 +4,4 @@ $(document).ready(function(){
     setHeightAndWidth();
     getAllFeedList();
     setInterval(updateItem, 60000);
-
 });
