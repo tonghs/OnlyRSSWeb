@@ -12,6 +12,12 @@ from models import *
 from forms import UploadFileForm
 
 
+thread_count_dic = {'update_thread_count': 0, 'import_thread_count': 0}
+update_thread_count = 0
+#线程限制数
+thread_count_max = 10
+
+
 def index(request):
     """
     主页
@@ -132,11 +138,15 @@ def del_item(request):
 
 def update_content(request):
     feed_list = Feed.objects.all()
-    #th_list = []
+    th_list = []
     for feed in feed_list:
-        th = threading.Thread(target=thread_handler, args=(feed,))
+        while int(thread_count_dic['update_thread_count']) == thread_count_max:
+            continue
+        th = threading.Thread(target=thread_handler, args=(feed, 'update',))
+        th_list.append(th)
+        thread_count_dic['update_thread_count'] = int(thread_count_dic['update_thread_count']) + 1
         th.start()
-        #th_list.append(th)
+
 
     #等待线程结束
     #for th in th_list:
@@ -146,11 +156,14 @@ def update_content(request):
     return HttpResponse('success')
 
 
-def thread_handler(feed):
+def thread_handler(feed, ops):
     url = feed.feed_url
     d = feedparser.parse(url)
 
     insert_to_item(d, feed.id)
+
+    thread_count = int(thread_count_dic[ops + '_thread_count'])
+    thread_count_dic[ops + '_thread_count'] = thread_count - 1
 
 
 def insert_to_item(d, feed_id):
@@ -216,8 +229,11 @@ def handle_opml(f):
                             icon=home_url + '/favicon.ico')
                 feed.save()
 
-                th = threading.Thread(target=thread_handler, args=(feed,))
+                while int(thread_count_dic['import_thread_count']) == thread_count_max:
+                    continue
+                th = threading.Thread(target=thread_handler, args=(feed, 'import'))
                 th_list.append(th)
+                thread_count_dic['update_thread_count'] = int(thread_count_dic['import_thread_count']) + 1
                 th.start()
 
         for th in th_list:
