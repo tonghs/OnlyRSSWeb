@@ -46,7 +46,7 @@ def get_feed_content(request):
     """
     feed_id = int(request.GET.get('id'))
     page = int(request.GET.get('page'))
-    page_size = 100
+    page_size = 10
     start = page * page_size
     end = (page + 1) * page_size - 1
 
