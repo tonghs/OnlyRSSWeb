@@ -201,3 +201,11 @@ function showTitleMode(){
 function showContentMode(){
     $('.item_content').fadeIn();
 }
+
+function getHtmlByText(){
+    var text = encodeURIComponent($('#input').val());
+
+    ajaxRequest('/get_html?text=' + text, function(data){
+        $('#output').html(data);
+    });
+}
