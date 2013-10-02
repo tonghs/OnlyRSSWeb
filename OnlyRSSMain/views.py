@@ -82,7 +82,7 @@ def add_feed(request):
         feed = Feed(title=d.feed.title, url=d.feed.link, feed_url=url, icon=home_url + '/favicon.ico')
         feed.save()
 
-        insert_to_item(d, feed.id)
+        insert_to_item(d, feed)
 
     return HttpResponse('success')
 
@@ -160,34 +160,32 @@ def thread_handler(feed, ops):
     url = feed.feed_url
     d = feedparser.parse(url)
 
-    insert_to_item(d, feed.id)
+    insert_to_item(d, feed)
 
     thread_count = int(thread_count_dic[ops + '_thread_count'])
     thread_count_dic[ops + '_thread_count'] = thread_count - 1
 
 
-def insert_to_item(d, feed_id):
-    feed = Feed.objects.get(pk=feed_id)
-    #f = f_list[0]
+def insert_to_item(d, feed):
     local_date = feed.update_date
-    i = 0
-    for entry in d.entries:
-        if hasattr(entry, 'published_parsed'):
-            pub_date = time.strftime('%Y-%m-%d %X', entry.published_parsed)
-        else:
-            pub_date = time.strftime('%Y-%m-%d %X', entry.updated_parsed)
-            #比较更新时间
-        if local_date is None or pub_date > local_date:
-            try:
-                item = Item(title=entry.title, url=entry.link, content=entry.description, pub_date=pub_date,
-                            feed_id=feed_id, user_id=1, state=0)
-                item.save()
-            except Exception as e:
-                print e.message + ';' + entry.link
-            if i == 0:
-                feed.update_date = pub_date
-                feed.save()
-                i += 1
+    if hasattr(d.entries[0], 'published_parsed'):
+        pub_date = time.strftime('%Y-%m-%d %X', d.entries[0].published_parsed)
+    else:
+        pub_date = time.strftime('%Y-%m-%d %X', d.entries[0].updated_parsed)
+
+    if local_date is None or pub_date > local_date:
+        feed.update_date = pub_date
+        feed.save()
+
+        for entry in d.entries:
+            if hasattr(entry, 'published_parsed'):
+                pub_date = time.strftime('%Y-%m-%d %X', entry.published_parsed)
+            else:
+                pub_date = time.strftime('%Y-%m-%d %X', entry.updated_parsed)
+
+            item = Item(title=entry.title, url=entry.link, content=entry.description, pub_date=pub_date,
+                        feed_id=feed.id, user_id=1, state=0)
+            item.save()
 
 
 def setting(request):

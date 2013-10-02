@@ -3,5 +3,5 @@ $(document).ready(function(){
     $(window).resize(setHeightAndWidth);
     setHeightAndWidth();
     getAllFeedList();
-    setInterval(updateItem, 20000);
+    setInterval(updateItem, 60000);
 });
