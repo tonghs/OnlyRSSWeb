@@ -11,7 +11,6 @@ body, ul{
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 li{
@@ -39,12 +38,48 @@ a:hover{
 
 .header{
     background-color: black;
-    box-shadow: 0 2px 5px black;
-    color: white;
+    /*box-shadow: 0 2px 5px black;*/
+    color: #ffffff;
     font-family: 'Open Sans Condensed', sans-serif;
     margin-bottom: 7px;
     padding: 0 10px 0 10px;
 }
+
+.footer{
+    background: #E8E9EB;
+    border: 0 solid #ddd;
+    border-top-width: 1px;
+    height: 100px;
+    line-height: 100px;
+    padding: 0 10px 0 10px;
+    text-align: right;
+}
+
+.footer .footer_sub{
+    float: left;
+    width: 50%;
+    font-family: '黑体';
+    font-size: 16px;
+}
+
+.footer .footer_left{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: left;
+}
+
+
+.footer .footer_sub a{
+    color: #8f8f8f;
+}
+
+
+.footer .footer_sub a:hover{
+    color: #8f8f8f;
+    text-decoration: none;
+}
+
 
 .logo{
     cursor: pointer;
@@ -86,12 +121,30 @@ a:hover{
     border-style: solid ;
 }
 
+
+#feed_manage_list ul li div{
+    float: left;
+    padding: 5px 0 5px 28px;
+}
+
+#feed_manage_list ul li{
+    border-bottom: 1px solid #dddddd;
+    cursor: default;
+    width: 600px;
+}
+
 .feed_item{
 
     background: no-repeat 10px center;
     background-size: 14px 14px;
     padding: 5px 0 5px 28px;
     width:180px;
+}
+
+.feed_manage_item{
+    background: no-repeat 10px center;
+    background-size: 14px 14px;
+
 }
 
 .feed_item:hover{
@@ -285,4 +338,24 @@ a:hover{
     height: 40px;
     line-height: 40px;
     text-align: center;
+}
+
+.about_content{
+    height: 530px;
+    margin: auto;
+    width: 900px;
+    overflow-y: hidden;
+}
+
+.about_content_title{
+    float: left;
+    font-family: 'Open Sans Condensed';
+    font-size: 60px;
+    height: 200px;
+    width: 250px;
+}
+
+.about_content_content{
+    float: left;
+    padding: 10px;
 }

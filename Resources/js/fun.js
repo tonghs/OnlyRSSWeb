@@ -147,6 +147,24 @@ function getAllFeedList(){
 
 }
 
+
+function getAllFeedManageList(){
+    ajaxRequest('/get_all_feed_list', function (data){
+            $('#feed_manage_list ul').empty();
+            var arrObj = JSON.parse(data);
+            for (var i = 0; i < arrObj.length; i++){
+                $('#feed_manage_list ul').append('<li class="feed">' +
+                    '<div class="feed_manage_item" style="background-image: url(\'' + arrObj[i].fields.icon + '\'); width:500px;">' +
+                    '<input type="checkbox" name="feed_id" value="' +
+                    arrObj[i].pk + '"/>'+
+                    arrObj[i].fields.title + '</div>' +
+                        '<div><a href="javascript:vaid(0);">删除</a></div></li><div class="clear"></div>')
+            }
+            closeLoad();
+        });
+
+}
+
 //设置未读状态
 function setStatus(){
     $('.unread').each(function(){
