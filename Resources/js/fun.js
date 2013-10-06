@@ -2,7 +2,6 @@ function getItem(id, obj, isShowLoading, page){
     if (isShowLoading == null || isShowLoading){
         showLoad('正在加载...');
     }
-
     var url = '';
     if (id == null){
         id = 0;
@@ -28,6 +27,7 @@ function getItem(id, obj, isShowLoading, page){
 function parseContent(data){
     var arrObj = JSON.parse(data);
     $('#content_container').empty();
+    $('#content_container').animate({scrollTop: '0px'}, 80);
     for (var i = 0; i < arrObj.length; i++){
         $('#content_container').append('<div class="item" onclick="delItem('
             + arrObj[i].id
