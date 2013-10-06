@@ -81,8 +81,8 @@ def add_feed(request):
 
         feed = Feed(title=d.feed.title, url=d.feed.link, feed_url=url, icon=home_url + '/favicon.ico')
         feed.save()
-
-        insert_to_item(d, feed)
+        if len(d.entries) > 0:
+            insert_to_item(d, feed)
 
     return HttpResponse('success')
 
@@ -159,8 +159,8 @@ def update_content(request):
 def thread_handler(feed, ops):
     url = feed.feed_url
     d = feedparser.parse(url)
-
-    insert_to_item(d, feed)
+    if len(d.entries) > 0:
+        insert_to_item(d, feed)
 
     thread_count = int(thread_count_dic[ops + '_thread_count'])
     thread_count_dic[ops + '_thread_count'] = thread_count - 1
