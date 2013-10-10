@@ -8,7 +8,7 @@ function getItem(id, obj, isShowLoading){
     }
     $('#temp_feed_id').val(id);
     url = '/get_feed_content?id=' + id;
-
+    $('#content_container').animate({scrollTop: '0px'}, 10);
     ajaxRequest(url, parseContent);
 
     if (obj != null){
@@ -24,7 +24,7 @@ function getItem(id, obj, isShowLoading){
 function parseContent(data){
     var arrObj = JSON.parse(data);
     $('#content_container').empty();
-    $('#content_container').animate({scrollTop: '0px'}, 80);
+
     for (var i = 0; i < arrObj.length; i++){
         $('#content_container').append('<div class="item" onclick="delItem('
             + arrObj[i].id
@@ -37,8 +37,7 @@ function parseContent(data){
             + arrObj[i].title + '</a></div>'
             + '<div class="item_content">' + arrObj[i].content + '</div>'
             + '<div class="item_ops">来自:<a href="' + arrObj[i].feed_url + '" target="_blank">'
-            + arrObj[i].feed_title + '</a>'
-            + '&nbsp;&nbsp;<a href="#">收藏</a></div></div>')
+            + arrObj[i].feed_title + '</a>')
     }
     $('#content_container').append('<div class="next" id="next_page" onclick="getMore(0, $(this))">加载更多</div>')
 }
@@ -72,8 +71,7 @@ function getMore(unreadCount, obj){
                 + arrObj[i].title + '</a></div>'
                 + '<div class="item_content">' + arrObj[i].content + '</div>'
                 + '<div class="item_ops">来自:<a href="' + arrObj[i].feed_url + '" target="_blank">'
-                + arrObj[i].feed_title + '</a>'
-                + '&nbsp;&nbsp;<a href="#">收藏</a></div></div>')
+                + arrObj[i].feed_title + '</a>')
         }
         if (obj != null){
             obj.fadeOut('normal', function(){
