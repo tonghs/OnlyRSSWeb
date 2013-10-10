@@ -45,10 +45,13 @@ def get_feed_content(request):
     :return:
     """
     feed_id = int(request.GET.get('id'))
-    page = int(request.GET.get('page'))
+    unread_count = request.GET.get('unreadCount')
+    if unread_count is None:
+        unread_count = 0
+
     page_size = 10
-    start = page * page_size
-    end = (page + 1) * page_size - 1
+    start = int(unread_count)
+    end = int(unread_count) + page_size - 1
 
     if feed_id != 0:
         item_list = Item.objects.select_related().filter(feed_id=feed_id).order_by('-pub_date')[start:end]

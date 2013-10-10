@@ -1,4 +1,4 @@
-function getItem(id, obj, isShowLoading, page){
+function getItem(id, obj, isShowLoading){
     if (isShowLoading == null || isShowLoading){
         showLoad('正在加载...');
     }
@@ -6,11 +6,8 @@ function getItem(id, obj, isShowLoading, page){
     if (id == null){
         id = 0;
     }
-    if (page == null){
-        page = 0;
-    }
     $('#temp_feed_id').val(id);
-    url = '/get_feed_content?id=' + id + '&page=' + page;
+    url = '/get_feed_content?id=' + id;
 
     ajaxRequest(url, parseContent);
 
@@ -46,15 +43,17 @@ function parseContent(data){
     $('#content_container').append('<div class="next" id="next_page"  onclick="getMore(0, $(this))">加载更多</div>')
 }
 
-function getMore(page, obj){
+function getMore(unreadCount, obj){
     showLoad('正在加载...');
-    page += 1;
-    id = $('#temp_feed_id').val();
-    if (page == null){
-        page = 0;
+
+    var id = $('#temp_feed_id').val();
+    if (unreadCount == null){
+        unreadCount = 0;
+    } else {
+        unreadCount = $('.unread').size();
     }
 
-    var url = '/get_feed_content?id=' + id + '&page=' + page;
+    var url = '/get_feed_content?id=' + id + '&unreadCount=' + unreadCount;
 
     ajaxRequest(url, function parseContent(data){
         var arrObj = JSON.parse(data);
@@ -77,7 +76,7 @@ function getMore(page, obj){
             obj.remove();
         });
 
-        $('#content_container').append('<div class="next" id="next_page" onclick="getMore(' + page + ', $(this))">加载更多</div>');
+        $('#content_container').append('<div class="next" id="next_page" onclick="getMore(' + unreadCount + ', $(this))">加载更多</div>');
         closeLoad();
     });
 }
@@ -168,12 +167,12 @@ function getAllFeedManageList(){
 //设置未读状态
 function setStatus(){
     $('.unread').each(function(){
-        if ($(this).offset().top <= 300 && this.className != 'read'){
+        if ($(this).offset() != null && $(this).offset().top != null && $(this).offset().top <= 300 && this.className != 'read'){
             delItem(this.id, this);
         }
     });
 
-    if ($('#next_page').offset().top <= $('html').height()){
+    if ($('#next_page') != null && $('#next_page').offset() != null && $('#next_page').offset().top <= $('html').height()){
         $('#next_page').fadeOut('normal', function(){
             $('#next_page').click();
             $('#next_page').remove();
