@@ -1,4 +1,5 @@
 #coding=utf-8
+from django.db.models import Count
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core import serializers
 from django.http import HttpResponse, Http404, HttpResponseRedirect
@@ -242,3 +243,14 @@ def handle_opml(f):
                 continue
     except Exception as e:
         return
+
+
+def get_feed_count(request):
+    feed_count_qs = Item.objects.values('feed').annotate(count=Count('feed'))
+    items_json = json.dumps(list(feed_count_qs))
+    #feed_count_list = []
+    #for feed_count in feed_count_qs:
+    #    temp = {'feed': feed_count.feed, 'count': feed_count.count}
+    #    items_json = json.dumps(temp)
+
+    return HttpResponse(items_json)

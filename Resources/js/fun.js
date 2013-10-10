@@ -201,7 +201,7 @@ function delAllItem(){
         getItem(null, $('#get_all'), false);
     }, function(req, msg, errorThrown){
         if (req.status != 404){
-            showErr();
+            showErr(req, msg, errorThrown);
         }
     });
 
@@ -210,7 +210,13 @@ function delAllItem(){
 
 
 function updateItem(){
-    ajaxRequest('/update_content');
+    ajaxRequest('/update_content', function(data){
+
+    }, function(req, msg, errorThrown){
+        if (req.status != 404){
+            showErr(req, msg, errorThrown);
+        }
+    });
 
 }
 
