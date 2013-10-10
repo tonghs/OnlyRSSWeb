@@ -40,12 +40,15 @@ function parseContent(data){
             + arrObj[i].feed_title + '</a>'
             + '&nbsp;&nbsp;<a href="#">收藏</a></div></div>')
     }
-    $('#content_container').append('<div class="next" id="next_page"  onclick="getMore(0, $(this))">加载更多</div>')
+    $('#content_container').append('<div class="next" id="next_page" onclick="getMore(0, $(this))">加载更多</div>')
 }
 
 function getMore(unreadCount, obj){
-    showLoad('正在加载...');
-
+    //showLoad('正在加载...');
+    if (obj != null){
+        obj.html('正在加载...');
+        obj.removeAttr('onclick');
+    }
     var id = $('#temp_feed_id').val();
     if (unreadCount == null){
         unreadCount = 0;
@@ -72,12 +75,14 @@ function getMore(unreadCount, obj){
                 + arrObj[i].feed_title + '</a>'
                 + '&nbsp;&nbsp;<a href="#">收藏</a></div></div>')
         }
-        obj.fadeOut('normal', function(){
-            obj.remove();
-        });
+        if (obj != null){
+            obj.fadeOut('normal', function(){
+                obj.remove();
+            });
+        }
 
-        $('#content_container').append('<div class="next" id="next_page" onclick="getMore(' + unreadCount + ', $(this))">加载更多</div>');
-        closeLoad();
+        $('#content_container').append('<div class="next" id="next_page" onclick="$(this).click(function(){});;getMore(' + unreadCount + ', $(this))">加载更多</div>');
+        //closeLoad();
     });
 }
 
@@ -173,11 +178,11 @@ function setStatus(){
     });
 
     if ($('#next_page') != null && $('#next_page').offset() != null && $('#next_page').offset().top <= $('html').height()){
-        $('#next_page').fadeOut('normal', function(){
-            $('#next_page').click();
-            $('#next_page').remove();
-        });
-
+//        $('#next_page').fadeOut('normal', function(){
+//            $('#next_page').click();
+//            //$('#next_page').remove();
+//        });
+        $('#next_page').click();
     }
 }
 
