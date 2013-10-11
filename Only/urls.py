@@ -1,10 +1,10 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic.base import RedirectView
 
-from OnlyRSSMain.views import index
-from OnlyRSSMain.views import *
+from OnlyRSS.views import index
+from OnlyRSS.views import *
 from Common.views import *
-from OnlyMarkdownMain.views import *
+from OnlyMarkdown.views import *
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
@@ -13,8 +13,8 @@ handler404 = 'Common.views.page_not_found'
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'OnlyRSS.views.home', name='home'),
-    # url(r'^OnlyRSS/', include('OnlyRSS.foo.urls')),
+    # url(r'^$', 'Only.views.home', name='home'),
+    # url(r'^Only/', include('Only.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
