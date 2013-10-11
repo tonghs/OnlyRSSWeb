@@ -79,7 +79,7 @@ function getMore(unreadCount, obj){
             });
         }
 
-        $('#content_container').append('<div class="next" id="next_page" onclick="$(this).click(function(){});;getMore(' + unreadCount + ', $(this))">加载更多</div>');
+        $('#content_container').append('<div class="next" id="next_page" onclick="getMore(' + unreadCount + ', $(this))">加载更多</div>');
         //closeLoad();
     });
 }
@@ -202,6 +202,7 @@ function delAllItem(){
     showLoad('正在加载...');
     ajaxRequest('/del_item', function(data){
         getItem(null, $('#get_all'), false);
+        $('.feed_item').css('font-weight', 'normal');
     });
 
     closeLoad();
