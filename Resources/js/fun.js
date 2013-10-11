@@ -139,10 +139,17 @@ function getAllFeedList(){
                 '<div class="feed_item bold"  onclick="getItem(null, $(\'#get_all\'), true);"' +
                 ' style="padding-left: 10px;">查看所有</div></li>');
             for (var i = 0; i < arrObj.length; i++){
+                var title = arrObj[i].fields.title;
+                var titleTemp = title.replace(/[^\x00-\xff]/g,"**");
+                if (title!= null && titleTemp.length > 20){
+                    title = title.substring(0, 9) + '...';
+                }
                 $('#feed_list ul').append('<li class="feed" onclick=\"getItem(' + arrObj[i].pk + ', this)\">' +
-                    '<div class="feed_item" style="background-image: url(\'' + arrObj[i].fields.icon + '\')">' +
-                    arrObj[i].fields.title + '</div></li>')
+                    '<div class="feed_item" id="' + arrObj[i].pk +
+                    '" style="background-image: url(\'' + arrObj[i].fields.icon + '\')"' +
+                    'title="' + arrObj[i].fields.title + '">' + title + '</div></li>');
             }
+            getFeedCount();
             getItem(null, $('#get_all'), false);
             closeLoad();
         });
@@ -185,11 +192,7 @@ function setStatus(){
 }
 
 function delItem(id, obj){
-    ajaxRequest('/del_item?id=' + id, null, function(req, msg, errorThrown){
-        if (req.status != 404){
-            showErr();
-        }
-    });
+    ajaxRequest('/del_item?id=' + id);
     if (obj != null){
         obj.className = 'read';
     }
@@ -199,10 +202,6 @@ function delAllItem(){
     showLoad('正在加载...');
     ajaxRequest('/del_item', function(data){
         getItem(null, $('#get_all'), false);
-    }, function(req, msg, errorThrown){
-        if (req.status != 404){
-            showErr(req, msg, errorThrown);
-        }
     });
 
     closeLoad();
@@ -211,11 +210,7 @@ function delAllItem(){
 
 function updateItem(){
     ajaxRequest('/update_content', function(data){
-
-    }, function(req, msg, errorThrown){
-        if (req.status != 404){
-            showErr(req, msg, errorThrown);
-        }
+        getFeedCount();
     });
 
 }
@@ -233,5 +228,20 @@ function getHtmlByText(){
 
     ajaxRequest('/get_html?text=' + text, function(data){
         $('#output').html(data);
+    });
+}
+
+function getFeedCount(){
+    ajaxRequest('/get_feed_count', function(data){
+        var arrObj = JSON.parse(data);
+        $('.feed_item').css('font-weight', 'normal');
+        for (var i = 0; i < arrObj.length; i++){
+            var id = arrObj[i].feed;
+            var count = parseInt(arrObj[i].count);
+
+            if (count > 0){
+                $('#' + id).css('font-weight', 'bold')
+            }
+        }
     });
 }

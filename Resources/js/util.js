@@ -49,7 +49,10 @@ function ajaxRequest(url, fun, funErr){
 }
 
 function showErr(req, msg, errorThrown){
-    showMsg("出错了，请重试...");
+    if (req.status != 404){
+        showMsg("出错了，请重试...");
+    }
+
 }
 
 function showMsg(msg) {
