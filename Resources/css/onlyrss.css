@@ -312,6 +312,7 @@ a:hover{
 #app_platform{
     color: black;
     margin: auto;
+    padding-bottom: 30px;
     text-align: center;
     width: 80%;
 }
