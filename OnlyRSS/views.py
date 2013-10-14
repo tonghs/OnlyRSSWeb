@@ -140,6 +140,18 @@ def del_item(request):
     return HttpResponse(msg)
 
 
+def del_feed(request):
+    feed_id = request.GET.get('id')
+    if feed_id and int(feed_id) > 0:
+        try:
+            feed = get_object_or_404(Feed, pk=int(feed_id))
+            feed.delete()
+        except Http404, e:
+            pass
+
+    return HttpResponse('success')
+
+
 def update_content(request):
     feed_list = Feed.objects.all()
     th_list = []

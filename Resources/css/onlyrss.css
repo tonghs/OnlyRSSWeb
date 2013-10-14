@@ -19,6 +19,11 @@ li{
     list-style: none;
 }
 
+.total_width{
+    width: 940px;
+    margin: auto;
+}
+
 .bold {
     font-weight: bold;
 }
@@ -37,12 +42,31 @@ a:hover{
 }
 
 .header{
-    background-color: black;
-    /*box-shadow: 0 2px 5px black;*/
-    color: #ffffff;
+    background: #E8E9EB;
+    border-bottom: 1px solid #dddddd;
+    color: black;
     font-family: 'Open Sans Condensed', sans-serif;
     margin-bottom: 7px;
     padding: 0 10px 0 10px;
+}
+
+.menu{
+    cursor: pointer;
+    color: black;
+    float: right;
+    font-size: 40px;
+    padding: 0 5px;
+    text-decoration: none;
+}
+
+.menu:hover{
+    background-color: #ffffff;
+    color: #dddddd;
+    cursor: pointer;
+    float: right;
+    font-size: 40px;
+    padding: 0 5px;
+    text-decoration: none;
 }
 
 .footer{
@@ -130,7 +154,7 @@ a:hover{
 #feed_manage_list ul li{
     border-bottom: 1px solid #dddddd;
     cursor: default;
-    width: 600px;
+    width: 930px;
 }
 
 .feed_item{
@@ -235,30 +259,12 @@ a:hover{
     width: 5px;
 }
 
-.menu{
-    cursor: pointer;
-    color: #ffffff;
-    float: right;
-    font-size: 40px;
-    padding: 0 5px;
-    text-decoration: none;
-}
-
-.menu:hover{
-    background-color: #ffffff;
-    color: black;
-    cursor: pointer;
-    float: right;
-    font-size: 40px;
-    padding: 0 5px;
-    text-decoration: none;
-}
 
 .app_content{
     background: url('/resources/image/phone.png') no-repeat 0 80px;
     height: 530px;
     margin: auto;
-    width: 900px;
+    width: 930px;
     overflow-y: hidden;
 }
 
@@ -343,7 +349,7 @@ a:hover{
 .about_content{
     height: 530px;
     margin: auto;
-    width: 900px;
+    width: 930px;
     overflow-y: hidden;
 }
 

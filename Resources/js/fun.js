@@ -127,7 +127,17 @@ function addFeed(){
 
 }
 
-function delFeed(feedId){
+function delFeed(feedId, obj){
+    showLoad('正在加载...');
+    ajaxRequest('/del_feed?id=' + feedId,function(data){
+        if (data == "success"){
+            obj.parent().parent().fadeOut('normal', function(){
+                obj.parent().parent().remove();
+                closeLoad();
+            });
+        }
+    })
+
 
 }
 
@@ -162,12 +172,15 @@ function getAllFeedManageList(){
             $('#feed_manage_list ul').empty();
             var arrObj = JSON.parse(data);
             for (var i = 0; i < arrObj.length; i++){
+                var url = arrObj[i].fields.feed_url;
                 $('#feed_manage_list ul').append('<li class="feed">' +
-                    '<div class="feed_manage_item" style="background-image: url(\'' + arrObj[i].fields.icon + '\'); width:500px;">' +
+                    '<div class="feed_manage_item" style="background-image: url(\'' + arrObj[i].fields.icon + '\'); min-width:350px;">' +
                     '<input type="checkbox" name="feed_id" value="' +
                     arrObj[i].pk + '"/>'+
                     arrObj[i].fields.title + '</div>' +
-                        '<div><a href="javascript:vaid(0);">删除</a></div></li><div class="clear"></div>')
+                    '<div style="min-width:450px;"><a href="' + url + '">' + url +
+                    '</a></div><div><a href="javascript:void(0);" onclick="delFeed(' + arrObj[i].pk +
+                    ', $(this));">删除</a></div></li><div class="clear"></div>')
             }
             closeLoad();
         });

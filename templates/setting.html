@@ -8,25 +8,27 @@
 <body>
 {% include 'menu.html' %}
 <div class="wrap">
-    <div>导入</div>
-    <div>
-        <form enctype="multipart/form-data" method="post" action="/import_opml/">
-            <input type="file" name="file"/>
-            <input type="submit" value="导入" onclick="showLoad('正在加载...')"/>
-        </form>
-    </div>
-    <div class="hr"></div>
-    <div>
-        <a href="javascript:void(0);">全选</a>
-        &nbsp;
-        <a href="javascript:void(0);">删除</a>
-        &nbsp;
-        <a href="javascript:void(0);">全部导出</a>
-    </div>
-    <div id="feed_manage_list">
-        <ul>
+    <div style="width:930px;margin:auto;">
+        <div>导入</div>
+        <div>
+            <form enctype="multipart/form-data" method="post" action="/import_opml/">
+                <input type="file" name="file"/>
+                <input type="submit" value="导入" onclick="showLoad('正在加载...')"/>
+            </form>
+        </div>
+        <div class="hr"></div>
+        <div>
+            <a href="javascript:void(0);">全选</a>
+            &nbsp;
+            <a href="javascript:void(0);">删除</a>
+            &nbsp;
+            <a href="javascript:void(0);">全部导出</a>
+        </div>
+        <div id="feed_manage_list">
+            <ul>
 
-        </ul>
+            </ul>
+        </div>
     </div>
 </div>
 {% include 'footer.html' %}

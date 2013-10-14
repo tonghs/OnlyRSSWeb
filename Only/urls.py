@@ -38,5 +38,6 @@ urlpatterns = patterns('',
     url(r'^markdown/index$', markdown_index),
     url(r'^get_html$', get_html),
     url(r'^get_feed_count$', get_feed_count),
+    url(r'^del_feed', del_feed),
     url(r'^404/$', page_not_found),
 )
