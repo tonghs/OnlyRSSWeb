@@ -79,10 +79,11 @@ function getMore(unreadCount, obj){
         if (obj != null){
             obj.fadeOut('normal', function(){
                 obj.remove();
+                $('#content_container').append('<div class="next" id="next_page" onclick="getMore(' + unreadCount + ', $(this))">加载更多</div>');
+
             });
         }
 
-        $('#content_container').append('<div class="next" id="next_page" onclick="getMore(' + unreadCount + ', $(this))">加载更多</div>');
         //closeLoad();
     });
 }
