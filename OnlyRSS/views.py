@@ -52,7 +52,7 @@ def get_feed_content(request):
 
     page_size = 10
     start = int(unread_count)
-    end = int(unread_count) + page_size - 1
+    end = int(unread_count) + page_size
 
     if feed_id != 0:
         item_list = Item.objects.select_related().filter(feed_id=feed_id).order_by('-pub_date')[start:end]
@@ -61,10 +61,10 @@ def get_feed_content(request):
     list_temp = []
 
     for item in item_list:
-        dicItem = {'id': item.id, 'title': item.title, 'content': item.content, 'url': item.url,
+        dic_item = {'id': item.id, 'title': item.title, 'content': item.content, 'url': item.url,
                    'feed_title': item.feed.title,
                    'feed_url': item.feed.url}
-        list_temp.append(dicItem)
+        list_temp.append(dic_item)
 
     items_json = json.dumps(list_temp)
 
@@ -157,7 +157,7 @@ def update_content(request):
     th_list = []
     for feed in feed_list:
         while int(thread_count_dic['update_thread_count']) == thread_count_max:
-            continue
+            pass
         th = threading.Thread(target=thread_handler, args=(feed, 'update',))
         th_list.append(th)
         thread_count_dic['update_thread_count'] = int(thread_count_dic['update_thread_count']) + 1
@@ -186,6 +186,7 @@ def insert_to_item(d, feed):
     local_date = feed.update_date
     if hasattr(d.entries[0], 'published_parsed'):
         pub_date = time.strftime('%Y-%m-%d %X', d.entries[0].published_parsed)
+        a = 1
     else:
         pub_date = time.strftime('%Y-%m-%d %X', d.entries[0].updated_parsed)
 
