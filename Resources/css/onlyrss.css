@@ -147,13 +147,14 @@ a:hover{
 
 
 #feed_manage_list ul li div{
+    border-top: 1px solid #dddddd;
     float: left;
-    padding: 5px 0 5px 28px;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 28px;
 }
 
 #feed_manage_list ul li{
-    border-bottom: 1px solid #dddddd;
-    cursor: default;
     width: 930px;
 }
 

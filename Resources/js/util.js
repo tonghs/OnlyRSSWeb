@@ -7,7 +7,7 @@ function showLoad(tipInfo) {
         eTip.style.textAlign = 'center';
         eTip.style.border = 'solid 0px #D1D1D1';
         eTip.style.backgroundColor = '#4B981D';
-        eTip.style.padding = '2px 15px';
+        eTip.style.padding = '0 15px 3px 15px';
         eTip.style.left = ($('html').width() - 190) / 2 + 'px';
         eTip.style.top = '0px';
         eTip.style.width = '190px';
