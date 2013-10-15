@@ -186,7 +186,6 @@ def insert_to_item(d, feed):
     local_date = feed.update_date
     if hasattr(d.entries[0], 'published_parsed'):
         pub_date = time.strftime('%Y-%m-%d %X', d.entries[0].published_parsed)
-        a = 1
     else:
         pub_date = time.strftime('%Y-%m-%d %X', d.entries[0].updated_parsed)
 
@@ -200,9 +199,10 @@ def insert_to_item(d, feed):
             else:
                 pub_date = time.strftime('%Y-%m-%d %X', entry.updated_parsed)
 
-            item = Item(title=entry.title, url=entry.link, content=entry.description, pub_date=pub_date,
-                        feed_id=feed.id, user_id=1, state=0)
-            item.save()
+            if pub_date > local_date:
+                item = Item(title=entry.title, url=entry.link, content=entry.description, pub_date=pub_date,
+                            feed_id=feed.id, user_id=1, state=0)
+                item.save()
 
 
 def setting(request):
