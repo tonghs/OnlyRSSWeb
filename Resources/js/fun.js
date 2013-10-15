@@ -59,6 +59,9 @@ function getMore(unreadCount, obj){
 
     ajaxRequest(url, function parseContent(data){
         var arrObj = JSON.parse(data);
+        if (arrObj.length == 0){
+            $('.feed_item').css('font-weight', 'normal');
+        }
         for (var i = 0; i < arrObj.length; i++){
             $('#content_container').append('<div class="item" onclick="delItem('
                 + arrObj[i].id
