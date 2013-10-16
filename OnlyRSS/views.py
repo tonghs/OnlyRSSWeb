@@ -199,7 +199,7 @@ def insert_to_item(d, feed):
             else:
                 pub_date = time.strftime('%Y-%m-%d %X', entry.updated_parsed)
 
-            if pub_date > local_date:
+            if local_date is None or pub_date > local_date:
                 item = Item(title=entry.title, url=entry.link, content=entry.description, pub_date=pub_date,
                             feed_id=feed.id, user_id=1, state=0)
                 item.save()
