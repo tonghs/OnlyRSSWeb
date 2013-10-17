@@ -87,6 +87,7 @@ a:hover{
 
 .menu_more a{
     padding: 0 5px;
+    text-align: center;
 }
 
 .menu a:hover{
@@ -100,7 +101,7 @@ a:hover{
     text-decoration: none;
 }
 
-.sub_menu{
+.menu_more ul{
     background-color: #E8E9EB;
     border: 1px solid #dddddd;
     border-top-width: 0;
@@ -110,7 +111,7 @@ a:hover{
     width: 80px;
 }
 
-.menu_more:hover .sub_menu{
+.menu_more:hover ul{
     background-color: #E8E9EB;
     border: 1px solid #dddddd;
     border-top-width: 0;
@@ -121,16 +122,20 @@ a:hover{
     text-align: center;
 }
 
-.menu_more:hover .sub_menu:hover{
+.sub_menu:hover{
     background-color: black;
-    border: 1px solid #dddddd;
-    border-top-width: 0;
     color: #ffffff;
-    display: block;
-    position: absolute;
-    font-size: 35px;
-    width: 80px;
 }
+
+.detail{
+    border: 1px solid #dddddd;
+    border-top: 0;
+    border-bottom: 0;
+    height: 55px;
+    text-align: center;
+    width: 50px;
+}
+
 
 .footer{
     background: #E8E9EB;
