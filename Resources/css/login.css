@@ -1,0 +1,114 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+body{
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: black;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+a:hover{
+    font-size: 13px;
+    text-decoration: underline;
+}
+
+.total_width{
+    width: 940px;
+    margin: auto;
+}
+
+.clear{
+    clear: both;
+}
+
+#header{
+    background: #E8E9EB;
+    border-bottom: 1px solid #dddddd;
+    color: black;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 40px;
+    margin-bottom: 50px;
+    padding: 0 10px 0 10px;
+}
+.login_area{
+    background-color: #E8E9EB;
+    border: 1px solid #dddddd;
+    margin:auto;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    width:300px;
+}
+.txt{
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    float: left;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 16px;
+    height:25px;
+    padding: 1px 5px;
+    width: 190px;
+}
+
+.tip{
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-right-width: 0;
+    color: #dddddd;
+    cursor: default;
+    float: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    height: 27px;
+    line-height: 27px;
+    text-align: center;
+    width: 29px;
+}
+
+#left{
+    float: left;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 40px;
+    line-height: 60px;
+    width: 630px;
+}
+
+#right{
+    float: left;
+    width: 300px;
+}
+
+#btn{
+    background-color: #5a5a5a;
+    border: 1px solid #5a5a5a;
+    color: #ffffff;
+    cursor: pointer;
+    height:30px;
+    width: 232px;
+}
+
+#btn:hover{
+    background-color: black;
+    border: 1px solid black;
+    color: #ffffff;
+    cursor: pointer;
+    height:30px;
+    width: 232px;
+}
+
+
+.loading{
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.loading_logo{
+    color: #ffffff;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 13px;
+}
+
+

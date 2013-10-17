@@ -17,6 +17,45 @@ thread_count_dic = {'update_thread_count': 0, 'import_thread_count': 0}
 update_thread_count = 0
 #线程限制数
 thread_count_max = 10
+#cookie超时时间 秒
+max_age = 2592000
+
+
+def login(request):
+    if 'username' in request.COOKIES and 'password' in request.COOKIES:
+        username = request.COOKIES['username']
+        password = request.COOKIES['password']
+        if valid(username, password):
+            response = render_to_response('index.html')
+            response.set_cookie('username', username, max_age)
+            response.set_cookie('password', password, max_age)
+        else:
+            response = render_to_response('login.html')
+            response.delete_cookie('username')
+            response.delete_cookie('password')
+    else:
+        response = render_to_response('login.html')
+
+    return response
+
+
+def login_ajax(request):
+    username = request.GET.get('username')
+    password = request.GET.get('password')
+    msg = 'fail'
+    if valid(username, password):
+        msg = 'success'
+
+    return HttpResponse(msg)
+
+
+def valid(username, password):
+    is_success = False
+    user = User.objects.filter(username=username, password=password)
+    if len(user):
+        is_success = True
+
+    return is_success
 
 
 def index(request):
