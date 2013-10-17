@@ -6,6 +6,9 @@ function getItem(id, obj, isShowLoading){
     if (id == null){
         id = 0;
     }
+    if (id == 0){
+        getFeedCount();
+    }
     $('#temp_feed_id').val(id);
     url = '/get_feed_content?id=' + id;
     $('#content_container').animate({scrollTop: '0px'}, 10);
@@ -24,7 +27,6 @@ function getItem(id, obj, isShowLoading){
 function parseContent(data){
     var arrObj = JSON.parse(data);
     $('#content_container').empty();
-
     for (var i = 0; i < arrObj.length; i++){
         $('#content_container').append('<div class="item" onclick="delItem('
             + arrObj[i].id
@@ -258,7 +260,7 @@ function getHtmlByText(){
 function getFeedCount(){
     ajaxRequest('/get_feed_count', function(data){
         var arrObj = JSON.parse(data);
-        $('.feed_item').css('font-weight', 'normal');
+        $('.feed_item').not('.bold').css('font-weight', 'normal');
         for (var i = 0; i < arrObj.length; i++){
             var id = arrObj[i].feed;
             var count = parseInt(arrObj[i].count);
