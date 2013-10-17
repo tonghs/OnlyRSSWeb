@@ -102,6 +102,8 @@ a:hover{
 
 .sub_menu{
     background-color: #E8E9EB;
+    border: 1px solid #dddddd;
+    border-top-width: 0;
     color: black;
     display: none;
     font-size: 35px;
@@ -110,6 +112,8 @@ a:hover{
 
 .menu_more:hover .sub_menu{
     background-color: #E8E9EB;
+    border: 1px solid #dddddd;
+    border-top-width: 0;
     display: block;
     position: absolute;
     font-size: 35px;
@@ -119,6 +123,8 @@ a:hover{
 
 .menu_more:hover .sub_menu:hover{
     background-color: black;
+    border: 1px solid #dddddd;
+    border-top-width: 0;
     color: #ffffff;
     display: block;
     position: absolute;
