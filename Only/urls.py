@@ -40,5 +40,6 @@ urlpatterns = patterns('',
     url(r'^get_feed_count$', get_feed_count),
     url(r'^del_feed', del_feed),
     url(r'^login_ajax', login_ajax),
+    url(r'^logout', logout),
     url(r'^404/$', page_not_found),
 )

@@ -273,7 +273,9 @@ function getFeedCount(){
 }
 
 function logout(){
-    //$.cookie('username', null);
-    $.cookie('password', null);
-    window.location.href = '/';
+    ajaxRequest('/logout', function(data){
+        if (data == 'success'){
+            window.location.href = '/';
+        }
+    })
 }

@@ -25,7 +25,7 @@ def login(request):
     if 'username' in request.COOKIES and 'password' in request.COOKIES:
         username = request.COOKIES['username']
         password = request.COOKIES['password']
-        if valid(username, password):
+        if valid(request, username, password):
             response = render_to_response('index.html')
             response.set_cookie('username', username, max_age)
             response.set_cookie('password', password, max_age)
@@ -39,20 +39,33 @@ def login(request):
     return response
 
 
+def logout(request):
+    del request.session['username']
+    del request.session['password']
+    del request.session['user_id']
+    response = HttpResponse('success')
+    response.delete_cookie('password')
+
+    return response
+
+
 def login_ajax(request):
     username = request.GET.get('username')
     password = request.GET.get('password')
     msg = 'fail'
-    if valid(username, password):
+    if valid(request, username, password):
         msg = 'success'
 
     return HttpResponse(msg)
 
 
-def valid(username, password):
+def valid(request, username, password):
     is_success = False
     user = User.objects.filter(username=username, password=password)
     if len(user):
+        request.session['username'] = username
+        request.session['password'] = password
+        request.session['user_id'] = user[0].id
         is_success = True
 
     return is_success
@@ -245,7 +258,12 @@ def insert_to_item(d, feed):
 
 
 def setting(request):
-    return render_to_response('setting.html', context_instance=RequestContext(request))
+    if 'user_id' in request.session:
+        response = render_to_response('setting.html', context_instance=RequestContext(request))
+    else:
+        response = render_to_response('login.html')
+
+    return response
 
 
 def about(request):
