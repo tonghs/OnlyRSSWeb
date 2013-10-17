@@ -271,3 +271,9 @@ function getFeedCount(){
         }
     });
 }
+
+function logout(){
+    //$.cookie('username', null);
+    $.cookie('password', null);
+    window.location.href = '/';
+}

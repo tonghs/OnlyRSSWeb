@@ -56,18 +56,74 @@ a:hover{
     color: black;
     float: right;
     font-size: 40px;
-    padding: 0 5px;
     text-decoration: none;
 }
 
 .menu:hover{
     background-color: #ffffff;
-    color: #dddddd;
     cursor: pointer;
     float: right;
     font-size: 40px;
+    text-decoration: none;
+}
+
+.menu_more{
+    cursor: pointer;
+    float: right;
+    font-size: 40px;
+    text-decoration: none;
+}
+
+.menu_more:hover{
+    cursor: pointer;
+    float: right;
+    font-size: 40px;
+    text-decoration: none;
+}
+
+.menu a{
+    padding: 0 5px;
+}
+
+.menu_more a{
+    padding: 0 5px;
+}
+
+.menu a:hover{
+    color: #dddddd;
     padding: 0 5px;
     text-decoration: none;
+}
+
+.menu_more a:hover{
+    padding: 0 5px;
+    text-decoration: none;
+}
+
+.sub_menu{
+    background-color: #E8E9EB;
+    color: black;
+    display: none;
+    font-size: 35px;
+    width: 80px;
+}
+
+.menu_more:hover .sub_menu{
+    background-color: #E8E9EB;
+    display: block;
+    position: absolute;
+    font-size: 35px;
+    width: 80px;
+    text-align: center;
+}
+
+.menu_more:hover .sub_menu:hover{
+    background-color: black;
+    color: #ffffff;
+    display: block;
+    position: absolute;
+    font-size: 35px;
+    width: 80px;
 }
 
 .footer{

@@ -8,7 +8,7 @@ $(document).ready(function() {
     $('#password').focus(function(){
         focus_handler('password');
     });
-    $('#username').focus();
+
     $('#username').keypress(function(){
         if(event.keyCode == 13){
             $('#password').focus();
@@ -28,6 +28,12 @@ $(document).ready(function() {
     $('#password').blur(function(){
         isValid('password');
     });
+
+    if ($.cookie('username') != null){
+        $('#username').val($.cookie('username'));
+    }
+
+    $('#username').focus();
 });
 
 function isValid(id){
