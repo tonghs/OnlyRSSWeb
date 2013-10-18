@@ -54,17 +54,15 @@ a:hover{
 .menu{
     cursor: pointer;
     color: black;
+    height: 55px;
+    line-height: 55px;
     float: right;
-    font-size: 40px;
+    font-size: 30px;
     text-decoration: none;
 }
 
 .menu:hover{
     background-color: #ffffff;
-    cursor: pointer;
-    float: right;
-    font-size: 40px;
-    text-decoration: none;
 }
 
 .menu_more{
@@ -75,6 +73,7 @@ a:hover{
 }
 
 .menu_more:hover{
+    color: #dddddd;
     cursor: pointer;
     float: right;
     font-size: 40px;
@@ -122,8 +121,25 @@ a:hover{
     text-align: center;
 }
 
+.sub_menu{
+    font-family: '微软雅黑';
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    padding-left: 10px;
+}
+
 .sub_menu:hover{
     background-color: #ffffff;
+}
+
+.menu_more:hover ul{
+    margin-left: -30px;
+}
+
+.menu_more:hover ul li{
+    border-bottom: 1px solid #dddddd;
 }
 
 .detail{
@@ -140,6 +156,7 @@ a:hover{
     background: #E8E9EB;
     border: 0 solid #ddd;
     border-top-width: 1px;
+    font-family: '微软雅黑';
     height: 100px;
     line-height: 100px;
     padding: 0 10px 0 10px;
