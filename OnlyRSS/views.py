@@ -86,7 +86,7 @@ def get_all_feed_list(request):
 
     :param request:
     """
-    feeds = get_feed_list()
+    feeds = get_feed_list(request)
 
     return HttpResponse(feeds)
 
@@ -107,9 +107,9 @@ def get_feed_content(request):
     end = int(unread_count) + page_size
 
     if feed_id != 0:
-        item_list = Item.objects.select_related().filter(feed_id=feed_id).order_by('-pub_date')[start:end]
+        item_list = Item.objects.select_related().filter(feed_id=feed_id,user_id=request.session['user_id']).order_by('-pub_date')[start:end]
     else:
-        item_list = Item.objects.select_related().all().order_by('-pub_date')[start:end]
+        item_list = Item.objects.select_related().filter(user_id=request.session['user_id']).order_by('-pub_date')[start:end]
     list_temp = []
 
     for item in item_list:
@@ -135,7 +135,8 @@ def add_feed(request):
     if feed_list.count() == 0:
         home_url = get_home_url(d.feed.link)
 
-        feed = Feed(title=d.feed.title, url=d.feed.link, feed_url=url, icon=home_url + '/favicon.ico')
+        feed = Feed(title=d.feed.title, url=d.feed.link, feed_url=url, icon=home_url + '/favicon.ico',
+                    user_id=request.session['user_id'])
         feed.save()
         if len(d.entries) > 0:
             insert_to_item(d, feed)
@@ -143,13 +144,13 @@ def add_feed(request):
     return HttpResponse('success')
 
 
-def get_feed_list():
+def get_feed_list(request):
     """
     获取订阅列表
 
     :return:
     """
-    feed_list = Feed.objects.all()
+    feed_list = Feed.objects.filter(user_id=request.session['user_id'])
     feeds_json = serializers.serialize("json", feed_list)
 
     return feeds_json
@@ -200,14 +201,17 @@ def del_feed(request):
             feed.delete()
         except Http404, e:
             pass
-    else:
-        pass
+    elif not feed_id:
+        Feed.objects.filter(user_id=request.session['user_id']).delete()
 
     return HttpResponse('success')
 
 
 def del_feed_bat(request):
-    pass
+    ids_str = request.GET.get('ids_str')
+    Feed.objects.extra(where=['id IN (' + ids_str + ')']).delete()
+
+    return HttpResponse('success')
 
 
 def update_content(request):
@@ -259,7 +263,7 @@ def insert_to_item(d, feed):
 
             if local_date is None or pub_date > local_date:
                 item = Item(title=entry.title, url=entry.link, content=entry.description, pub_date=pub_date,
-                            feed_id=feed.id, user_id=1, state=0)
+                            feed_id=feed.id, user_id=feed.user_id, state=0)
                 item.save()
 
 
@@ -289,13 +293,13 @@ def import_opml(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            handle_opml(request.FILES['file'])
+            handle_opml(request)
     return HttpResponseRedirect('/')
 
 
-def handle_opml(f):
+def handle_opml(req):
     try:
-        xml_str = f.read()
+        xml_str = req.FILES['file'].read()
         doc = xml.dom.minidom.parseString(xml_str)
         th_list = []
         for node in doc.getElementsByTagName('outline'):
@@ -304,7 +308,7 @@ def handle_opml(f):
                 home_url = get_home_url(node.getAttribute('htmlUrl'))
 
                 feed = Feed(title=node.getAttribute('title'), url=home_url, feed_url=node.getAttribute('xmlUrl'),
-                            icon=home_url + '/favicon.ico')
+                            icon=home_url + '/favicon.ico', user_id=req.session['user_id'])
                 feed.save()
 
                 while int(thread_count_dic['import_thread_count']) == thread_count_max:
@@ -322,7 +326,7 @@ def handle_opml(f):
 
 
 def get_feed_count(request):
-    feed_count_qs = Item.objects.values('feed').annotate(count=Count('feed'))
+    feed_count_qs = Item.objects.filter(user_id=request.session['user_id']).values('feed').annotate(count=Count('feed'))
     items_json = json.dumps(list(feed_count_qs))
     #feed_count_list = []
     #for feed_count in feed_count_qs:

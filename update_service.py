@@ -16,7 +16,7 @@ thread_count_max = 10
 
 
 def main():
-    sql = 'select id, feed_url, update_date from OnlyRSS_feed'
+    sql = 'select id, feed_url, update_date, user_id from OnlyRSS_feed'
     ds = query_by_sql(sql)
 
     feed_list = list(ds)
@@ -59,7 +59,7 @@ def insert_to_item(d, feed):
                 pub_date = time.strftime('%Y-%m-%d %X', entry.updated_parsed)
 
             if local_date is None or pub_date > local_date:
-                items.append((entry.title, entry.link, entry.description, pub_date, feed[0], 1, 0))
+                items.append((entry.title, entry.link, entry.description, pub_date, feed[0], feed[3], 0))
 
         sql = 'insert into OnlyRSS_item (title, url, content, pub_date, feed_id, user_id, state) values(%s,%s,%s,%s,%s,%s,%s)'
         execute_many(sql, items)
