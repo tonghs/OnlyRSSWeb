@@ -200,8 +200,14 @@ def del_feed(request):
             feed.delete()
         except Http404, e:
             pass
+    else:
+        pass
 
     return HttpResponse('success')
+
+
+def del_feed_bat(request):
+    pass
 
 
 def update_content(request):

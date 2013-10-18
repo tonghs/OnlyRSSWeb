@@ -187,7 +187,7 @@ function getAllFeedManageList(){
                 var url = arrObj[i].fields.feed_url;
                 $('#feed_manage_list ul').append('<li class="feed">' +
                     '<div class="feed_manage_item" style="background-image: url(\'' + arrObj[i].fields.icon + '\'); min-width:350px;">' +
-                    '<input type="checkbox" name="feed_id" value="' +
+                    '<input type="checkbox" class="feed_id" name="feed_id" value="' +
                     arrObj[i].pk + '"/>'+
                     arrObj[i].fields.title + '</div>' +
                     '<div style="min-width:450px;"><a href="' + url + '">' + url +
@@ -198,6 +198,7 @@ function getAllFeedManageList(){
         });
 
 }
+
 
 //设置未读状态
 function setStatus(){
@@ -279,3 +280,5 @@ function logout(){
         }
     })
 }
+
+

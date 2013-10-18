@@ -13,6 +13,7 @@ class Feed(models.Model):
     feed_url = models.CharField(max_length=500)
     icon = models.CharField(max_length=100)
     update_date = models.CharField(max_length=20)
+    user = models.ForeignKey(User)
 
     def __unicode__(self):
         return '%s' % (self.title)
