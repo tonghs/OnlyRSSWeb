@@ -1,34 +1,34 @@
 #coding=utf-8
+import json
+import threading
+
 from django.db.models import Count
 from django.shortcuts import render_to_response, get_object_or_404
-from django.core import serializers
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import RequestContext
 import feedparser
-import json
-import time
-import threading
-import xml.dom.minidom
+
+from Common.FeedManager import FeedManager
+from Common.ItemManager import ItemManager
+from Common.ThreadManager import ThreadManager
+from Common.UserManager import UserManager
 from models import *
 from forms import UploadFileForm
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 
-thread_count_dic = {'update_thread_count': 0, 'import_thread_count': 0}
-update_thread_count = 0
-#线程限制数
-thread_count_max = 10
 #cookie超时时间 秒
 max_age = 2592000
+user_manager = UserManager()
+feed_manager = FeedManager()
+thread_manager = ThreadManager()
+item_manager = ItemManager()
 
 
 def login(request):
     if 'username' in request.COOKIES and 'password' in request.COOKIES:
         username = request.COOKIES['username']
         password = request.COOKIES['password']
-        if valid(request, username, password):
+        if user_manager.valid(request, username, password):
             response = render_to_response('index.html', {'username': request.session['username']})
             response.set_cookie('username', username, max_age)
             response.set_cookie('password', password, max_age)
@@ -56,31 +56,11 @@ def login_ajax(request):
     username = request.GET.get('username')
     password = request.GET.get('password')
     msg = 'fail'
-    if valid(request, username, password):
+
+    if user_manager.valid(request, username, password):
         msg = 'success'
 
     return HttpResponse(msg)
-
-
-def valid(request, username, password):
-    is_success = False
-    user = User.objects.filter(username=username, password=password)
-    if len(user):
-        request.session['username'] = username
-        request.session['password'] = password
-        request.session['user_id'] = user[0].id
-        is_success = True
-
-    return is_success
-
-
-def index(request):
-    """
-    主页
-    :param request:
-    :return:
-    """
-    return render_to_response('index.html')
 
 
 def get_all_feed_list(request):
@@ -89,7 +69,7 @@ def get_all_feed_list(request):
 
     :param request:
     """
-    feeds = get_feed_list(request)
+    feeds = feed_manager.get_feed_list(request)
 
     return HttpResponse(feeds)
 
@@ -136,47 +116,17 @@ def add_feed(request):
 
     feed_list = Feed.objects.filter(feed_url=url)
     if feed_list.count() == 0:
-        home_url = get_home_url(d.feed.link)
+        home_url = feed_manager.get_home_url(d.feed.link)
 
         feed = Feed(title=d.feed.title, url=d.feed.link, feed_url=url, icon=home_url + '/favicon.ico',
                     user_id=request.session['user_id'])
         feed.save()
         if len(d.entries) > 0:
-            insert_to_item(d, feed)
+            item_manager.insert_to_item(d, feed)
 
-    create_opml(request)
+    feed_manager.create_opml(request)
 
     return HttpResponse('success')
-
-
-def get_feed_list(request):
-    """
-    获取订阅列表
-
-    :return:
-    """
-    feed_list = Feed.objects.filter(user_id=request.session['user_id'])
-    feeds_json = serializers.serialize("json", feed_list)
-
-    return feeds_json
-
-
-def get_home_url(link):
-    """
-    获取主页url
-    :param link:
-    """
-    index = link.find('/', 8)
-    if index == -1:
-        index = link.find('?', 8)
-        if index == -1:
-            home_url = link[0:]
-        else:
-            home_url = link[0:index]
-    else:
-        home_url = link[0:index]
-
-    return home_url
 
 
 def del_item(request):
@@ -209,12 +159,16 @@ def del_feed(request):
     elif not feed_id:
         Feed.objects.filter(user_id=request.session['user_id']).delete()
 
+    feed_manager.create_opml(request)
+
     return HttpResponse('success')
 
 
 def del_feed_bat(request):
     ids_str = request.GET.get('ids_str')
     Feed.objects.extra(where=['id IN (' + ids_str + ')']).delete()
+
+    feed_manager.create_opml(request)
 
     return HttpResponse('success')
 
@@ -223,53 +177,14 @@ def update_content(request):
     feed_list = Feed.objects.all()
     th_list = []
     for feed in feed_list:
-        while int(thread_count_dic['update_thread_count']) == thread_count_max:
+        while int(thread_manager.thread_count_dic['update_thread_count']) == thread_manager.thread_count_max:
             pass
-        th = threading.Thread(target=thread_handler, args=(feed, 'update',))
+        th = threading.Thread(target=thread_manager.thread_handler, args=(feed, 'update',))
         th_list.append(th)
-        thread_count_dic['update_thread_count'] = int(thread_count_dic['update_thread_count']) + 1
+        thread_manager.thread_count_dic['update_thread_count'] = int(thread_manager.thread_count_dic['update_thread_count']) + 1
         th.start()
 
-
-    #等待线程结束
-    #for th in th_list:
-    #    while th.isAlive():
-    #        continue
-
     return HttpResponse('success')
-
-
-def thread_handler(feed, ops):
-    url = feed.feed_url
-    d = feedparser.parse(url)
-    if len(d.entries) > 0:
-        insert_to_item(d, feed)
-
-    thread_count = int(thread_count_dic[ops + '_thread_count'])
-    thread_count_dic[ops + '_thread_count'] = thread_count - 1
-
-
-def insert_to_item(d, feed):
-    local_date = feed.update_date
-    if hasattr(d.entries[0], 'published_parsed'):
-        pub_date = time.strftime('%Y-%m-%d %X', d.entries[0].published_parsed)
-    else:
-        pub_date = time.strftime('%Y-%m-%d %X', d.entries[0].updated_parsed)
-
-    if local_date is None or pub_date > local_date:
-        feed.update_date = pub_date
-        feed.save()
-
-        for entry in d.entries:
-            if hasattr(entry, 'published_parsed'):
-                pub_date = time.strftime('%Y-%m-%d %X', entry.published_parsed)
-            else:
-                pub_date = time.strftime('%Y-%m-%d %X', entry.updated_parsed)
-
-            if local_date is None or pub_date > local_date:
-                item = Item(title=entry.title, url=entry.link, content=entry.description, pub_date=pub_date,
-                            feed_id=feed.id, user_id=feed.user_id, state=0)
-                item.save()
 
 
 def setting(request):
@@ -300,38 +215,8 @@ def import_opml(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            handle_opml(request)
+            feed_manager.handle_opml(request)
     return HttpResponseRedirect('/')
-
-
-def handle_opml(req):
-    try:
-        xml_str = req.FILES['file'].read()
-        doc = xml.dom.minidom.parseString(xml_str)
-        th_list = []
-        for node in doc.getElementsByTagName('outline'):
-            feed_list = Feed.objects.filter(feed_url=node.getAttribute('xmlUrl'))
-            if feed_list.count() == 0:
-                home_url = get_home_url(node.getAttribute('htmlUrl'))
-
-                feed = Feed(title=node.getAttribute('title'), url=home_url, feed_url=node.getAttribute('xmlUrl'),
-                            icon=home_url + '/favicon.ico', user_id=req.session['user_id'])
-                feed.save()
-
-                while int(thread_count_dic['import_thread_count']) == thread_count_max:
-                    continue
-                th = threading.Thread(target=thread_handler, args=(feed, 'import'))
-                th_list.append(th)
-                thread_count_dic['update_thread_count'] = int(thread_count_dic['import_thread_count']) + 1
-                th.start()
-
-        create_opml(req)
-
-        for th in th_list:
-            while th.isAlive():
-                continue
-    except Exception, e:
-        return
 
 
 def get_feed_count(request):
@@ -343,27 +228,3 @@ def get_feed_count(request):
     #    items_json = json.dumps(temp)
 
     return HttpResponse(items_json)
-
-
-def create_opml(request):
-    feed_list = Feed.objects.filter(user_id=request.session['user_id'])
-    xml = '<?xml version="1.0" encoding="UTF-8"?>\n' \
-          '<opml version="1.0">\n' \
-          '    <head>\n' \
-          '        <title>subscriptions</title>\n' \
-          '        <ownerName>tonghuashuai</ownerName>\n' \
-          '    </head>\n' \
-          '    <body>\n'
-
-    for feed in feed_list:
-        xml += '        <outline text="' + feed.title + '"\n' \
-            '            title="' + feed.title + '" type="rss"\n' \
-            '            htmlUrl="' + feed.url.replace('&', '&amp;') + '"\n' \
-            '            xmlUrl="' + feed.feed_url.replace('&', '&amp;') + '" />\n' \
-
-    xml += '    </body>\n' \
-        '</opml>'
-
-    file_object = open('Resources/opml/' + request.session['username'] + str(request.session['user_id']) + '.opml', 'wa')
-    file_object.write(xml)
-    file_object.close()

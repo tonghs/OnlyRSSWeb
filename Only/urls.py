@@ -1,7 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic.base import RedirectView
 
-from OnlyRSS.views import index
 from OnlyRSS.views import *
 from Common.views import *
 from OnlyMarkdown.views import *
