@@ -227,14 +227,6 @@ function updateItem(){
 }
 
 
-function getHtmlByText(){
-    var text = encodeURIComponent($('#input').val());
-
-    ajaxRequest('/get_html?text=' + text, function(data){
-        $('#output').html(data);
-    });
-}
-
 function getFeedCount(){
     ajaxRequest('/get_feed_count', function(data){
         var arrObj = JSON.parse(data);

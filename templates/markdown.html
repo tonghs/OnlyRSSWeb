@@ -2,15 +2,21 @@
 <html>
 <head>
     <title>Only RSS</title>
-    {% include 'header.html' %}
+    <link rel="stylesheet" href="/resources/css/markdown.css">
+    <script type="text/javascript" src="/resources/js/jquery.js"></script>
+    <script type="text/javascript" src="/resources/js/jquery.allowtab.js"></script>
+    <script type="text/javascript" src="/resources/js/util.js"></script>
+    <script type="text/javascript" src="/resources/js/fun.js"></script>
     <script type="text/javascript" src="/resources/js/markdown.js"></script>
 </head>
 <body>
-{% include 'menu.html' %}
 <div class="wrap">
-    <textarea id="input" cols="10"></textarea>
-    <div style="height: 300px; width: 100%;" id="output"></div>
-    <input type="button" value="ok" onclick="getHtmlByText()">
+    <div id="left">
+        <textarea id="allowtab" onkeyup="getHtmlByText()"></textarea>
+        <div class="clear"></div>
+    </div>
+    <div id="right"></div>
+    <div class="clear"></div>
 </div>
 </body>
 </html>
