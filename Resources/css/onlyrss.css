@@ -63,6 +63,7 @@ a:hover{
 
 .menu:hover{
     background-color: #ffffff;
+
 }
 
 .menu_more{
@@ -87,6 +88,11 @@ a:hover{
 .menu_more a{
     padding: 0 5px;
     text-align: center;
+}
+
+.menu:hover a{
+    color: #dddddd;
+
 }
 
 .menu a:hover{

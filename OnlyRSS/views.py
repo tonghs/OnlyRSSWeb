@@ -29,7 +29,7 @@ def login(request):
         username = request.COOKIES['username']
         password = request.COOKIES['password']
         if valid(request, username, password):
-            response = render_to_response('index.html')
+            response = render_to_response('index.html', {'username': request.session['username']})
             response.set_cookie('username', username, max_age)
             response.set_cookie('password', password, max_age)
         else:
@@ -274,7 +274,7 @@ def insert_to_item(d, feed):
 
 def setting(request):
     if 'user_id' in request.session:
-        response = render_to_response('setting.html', context_instance=RequestContext(request))
+        response = render_to_response('setting.html', {'username': request.session['username']}, context_instance=RequestContext(request))
     else:
         response = render_to_response('login.html')
 
@@ -286,7 +286,7 @@ def about(request):
 
 
 def app(request):
-    return render_to_response('app.html')
+    return render_to_response('app.html', {'username': request.session['username']})
 
 
 def import_opml(request):
