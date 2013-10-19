@@ -42,5 +42,7 @@ urlpatterns = patterns('',
     url(r'^del_feed_bat$', del_feed_bat),
     url(r'^login_ajax$', login_ajax),
     url(r'^logout$', logout),
+    url(r'^get_opml_url$', get_opml_url),
+
     url(r'^404/$', page_not_found),
 )

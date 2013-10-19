@@ -4,6 +4,7 @@
 $(document).ready(function(){
     showLoad('正在加载...');
     getAllFeedManageList();
+    getOpmlUrl();
 });
 
 

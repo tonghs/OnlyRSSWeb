@@ -11,6 +11,9 @@ import threading
 import xml.dom.minidom
 from models import *
 from forms import UploadFileForm
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 
 thread_count_dic = {'update_thread_count': 0, 'import_thread_count': 0}
@@ -140,6 +143,8 @@ def add_feed(request):
         feed.save()
         if len(d.entries) > 0:
             insert_to_item(d, feed)
+
+    create_opml(request)
 
     return HttpResponse('success')
 
@@ -318,10 +323,12 @@ def handle_opml(req):
                 thread_count_dic['update_thread_count'] = int(thread_count_dic['import_thread_count']) + 1
                 th.start()
 
+        create_opml(req)
+
         for th in th_list:
             while th.isAlive():
                 continue
-    except Exception as e:
+    except Exception, e:
         return
 
 
@@ -334,3 +341,32 @@ def get_feed_count(request):
     #    items_json = json.dumps(temp)
 
     return HttpResponse(items_json)
+
+
+def create_opml(request):
+    feed_list = Feed.objects.filter(user_id=request.session['user_id'])
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n' \
+          '<opml version="1.0">\n' \
+          '    <head>\n' \
+          '        <title>subscriptions</title>\n' \
+          '        <ownerName>tonghuashuai</ownerName>\n' \
+          '    </head>\n' \
+          '    <body>\n'
+
+    for feed in feed_list:
+        xml += '        <outline text="' + feed.title + '"\n' \
+            '            title="' + feed.title + '" type="rss"\n' \
+            '            htmlUrl="' + feed.url.replace('&', '&amp;') + '"\n' \
+            '            xmlUrl="' + feed.feed_url.replace('&', '&amp;') + '" />\n' \
+
+    xml += '    </body>\n' \
+        '</opml>'
+
+    file_object = open('Resources/opml/' + request.session['username'] + str(request.session['user_id']) + '.opml', 'wa')
+    file_object.write(xml)
+    file_object.close()
+
+
+def get_opml_url(request):
+
+    return HttpResponse('/resources/opml/' + request.session['username'] + str(request.session['user_id']) + '.opml')
