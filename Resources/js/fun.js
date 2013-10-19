@@ -281,10 +281,5 @@ function logout(){
     });
 }
 
-function getOpmlUrl(){
-    ajaxRequest('/get_opml_url', function(data){
-        $('#opml').attr('href', data);
-    });
-}
 
 

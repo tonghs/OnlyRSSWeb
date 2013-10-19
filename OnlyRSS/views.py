@@ -274,7 +274,9 @@ def insert_to_item(d, feed):
 
 def setting(request):
     if 'user_id' in request.session:
-        response = render_to_response('setting.html', {'username': request.session['username']}, context_instance=RequestContext(request))
+        username = request.session['username']
+        opml_url = '/resources/opml/' + request.session['username'] + str(request.session['user_id']) + '.opml'
+        response = render_to_response('setting.html', {'username': username, 'opml_url': opml_url}, context_instance=RequestContext(request))
     else:
         response = render_to_response('login.html')
 
@@ -365,8 +367,3 @@ def create_opml(request):
     file_object = open('Resources/opml/' + request.session['username'] + str(request.session['user_id']) + '.opml', 'wa')
     file_object.write(xml)
     file_object.close()
-
-
-def get_opml_url(request):
-
-    return HttpResponse('/resources/opml/' + request.session['username'] + str(request.session['user_id']) + '.opml')
