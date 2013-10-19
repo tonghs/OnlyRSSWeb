@@ -45,7 +45,6 @@ function parseContent(data){
 }
 
 function getMore(unreadCount, obj){
-    //showLoad('正在加载...');
     if (obj != null){
         obj.html('正在加载...');
         obj.removeAttr('onclick');
@@ -61,15 +60,7 @@ function getMore(unreadCount, obj){
 
     ajaxRequest(url, function parseContent(data){
         var arrObj = JSON.parse(data);
-//        if (arrObj.length == 0){
-//            var id = $('#temp_feed_id').val();
-//            if (id == '0' || id == '') {
-//                $('.feed_item').css('font-weight', 'normal');
-//            } else {
-//                $('#' + id).css('font-weight', 'normal');
-//            }
-//
-//        }
+
         for (var i = 0; i < arrObj.length; i++){
             $('#content_container').append('<div class="item" onclick="delItem('
                 + arrObj[i].id
@@ -136,7 +127,6 @@ function addFeed(){
                 closeLoad();
             });
     }
-
 }
 
 function delFeed(feedId, obj){
@@ -149,8 +139,6 @@ function delFeed(feedId, obj){
             });
         }
     })
-
-
 }
 
 function getAllFeedList(){
@@ -209,10 +197,6 @@ function setStatus(){
     });
 
     if ($('#next_page') != null && $('#next_page').offset() != null && $('#next_page').offset().top <= $('html').height()){
-//        $('#next_page').fadeOut('normal', function(){
-//            $('#next_page').click();
-//            //$('#next_page').remove();
-//        });
         $('#next_page').click();
     }
 }
@@ -242,13 +226,6 @@ function updateItem(){
 
 }
 
-function showTitleMode(){
-    $('.item_content').fadeOut();
-}
-
-function showContentMode(){
-    $('.item_content').fadeIn();
-}
 
 function getHtmlByText(){
     var text = encodeURIComponent($('#input').val());
@@ -282,4 +259,41 @@ function logout(){
 }
 
 
+
+function delAll(){
+    showLoad('正在加载...');
+    ajaxRequest('/del_feed',function(data){
+        if (data == "success"){
+           $('.feed').fadeOut('normal', function(){
+                $('.feed').remove();
+                closeLoad();
+            });
+        }
+    })
+}
+
+function delBat(){
+    showLoad('正在加载...');
+    var ids_str = '';
+    var ids = new Array();
+    var i = 0;
+    $('[name="feed_id"]').each(function(){
+        if (this.checked){
+            ids_str += $(this).val() + ',';
+            ids[i++] = $(this).val();
+        }
+    })
+
+    ids_str += '0';
+    ajaxRequest('/del_feed_bat?ids_str=' + ids_str,function(data){
+        if (data == "success"){
+            for (var j = 0; j <=i; j++){
+                $('[value="' + ids[j] + '"]').parent().parent().fadeOut('normal', function(){
+                    $('[value="' + ids[j] + '"]').parent().parent().remove();
+                });
+            }
+            closeLoad();
+        }
+    })
+}
 
