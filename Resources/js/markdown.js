@@ -6,12 +6,10 @@
  * To change this template use File | Settings | File Templates.
  */
 $(document).ready(function(){
-    showLoad('正在加载...');
     setWidthAndHeight();
     $(window).resize(setWidthAndHeight);
     $('#allowtab').allowtab();
     $('#allowtab').focus();
-    closeLoad()
 });
 
 function setWidthAndHeight(){
