@@ -90,6 +90,6 @@ class FeedManager:
         xml += '    </body>\n' \
             '</opml>'
 
-        file_object = open('Resources/opml/' + request.session['username'] + str(request.session['user_id']) + '.opml', 'wa')
+        file_object = open('Resources/opml/' + request.session['username'] + str(request.session['user_id']) + '.opml', 'w')
         file_object.write(xml)
         file_object.close()
