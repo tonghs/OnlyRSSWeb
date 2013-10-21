@@ -48,6 +48,16 @@ function ajaxRequest(url, fun, funErr){
     });
 }
 
+function ajaxRequestPost(url, data, fun, funErr){
+     $.ajax({
+        type: 'POST',
+        data: data,
+        url: url,
+        error: funErr != null ? funErr : showErr,
+        success: fun
+    });
+}
+
 function showErr(req, msg, errorThrown){
     if (req.status != 404){
         showMsg("出错了，请重试...");

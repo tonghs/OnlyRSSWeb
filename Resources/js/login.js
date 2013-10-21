@@ -56,7 +56,8 @@ function login(){
     var username = $('#username').val();
     var password = $('#password').val();
     if(username != '' && password != ''){
-        ajaxRequest('/login_ajax?username=' + username + '&password=' + password, function(data){
+        var data = {'username': username, 'password': password};
+        ajaxRequestPost('/login_ajax', data, function(data){
             if (data == 'success'){
                 $.cookie('username', username, { expires: 30 });
                 $.cookie('password', password, { expires: 30 });

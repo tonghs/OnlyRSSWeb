@@ -53,8 +53,8 @@ def logout(request):
 
 
 def login_ajax(request):
-    username = request.GET.get('username')
-    password = request.GET.get('password')
+    username = request.REQUEST.get('username')
+    password = request.REQUEST.get('password')
     msg = 'fail'
 
     if user_manager.valid(request, username, password):
