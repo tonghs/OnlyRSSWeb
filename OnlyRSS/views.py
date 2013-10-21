@@ -220,8 +220,27 @@ def import_opml(request):
 
 
 def get_feed_count(request):
-    feed_count_qs = Item.objects.filter(user_id=request.session['user_id']).values('feed').annotate(count=Count('feed'))
-    items_json = json.dumps(list(feed_count_qs))
+    user_id = request.GET.get('user_id')
+    if user_id is None:
+        user_id = request.session['user_id']
+    feed_title_qs = Feed.objects.filter(user_id=user_id)
+
+    list_feed_id = []
+    list_feed_title = []
+
+    for feed in feed_title_qs:
+        list_feed_id.append(feed.id)
+        list_feed_title.append(feed.title)
+
+    feed_count_qs = Item.objects.select_related().filter(user_id=int(user_id)).values('feed').annotate(count=Count('feed'))
+
+    list_feed_count = []
+    for item in feed_count_qs:
+        dic_item = {'feed': item['feed'], 'feed_title': list_feed_title[list_feed_id.index(item['feed'])],
+                    'count': item['count']}
+        list_feed_count.append(dic_item)
+
+    items_json = json.dumps(list(list_feed_count))
     #feed_count_list = []
     #for feed_count in feed_count_qs:
     #    temp = {'feed': feed_count.feed, 'count': feed_count.count}
