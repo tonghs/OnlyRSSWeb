@@ -202,10 +202,12 @@ function setStatus(){
 }
 
 function delItem(id, obj){
-    ajaxRequest('/del_item?id=' + id);
-    if (obj != null){
-        obj.className = 'read';
-    }
+    ajaxRequest('/del_item?id=' + id, function(){
+        if (obj != null){
+            obj.className = 'read';
+        }
+    });
+
 }
 
 function delAllItem(){
