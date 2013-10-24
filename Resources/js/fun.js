@@ -231,14 +231,6 @@ function delAllItem(){
 }
 
 
-function updateItem(){
-    ajaxRequest('/update_content', function(data){
-        getFeedCount();
-    });
-
-}
-
-
 function getFeedCount(){
     ajaxRequest('/get_feed_count', function(data){
         var arrObj = JSON.parse(data);

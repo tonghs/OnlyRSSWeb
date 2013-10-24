@@ -173,20 +173,6 @@ def del_feed_bat(request):
     return HttpResponse('success')
 
 
-def update_content(request):
-    feed_list = Feed.objects.all()
-    th_list = []
-    for feed in feed_list:
-        while int(thread_manager.thread_count_dic['update_thread_count']) == thread_manager.thread_count_max:
-            pass
-        th = threading.Thread(target=thread_manager.thread_handler, args=(feed, 'update',))
-        th_list.append(th)
-        thread_manager.thread_count_dic['update_thread_count'] = int(thread_manager.thread_count_dic['update_thread_count']) + 1
-        th.start()
-
-    return HttpResponse('success')
-
-
 def setting(request):
     if 'user_id' in request.session:
         username = request.session['username']

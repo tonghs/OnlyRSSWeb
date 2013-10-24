@@ -10,19 +10,18 @@ from OnlyRSS.models import Feed
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+
 class FeedManager:
     thread_manager = ThreadManager()
 
     def __init__(self):
         pass
 
-
     def get_feed_list(self, request):
         feed_list = Feed.objects.filter(user_id=request.session['user_id'])
         feeds_json = serializers.serialize("json", feed_list)
 
         return feeds_json
-
 
     def get_home_url(self, link):
         """
@@ -41,7 +40,6 @@ class FeedManager:
 
         return home_url
 
-
     def handle_opml(self, req):
         try:
             xml_str = req.FILES['file'].read()
@@ -57,19 +55,19 @@ class FeedManager:
                     feed.save()
 
                     while int(self.thread_manager.thread_count_dic['import_thread_count']) == self.thread_manager.thread_count_max:
-                        continue
+                        pass
                     th = threading.Thread(target=self.thread_manager.thread_handler, args=(feed, 'import'))
                     th_list.append(th)
-                    self.thread_manager.thread_count_dic['update_thread_count'] = int(self.thread_manager.thread_count_dic['import_thread_count']) + 1
+                    self.thread_manager.thread_count_dic['import_thread_count'] = int(self.thread_manager.thread_count_dic['import_thread_count']) + 1
                     th.start()
 
             self.create_opml(req)
 
             for th in th_list:
                 th.join()
+
         except Exception, e:
             return
-
 
     def create_opml(self, request):
         feed_list = Feed.objects.filter(user_id=request.session['user_id'])

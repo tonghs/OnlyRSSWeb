@@ -8,7 +8,7 @@ class ThreadManager:
     thread_count_dic = {'update_thread_count': 0, 'import_thread_count': 0}
     update_thread_count = 0
     #线程限制数
-    thread_count_max = 10
+    thread_count_max = 100
 
     item_manager = ItemManager()
 
