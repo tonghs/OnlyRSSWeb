@@ -53,19 +53,20 @@ a:hover{
 }
 
 .menu{
-    cursor: pointer;
+    /*cursor: pointer;*/
     color: black;
     height: 55px;
     line-height: 55px;
     float: right;
     font-size: 30px;
     text-decoration: none;
+    padding: 0 5px;
 }
 
-.menu:hover{
-    background-color: #ffffff;
+/*.menu:hover{*/
+    /*background-color: #ffffff;*/
 
-}
+/*}*/
 
 .menu_more{
     cursor: pointer;
