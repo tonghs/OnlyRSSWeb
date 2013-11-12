@@ -4,7 +4,7 @@
 	<chdir>/home/project/OnlyRSSWeb/</chdir>
 	<env>DJANGO_SETTINGS_MODULE=Only.settings</env>
 	<module>django.core.wsgi:get_wsgi_application()</module>
-	<processes>4</processes>
+	<processes>2</processes>
 	<daemonize>uwsgi.log</daemonize>
 	<plugins>python</plugins>
 </uwsgi>
