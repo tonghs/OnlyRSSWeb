@@ -1,7 +1,7 @@
 <uwsgi>
 	<socket>:8000</socket>
 	<master>true</master>
-	<chdir>/home/project/OnlyRSSWeb/</chdir>
+	<chdir>/home/ftp/OnlyRSSWeb/</chdir>
 	<env>DJANGO_SETTINGS_MODULE=Only.settings</env>
 	<module>django.core.wsgi:get_wsgi_application()</module>
 	<processes>2</processes>
