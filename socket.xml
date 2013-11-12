@@ -1,0 +1,10 @@
+<uwsgi>
+	<socket>:8000</socket>
+	<master>true</master>
+	<chdir>/home/project/OnlyRSSWeb/</chdir>
+	<env>DJANGO_SETTINGS_MODULE=Only.settings</env>
+	<module>django.core.wsgi:get_wsgi_application()</module>
+	<processes>4</processes>
+	<daemonize>uwsgi.log</daemonize>
+	<plugins>python</plugins>
+</uwsgi>
