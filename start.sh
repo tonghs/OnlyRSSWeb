@@ -1,4 +1,2 @@
-killall -9 'uwsgi -x rss.xml'
-find . -name "*.pyc" | xargs rm -rf
-uwsgi -x rss.xml
+uwsgi --reload ./uwsgi.pid
 nginx -s reload
