@@ -90,15 +90,17 @@ def get_feed_content(request):
     end = int(unread_count) + page_size
 
     if feed_id != 0:
-        item_list = Item.objects.select_related().filter(feed_id=feed_id,user_id=request.session['user_id']).order_by('-pub_date')[start:end]
+        item_list = Item.objects.select_related().filter(feed_id=feed_id, user_id=request.session['user_id']).order_by(
+            '-pub_date')[start:end]
     else:
-        item_list = Item.objects.select_related().filter(user_id=request.session['user_id']).order_by('-pub_date')[start:end]
+        item_list = Item.objects.select_related().filter(user_id=request.session['user_id']).order_by('-pub_date')[
+                    start:end]
     list_temp = []
 
     for item in item_list:
         dic_item = {'id': item.id, 'title': item.title, 'content': item.content, 'url': item.url,
-                   'feed_title': item.feed.title,
-                   'feed_url': item.feed.url}
+                    'feed_title': item.feed.title,
+                    'feed_url': item.feed.url}
         list_temp.append(dic_item)
 
     items_json = json.dumps(list_temp)
@@ -177,7 +179,8 @@ def setting(request):
     if 'user_id' in request.session:
         username = request.session['username']
         opml_url = '/resources/opml/' + request.session['username'] + str(request.session['user_id']) + '.opml'
-        response = render_to_response('setting.html', {'username': username, 'opml_url': opml_url}, context_instance=RequestContext(request))
+        response = render_to_response('setting.html', {'username': username, 'opml_url': opml_url},
+                                      context_instance=RequestContext(request))
     else:
         response = render_to_response('login.html')
 
@@ -189,7 +192,12 @@ def about(request):
 
 
 def app(request):
-    return render_to_response('app.html', {'username': request.session['username']})
+    if 'username' not in request.session:
+        username = ''
+    else:
+        username = request.session['username']
+
+    return render_to_response('app.html', {'username': username})
 
 
 def import_opml(request):
@@ -218,7 +226,8 @@ def get_feed_count(request):
         list_feed_id.append(feed.id)
         list_feed_title.append(feed.title)
 
-    feed_count_qs = Item.objects.select_related().filter(user_id=int(user_id)).values('feed').annotate(count=Count('feed'))
+    feed_count_qs = Item.objects.select_related().filter(user_id=int(user_id)).values('feed').annotate(
+        count=Count('feed'))
 
     list_feed_count = []
     for item in feed_count_qs:
