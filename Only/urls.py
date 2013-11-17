@@ -3,7 +3,6 @@ from django.views.generic.base import RedirectView
 
 from OnlyRSS.views import *
 from Common.views import *
-from OnlyMarkdown.views import *
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
@@ -32,9 +31,6 @@ urlpatterns = patterns('',
     url(r'^app/$', app),
     url(r'^about/$', about),
     url(r'^import_opml/$', import_opml),
-    url(r'^markdown/$', markdown_index),
-    url(r'^markdown/index$', markdown_index),
-    url(r'^get_html$', get_html),
     url(r'^get_feed_count$', get_feed_count),
     url(r'^del_feed$', del_feed),
     url(r'^del_feed_bat$', del_feed_bat),

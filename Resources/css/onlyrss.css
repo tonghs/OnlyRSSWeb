@@ -1,10 +1,10 @@
-@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+/*@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);*/
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+/*@import url(http://fonts.googleapis.com/css?family=Open+Sans);*/
 
 html{
     height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica;
 }
 
 body, ul{
@@ -47,7 +47,7 @@ a:hover{
     background: #E8E9EB;
     border-bottom: 1px solid #dddddd;
     color: black;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Open Sans Condensed';
     margin-bottom: 7px;
     padding: 0 10px 0 10px;
 }
@@ -63,10 +63,6 @@ a:hover{
     padding: 0 5px;
 }
 
-/*.menu:hover{*/
-    /*background-color: #ffffff;*/
-
-/*}*/
 
 .menu_more{
     cursor: pointer;
@@ -164,7 +160,7 @@ a:hover{
     background: #E8E9EB;
     border: 0 solid #ddd;
     border-top-width: 1px;
-    font-family: 'Open Sans', '微软雅黑';
+    font-family: 'Open Sans Condensed';
     height: 100px;
     line-height: 100px;
     padding: 0 10px 0 10px;

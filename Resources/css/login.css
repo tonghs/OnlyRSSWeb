@@ -70,9 +70,9 @@ a:hover{
 
 #left{
     float: left;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 40px;
-    line-height: 60px;
+    font-family: 'Open Sans Condensed';
+    font-size: 35px;
+    line-height: 70px;
     width: 630px;
 }
 
