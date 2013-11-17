@@ -182,7 +182,7 @@ def setting(request):
         response = render_to_response('setting.html', {'username': username, 'opml_url': opml_url},
                                       context_instance=RequestContext(request))
     else:
-        response = render_to_response('login.html')
+        response = HttpResponseRedirect('/')
 
     return response
 
