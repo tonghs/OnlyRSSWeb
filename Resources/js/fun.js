@@ -12,6 +12,7 @@ function getItem(id, obj, isShowLoading){
     $('#temp_feed_id').val(id);
     url = '/get_feed_content?id=' + id;
     $('#content_container').animate({scrollTop: '0px'}, 10);
+    $('#content_container').empty();
     ajaxRequest(url, parseContent);
 
     if (obj != null){
@@ -26,7 +27,6 @@ function getItem(id, obj, isShowLoading){
 
 function parseContent(data){
     var arrObj = JSON.parse(data);
-    $('#content_container').empty();
     for (var i = 0; i < arrObj.length; i++){
         $('#content_container').append('<div class="item" onclick="delItem('
             + arrObj[i].id
