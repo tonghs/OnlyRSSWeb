@@ -10,17 +10,8 @@ from Common.views import *
 handler404 = 'Common.views.page_not_found'
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'Only.views.home', name='home'),
-    # url(r'^Only/', include('Only.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
-    ('^static/(?P<path>.*)', "django.views.static.serve", {'document_root': './static'}),
-    (r'^favicon\.ico$', RedirectView.as_view(url='static/image/favicon.ico')),
+    (r'^resources/(?P<path>.*)', "django.views.static.serve", {'document_root': './resources'}),
+    (r'^favicon\.ico$', RedirectView.as_view(url='resources/image/favicon.ico')),
 
     url(r'^$', login),
     url(r'^404/$', page_not_found),
