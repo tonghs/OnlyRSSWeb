@@ -5,7 +5,7 @@ server {
 		uwsgi_pass 127.0.0.1:8000;
 	}
 
-	location /static/ {
+	location /resources/ {
 		root /home/ftp/OnlyRSSWeb/;
 	}
 
