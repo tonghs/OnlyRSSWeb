@@ -24,7 +24,6 @@ function getItem(id, obj, isShowLoading){
     }
 }
 
-
 function parseContent(data){
     var arrObj = JSON.parse(data);
     for (var i = 0; i < arrObj.length; i++){
