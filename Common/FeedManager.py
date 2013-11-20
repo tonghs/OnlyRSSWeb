@@ -10,6 +10,9 @@ from OnlyRSS.models import Feed
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+'''
+订阅管理
+'''
 
 class FeedManager:
     thread_manager = ThreadManager()

@@ -29,7 +29,6 @@ def main():
         thread_count_dic['update_thread_count'] = int(thread_count_dic['update_thread_count']) + 1
         th.start()
 
-
 def thread_handler(feed, ops):
     url = feed[1]
     d = feedparser.parse(url)
@@ -82,7 +81,6 @@ def query_by_sql(sql):
 
     return ds
 
-
 def execute(sql):
     conn = get_conn()
     cursor = conn.cursor()
@@ -91,7 +89,6 @@ def execute(sql):
     conn.commit()
     cursor.close()
     conn.close()
-
 
 def execute_many(sql, param):
     conn = get_conn()

@@ -2,6 +2,9 @@
 import feedparser
 from Common.ItemManager import ItemManager
 
+'''
+线程处理，简单线程池
+'''
 
 class ThreadManager:
 
@@ -12,10 +15,8 @@ class ThreadManager:
 
     item_manager = ItemManager()
 
-
     def __init__(self):
         pass
-
 
     def thread_handler(self, feed, ops):
         url = feed.feed_url
