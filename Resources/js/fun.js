@@ -42,6 +42,7 @@ function parseContent(data){
             + arrObj[i].feed_title + '</a>')
     }
     $('#content_container').append('<div class="next" id="next_page" onclick="getMore(0, $(this))">加载更多</div>')
+    closeLoad();
 }
 
 function getMore(unreadCount, obj){
