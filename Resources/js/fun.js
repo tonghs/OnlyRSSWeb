@@ -18,10 +18,6 @@ function getItem(id, obj, isShowLoading){
     if (obj != null){
         changeBgColor(obj);
     }
-
-    if (isShowLoading == null || isShowLoading){
-        closeLoad();
-    }
 }
 
 function parseContent(data){
