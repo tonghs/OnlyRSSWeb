@@ -7,7 +7,6 @@ class ItemManager:
     def __init__(self):
         pass
 
-
     def insert_to_item(self, d, feed):
         local_date = feed.update_date
         if hasattr(d.entries[0], 'published_parsed'):
@@ -27,5 +26,5 @@ class ItemManager:
 
                 if local_date is None or pub_date > local_date:
                     item = Item(title=entry.title, url=entry.link, content=entry.description, pub_date=pub_date,
-                                feed_id=feed.id, user_id=feed.user_id, state=0)
+                                feed_id=feed.id, user_id=0, state=0)
                     item.save()

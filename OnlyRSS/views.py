@@ -69,7 +69,7 @@ def get_all_feed_list(request):
 
     :param request:
     """
-    feeds = feed_manager.get_feed_list(request)
+    feeds = feed_manager.get_feed_list()
 
     return HttpResponse(feeds)
 
@@ -90,11 +90,9 @@ def get_feed_content(request):
     end = int(unread_count) + page_size
 
     if feed_id != 0:
-        item_list = Item.objects.select_related().filter(feed_id=feed_id, user_id=request.session['user_id']).order_by(
-            '-pub_date')[start:end]
+        item_list = Item.objects.select_related().filter(feed_id=feed_id).order_by('-pub_date')[start:end]
     else:
-        item_list = Item.objects.select_related().filter(user_id=request.session['user_id']).order_by('-pub_date')[
-                    start:end]
+        item_list = Item.objects.select_related().all().order_by('-pub_date')[start:end]
     list_temp = []
 
     for item in item_list:
@@ -120,8 +118,7 @@ def add_feed(request):
     if feed_list.count() == 0:
         home_url = feed_manager.get_home_url(d.feed.link)
 
-        feed = Feed(title=d.feed.title, url=d.feed.link, feed_url=url, icon=home_url + '/favicon.ico',
-                    user_id=request.session['user_id'])
+        feed = Feed(title=d.feed.title, url=d.feed.link, feed_url=url, icon=home_url + '/favicon.ico', user_id=0)
         feed.save()
         if len(d.entries) > 0:
             item_manager.insert_to_item(d, feed)
@@ -159,7 +156,7 @@ def del_feed(request):
         except Http404, e:
             pass
     elif not feed_id:
-        Feed.objects.filter(user_id=request.session['user_id']).delete()
+        Feed.objects.all().delete()
 
     feed_manager.create_opml(request)
 
@@ -214,10 +211,7 @@ def import_opml(request):
 
 
 def get_feed_count(request):
-    user_id = request.GET.get('user_id')
-    if user_id is None:
-        user_id = request.session['user_id']
-    feed_title_qs = Feed.objects.filter(user_id=user_id)
+    feed_title_qs = Feed.objects.all()
 
     list_feed_id = []
     list_feed_title = []
@@ -226,7 +220,7 @@ def get_feed_count(request):
         list_feed_id.append(feed.id)
         list_feed_title.append(feed.title)
 
-    feed_count_qs = Item.objects.select_related().filter(user_id=int(user_id)).values('feed').annotate(
+    feed_count_qs = Item.objects.select_related().all().values('feed').annotate(
         count=Count('feed'))
 
     list_feed_count = []
@@ -236,9 +230,5 @@ def get_feed_count(request):
         list_feed_count.append(dic_item)
 
     items_json = json.dumps(list(list_feed_count))
-    #feed_count_list = []
-    #for feed_count in feed_count_qs:
-    #    temp = {'feed': feed_count.feed, 'count': feed_count.count}
-    #    items_json = json.dumps(temp)
 
     return HttpResponse(items_json)

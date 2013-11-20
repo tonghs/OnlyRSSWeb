@@ -17,8 +17,8 @@ class FeedManager:
     def __init__(self):
         pass
 
-    def get_feed_list(self, request):
-        feed_list = Feed.objects.filter(user_id=request.session['user_id'])
+    def get_feed_list(self):
+        feed_list = Feed.objects.all()
         feeds_json = serializers.serialize("json", feed_list)
 
         return feeds_json
