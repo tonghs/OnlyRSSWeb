@@ -36,8 +36,16 @@ function parseContent(data){
             + '<div class="item_ops">来自:<a href="' + arrObj[i].feed_url + '" target="_blank">'
             + arrObj[i].feed_title + '</a>')
     }
-    $('#content_container').append('<div class="next" id="next_page" onclick="getMore(0, $(this))">加载更多</div>')
+    $('#content_container').append('<div class="next" id="next_page" onclick="getMore(0, $(this))">加载更多</div>');
+    showImg();
     closeLoad();
+}
+
+function showImg(){
+    $('img').each(function(){
+        $(this).attr('src', $(this).attr('src_no'));
+        $(this).removeAttr('src_no');
+    });
 }
 
 function getMore(unreadCount, obj){

@@ -101,7 +101,7 @@ def get_feed_content(request):
                     'feed_url': item.feed.url}
         list_temp.append(dic_item)
 
-    items_json = json.dumps(list_temp)
+    items_json = json.dumps(list_temp).replace('src', 'src_no')
 
     return HttpResponse(items_json)
 
