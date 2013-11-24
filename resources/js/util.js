@@ -96,7 +96,7 @@ function getMore(unreadCount, obj){
 
             });
         }
-
+        showImg();
         //closeLoad();
     });
 }
