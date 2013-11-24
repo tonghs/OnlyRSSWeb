@@ -54,13 +54,8 @@ function getMore(unreadCount, obj){
         obj.removeAttr('onclick');
     }
     var id = $('#temp_feed_id').val();
-    if (unreadCount == null){
-        unreadCount = 0;
-    } else {
-        unreadCount = $('.unread').size();
-    }
 
-    var url = '/get_feed_content?id=' + id + '&unreadCount=' + unreadCount;
+    var url = '/get_feed_content?id=' + id;
 
     ajaxRequest(url, function parseContent(data){
         var arrObj = JSON.parse(data);
@@ -76,7 +71,8 @@ function getMore(unreadCount, obj){
         }
 
         for (var i = 0; i < arrObj.length; i++){
-            $('#content_container').append('<div class="item" onclick="delItem('
+            if($('#' + arrObj[i].id).size() <= 0){
+                $('#content_container').append('<div class="item" onclick="delItem('
                 + arrObj[i].id
                 + ', document.getElementById(\''
                 + arrObj[i].id
@@ -87,7 +83,8 @@ function getMore(unreadCount, obj){
                 + arrObj[i].title + '</a></div>'
                 + '<div class="item_content">' + arrObj[i].content + '</div>'
                 + '<div class="item_ops">来自:<a href="' + arrObj[i].feed_url + '" target="_blank">'
-                + arrObj[i].feed_title + '</a>')
+                + arrObj[i].feed_title + '</a>');
+            }
         }
         if (obj != null){
             obj.fadeOut('normal', function(){
