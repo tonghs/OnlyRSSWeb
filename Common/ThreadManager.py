@@ -6,6 +6,7 @@ from Common.ItemManager import ItemManager
 线程处理，简单线程池
 '''
 
+
 class ThreadManager:
 
     thread_count_dic = {'update_thread_count': 0, 'import_thread_count': 0}

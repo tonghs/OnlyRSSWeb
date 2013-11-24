@@ -14,6 +14,7 @@ sys.setdefaultencoding('utf-8')
 订阅管理
 '''
 
+
 class FeedManager:
     thread_manager = ThreadManager()
 
@@ -57,11 +58,13 @@ class FeedManager:
                                 icon=home_url + '/favicon.ico', user_id=req.session['user_id'])
                     feed.save()
 
-                    while int(self.thread_manager.thread_count_dic['import_thread_count']) == self.thread_manager.thread_count_max:
+                    while int(self.thread_manager.thread_count_dic['import_thread_count']) == \
+                            self.thread_manager.thread_count_max:
                         pass
                     th = threading.Thread(target=self.thread_manager.thread_handler, args=(feed, 'import'))
                     th_list.append(th)
-                    self.thread_manager.thread_count_dic['import_thread_count'] = int(self.thread_manager.thread_count_dic['import_thread_count']) + 1
+                    self.thread_manager.thread_count_dic['import_thread_count'] = \
+                        int(self.thread_manager.thread_count_dic['import_thread_count']) + 1
                     th.start()
 
             self.create_opml(req)
@@ -69,7 +72,7 @@ class FeedManager:
             for th in th_list:
                 th.join()
 
-        except Exception, e:
+        except Exception:
             return
 
     def create_opml(self, request):

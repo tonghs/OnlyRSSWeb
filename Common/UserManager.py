@@ -6,7 +6,6 @@ class UserManager:
     def __init__(self):
         pass
 
-
     def valid(self, request, username, password):
         is_success = False
         user = User.objects.filter(username=username, password=password)
