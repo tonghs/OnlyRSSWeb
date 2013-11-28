@@ -29,5 +29,5 @@ class ItemManager:
 
                 if local_date is None or pub_date > local_date:
                     item = Item(title=entry.title, url=entry.link, content=entry.description, pub_date=pub_date,
-                                feed_id=feed.id, user_id=0, state=0)
+                                feed_id=feed.id, user_id=1, state=0)
                     item.save()

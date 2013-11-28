@@ -55,7 +55,7 @@ class FeedManager:
                     home_url = self.get_home_url(node.getAttribute('htmlUrl'))
 
                     feed = Feed(title=node.getAttribute('title'), url=home_url, feed_url=node.getAttribute('xmlUrl'),
-                                icon=home_url + '/favicon.ico', user_id=req.session['user_id'])
+                                icon=home_url + '/favicon.ico', user_id=1)
                     feed.save()
 
                     while int(self.thread_manager.thread_count_dic['import_thread_count']) == \
