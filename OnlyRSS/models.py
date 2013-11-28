@@ -34,7 +34,7 @@ class Feed(models.Model):
 
 class Item(models.Model):
     title = models.CharField(max_length=500)
-    url = models.CharField(max_length=500)
+    url = models.TextField()
     content = models.TextField()
     feed = models.ForeignKey(Feed)
     pub_date = models.DateTimeField()
