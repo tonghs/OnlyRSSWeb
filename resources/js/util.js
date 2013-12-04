@@ -93,7 +93,7 @@ function getMore(unreadCount, obj){
 
             });
         }
-        showImg();
+        //showImg();
         //closeLoad();
     });
 }
