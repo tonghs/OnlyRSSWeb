@@ -1,11 +1,12 @@
 #coding=utf-8
 import json
-
+import re
 from django.db.models import Count
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import RequestContext
 import feedparser
+
 
 from Common.FeedManager import FeedManager
 from Common.ItemManager import ItemManager
@@ -97,9 +98,11 @@ def get_feed_content(request):
                     'feed_url': item.feed.url}
         list_temp.append(dic_item)
 
-    items_json = json.dumps(list_temp).replace('src', 'src_no')
+    reg = r'''<img.*src=["|']https?://(\w+.feedsportal.com/|cdn.ifanr.cn/.*RSSBanner广告.*).+["|'].*\s?(>|/>|></img>)'''
+    items_json = json.dumps(list_temp)
+    items_no_ad = re.sub(reg, '', items_json).replace('src', 'src_no')
 
-    return HttpResponse(items_json)
+    return HttpResponse(items_no_ad)
 
 
 def add_feed(request):
