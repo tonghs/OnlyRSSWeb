@@ -98,12 +98,12 @@ def get_feed_content(request):
                     'feed_url': item.feed.url}
         list_temp.append(dic_item)
 
-    reg = r'''<img.*?src=\\["|']https?://(\w+?.feedsportal.com/|cdn.ifanr.cn/.*?RSSBanner.*?).+?\\["|']\s*?(>|/>|></img>)'''
-    items_json = json.dumps(list_temp)
-    items_no_ad = re.sub(reg, '', items_json)
-    items_no_ad = items_no_ad.replace('src', 'src_no')
+    #reg = r'''<img.*?src=\\["|']https?://(\w+?.feedsportal.com/|cdn.ifanr.cn/.*?RSSBanner.*?).+?\\["|']\s*?(>|/>|></img>)'''
+    items_json = json.dumps(list_temp).replace('src', 'src_no')
+    #items_no_ad = re.sub(reg, '', items_json)
+    #items_no_ad = items_no_ad.replace('src', 'src_no')
 
-    return HttpResponse(items_no_ad)
+    return HttpResponse(items_json)
 
 
 def add_feed(request):
