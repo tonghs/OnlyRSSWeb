@@ -84,3 +84,9 @@ Web 端：可使用 `nginx` + `uWSGI` 部署，`ubuntu 12.10` 测试可正常部
 * 加载速度优化
     * 图片延迟加载
 * 单用户模式
+
+2014-04-03
+
+* update_service 遇到 badurl block 长期占用资源 bug
+* 去除某些文章中的广告
+* 其他 bug
