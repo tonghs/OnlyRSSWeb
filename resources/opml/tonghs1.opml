@@ -69,10 +69,22 @@
             title="Startup News" type="rss"
             htmlUrl="http://news.dbanotes.net/"
             xmlUrl="http://news.dbanotes.net/rss" />
+        <outline text="无忌摄影论坛 - 行行色色"
+            title="无忌摄影论坛 - 行行色色" type="rss"
+            htmlUrl="http://forum.xitek.com/forum.php?mod=forumdisplay&amp;fid=48"
+            xmlUrl="http://forum.xitek.com/forum.php?mod=rss&amp;fid=48&amp;auth=401d6W%2B9VOTCuJ78LeHcdLdRWM7hjviqTM37VWx%2ByhjDj4CRK4vsi%2FI%2BI2qu0PE6" />
         <outline text="ChokStick 骚货"
             title="ChokStick 骚货" type="rss"
             htmlUrl="http://chokstick.com"
             xmlUrl="http://chokstick.com/feed/" />
+        <outline text="无忌摄影论坛 - 摄影大家坛"
+            title="无忌摄影论坛 - 摄影大家坛" type="rss"
+            htmlUrl="http://forum.xitek.com/forum.php?mod=forumdisplay&amp;fid=2"
+            xmlUrl="http://forum.xitek.com/forum.php?mod=rss&amp;fid=2&amp;auth=fb5eaiW7nrJz3%2BWLloPk%2FpEwQ7gUyydCcX2VVDhURWLmWavGoJ98BSl8KwQ7PJU" />
+        <outline text="无忌摄影论坛 - Canon SLR/DSLM论坛"
+            title="无忌摄影论坛 - Canon SLR/DSLM论坛" type="rss"
+            htmlUrl="http://forum.xitek.com/forum.php?mod=forumdisplay&amp;fid=84"
+            xmlUrl="http://forum.xitek.com/forum.php?mod=rss&amp;fid=84&amp;auth=682cA1tMTpmXG9hkSre%2FhsCnGPyndNls%2ByPN1el9uebdmRTNVYOpg0FnJv8ndwCB" />
         <outline text="无忌摄影论坛 - 人文与纪实"
             title="无忌摄影论坛 - 人文与纪实" type="rss"
             htmlUrl="http://forum.xitek.com/forum.php?mod=forumdisplay&amp;fid=46"
