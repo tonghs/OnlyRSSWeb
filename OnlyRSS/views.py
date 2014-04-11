@@ -1,6 +1,7 @@
 #coding=utf-8
 import json
 import re
+import urllib
 from django.db.models import Count
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse, Http404, HttpResponseRedirect
@@ -111,7 +112,7 @@ def add_feed(request):
     添加订阅
     :param request:
     """
-    url = request.GET.get('url')
+    url = urllib.unquote(request.GET.get('url'))
     d = feedparser.parse(url)
 
     feed_list = Feed.objects.filter(feed_url=url)

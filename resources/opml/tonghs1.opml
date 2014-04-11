@@ -73,5 +73,9 @@
             title="ChokStick 骚货" type="rss"
             htmlUrl="http://chokstick.com"
             xmlUrl="http://chokstick.com/feed/" />
+        <outline text="无忌摄影论坛 - 人文与纪实"
+            title="无忌摄影论坛 - 人文与纪实" type="rss"
+            htmlUrl="http://forum.xitek.com/forum.php?mod=forumdisplay&amp;fid=46"
+            xmlUrl="http://forum.xitek.com/forum.php?mod=rss&amp;fid=46&amp;auth=90a6qZU05%2FFvKYMd5zTvuxrqsh8%2FUODACcCX4%2BnfdhAoINBHpnKVCYdfl04W%2BwOW" />
     </body>
 </opml>

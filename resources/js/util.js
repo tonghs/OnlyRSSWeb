@@ -127,7 +127,7 @@ function addFeed(){
     $("#txt_feed_container").css("display", "none");
 
     if (url != null){
-        ajaxRequest('/add_feed?url=' + url, function (data){
+        ajaxRequest('/add_feed?url=' + escape(url), function (data){
                 if (data == "success"){
                     getItem(null, $('#get_all'), false);
                     getAllFeedList();
