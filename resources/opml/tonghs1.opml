@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+    <head>
+        <title>subscriptions</title>
+        <ownerName>tonghuashuai</ownerName>
+    </head>
+    <body>
+        <outline text="V2EX"
+            title="V2EX" type="rss"
+            htmlUrl="http://www.v2ex.com"
+            xmlUrl="http://www.v2ex.com/index.xml" />
+        <outline text="Engadget 中国版"
+            title="Engadget 中国版" type="rss"
+            htmlUrl="http://cn.engadget.com"
+            xmlUrl="http://cn.engadget.com/rss.xml" />
+        <outline text="Mac oo Life"
+            title="Mac oo Life" type="rss"
+            htmlUrl="http://macoolife.com"
+            xmlUrl="http://macoolife.com/blog/feed/" />
+        <outline text="MacIdea - OS X Mountain Lion"
+            title="MacIdea - OS X Mountain Lion" type="rss"
+            htmlUrl="http://mac.pcbeta.com"
+            xmlUrl="http://mac.pcbeta.com/rss.php?fid=88&amp;auth=0" />
+        <outline text="MacX - 新闻,讨论,活动"
+            title="MacX - 新闻,讨论,活动" type="rss"
+            htmlUrl="http://www.macx.cn"
+            xmlUrl="http://www.macx.cn/forum.php?mod=rss&amp;fid=4000" />
+        <outline text="Matrix67: My Blog"
+            title="Matrix67: My Blog" type="rss"
+            htmlUrl="http://www.matrix67.com"
+            xmlUrl="http://feed.feedsky.com/matrix67" />
+        <outline text="OSX玩意 / OSXToy"
+            title="OSX玩意 / OSXToy" type="rss"
+            htmlUrl="http://www.osxtoy.com"
+            xmlUrl="http://feed.feedsky.com/osxtoy" />
+        <outline text="上海周末"
+            title="上海周末" type="rss"
+            htmlUrl="http://since1989.org"
+            xmlUrl="http://since1989.org/feed" />
+        <outline text="外刊IT评论网"
+            title="外刊IT评论网" type="rss"
+            htmlUrl="http://www.aqee.net"
+            xmlUrl="http://www.aqee.net/feed" />
+        <outline text="数字尾巴- DGtle.com"
+            title="数字尾巴- DGtle.com" type="rss"
+            htmlUrl="http://www.dgtle.com"
+            xmlUrl="http://rss.dgtle.com" />
+        <outline text="果迷网"
+            title="果迷网" type="rss"
+            htmlUrl="http://www.guomii.com"
+            xmlUrl="http://www.guomii.com/feed" />
+        <outline text="谷奥——探寻谷歌的奥秘"
+            title="谷奥——探寻谷歌的奥秘" type="rss"
+            htmlUrl="http://www.guao.hk"
+            xmlUrl="http://feed-all.google.org.cn/" />
+        <outline text="极客公园-GeekPark"
+            title="极客公园-GeekPark" type="rss"
+            htmlUrl="http://www.geekpark.net"
+            xmlUrl="http://feeds.geekpark.net/" />
+        <outline text="所有文章 - UCD大社区"
+            title="所有文章 - UCD大社区" type="rss"
+            htmlUrl="http://ucdchina.com/rss/all"
+            xmlUrl="http://ucdchina.com/rss/all" />
+        <outline text="Chiphell - 分享与交流用户体验的最佳平台"
+            title="Chiphell - 分享与交流用户体验的最佳平台" type="rss"
+            htmlUrl="http://www.chiphell.com/forum.php"
+            xmlUrl="http://www.chiphell.com/forum.php?mod=rss" />
+        <outline text="Startup News"
+            title="Startup News" type="rss"
+            htmlUrl="http://news.dbanotes.net/"
+            xmlUrl="http://news.dbanotes.net/rss" />
+        <outline text="ChokStick 骚货"
+            title="ChokStick 骚货" type="rss"
+            htmlUrl="http://chokstick.com"
+            xmlUrl="http://chokstick.com/feed/" />
+    </body>
+</opml>
