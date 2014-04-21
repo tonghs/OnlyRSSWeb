@@ -13,10 +13,6 @@
             title="Engadget 中国版" type="rss"
             htmlUrl="http://cn.engadget.com"
             xmlUrl="http://cn.engadget.com/rss.xml" />
-        <outline text="Mac oo Life"
-            title="Mac oo Life" type="rss"
-            htmlUrl="http://macoolife.com"
-            xmlUrl="http://macoolife.com/blog/feed/" />
         <outline text="MacIdea - OS X Mountain Lion"
             title="MacIdea - OS X Mountain Lion" type="rss"
             htmlUrl="http://mac.pcbeta.com"
@@ -25,10 +21,6 @@
             title="MacX - 新闻,讨论,活动" type="rss"
             htmlUrl="http://www.macx.cn"
             xmlUrl="http://www.macx.cn/forum.php?mod=rss&amp;fid=4000" />
-        <outline text="Matrix67: My Blog"
-            title="Matrix67: My Blog" type="rss"
-            htmlUrl="http://www.matrix67.com"
-            xmlUrl="http://feed.feedsky.com/matrix67" />
         <outline text="OSX玩意 / OSXToy"
             title="OSX玩意 / OSXToy" type="rss"
             htmlUrl="http://www.osxtoy.com"
@@ -93,5 +85,9 @@
             title="相机入魔" type="rss"
             htmlUrl="http://xjrumo.com"
             xmlUrl="http://xjrumo.com/feed/" />
+        <outline text="Matrix67: My Blog"
+            title="Matrix67: My Blog" type="rss"
+            htmlUrl="http://www.matrix67.com/blog"
+            xmlUrl="http://feed.feedsky.com/matrix67" />
     </body>
 </opml>

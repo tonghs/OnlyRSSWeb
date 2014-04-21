@@ -1,0 +1,165 @@
+*** Starting uWSGI 1.9.20 (64bit) on [Mon Apr 21 10:37:15 2014] ***
+compiled with version: 4.6.3 on 09 December 2013 08:56:59
+os: Linux-3.7.10-gentoo-r1 #1 SMP Tue Mar 19 02:06:32 CST 2013
+nodename: vps1635
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /home/tonghs/git/OnlyRSSWeb
+writing pidfile to ./uwsgi.pid
+detected binary path: /usr/bin/uwsgi
+your processes number limit is 15973
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :8000 fd 3
+Python version: 2.7.5 (default, Dec 15 2013, 10:42:50)  [GCC 4.6.3]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x7f3922419c70
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 218424 bytes (213 KB) for 2 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x7f3922419c70 pid: 5045 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 5045)
+spawned uWSGI worker 1 (pid: 5047, cores: 1)
+spawned uWSGI worker 2 (pid: 5048, cores: 1)
+[pid: 5047|app: 0|req: 1/1] 125.39.108.69 () {42 vars in 790 bytes} [Mon Apr 21 10:37:21 2014] GET / => generated 2337 bytes in 341 msecs (HTTP/1.1 200) 5 headers in 392 bytes (1 switches on core 0)
+[pid: 5048|app: 0|req: 1/2] 125.39.108.69 () {44 vars in 792 bytes} [Mon Apr 21 10:37:22 2014] GET /get_all_feed_list => generated 0 bytes in 345 msecs (HTTP/1.1 301) 2 headers in 130 bytes (1 switches on core 0)
+[pid: 5047|app: 0|req: 2/3] 125.39.108.69 () {44 vars in 794 bytes} [Mon Apr 21 10:37:23 2014] GET /get_all_feed_list/ => generated 6442 bytes in 103 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5048|app: 0|req: 2/4] 125.39.108.69 () {42 vars in 755 bytes} [Mon Apr 21 10:37:23 2014] GET /get_feed_count => generated 639 bytes in 50 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5047|app: 0|req: 3/5] 125.39.108.69 () {42 vars in 770 bytes} [Mon Apr 21 10:37:23 2014] GET /get_feed_content/?id=0 => generated 68487 bytes in 28 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5048|app: 0|req: 3/6] 125.39.108.69 () {42 vars in 760 bytes} [Mon Apr 21 10:37:25 2014] GET /del_item?id=33424 => generated 0 bytes in 1 msecs (HTTP/1.1 301) 2 headers in 130 bytes (1 switches on core 0)
+[pid: 5048|app: 0|req: 4/7] 125.39.108.69 () {42 vars in 762 bytes} [Mon Apr 21 10:37:25 2014] GET /del_item/?id=33424 => generated 7 bytes in 4 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5047|app: 0|req: 4/8] 125.39.108.69 () {40 vars in 775 bytes} [Mon Apr 21 10:37:26 2014] GET /setting/ => generated 2545 bytes in 13 msecs (HTTP/1.1 200) 2 headers in 73 bytes (1 switches on core 0)
+[pid: 5048|app: 0|req: 5/9] 125.39.108.69 () {42 vars in 771 bytes} [Mon Apr 21 10:37:27 2014] GET /get_all_feed_list/ => generated 6442 bytes in 85 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5047|app: 0|req: 5/10] 125.39.108.69 () {40 vars in 767 bytes} [Mon Apr 21 10:37:34 2014] GET / => generated 2337 bytes in 15 msecs (HTTP/1.1 200) 5 headers in 392 bytes (1 switches on core 0)
+[pid: 5048|app: 0|req: 6/11] 125.39.108.69 () {42 vars in 763 bytes} [Mon Apr 21 10:37:34 2014] GET /get_all_feed_list/ => generated 6442 bytes in 14 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5047|app: 0|req: 6/12] 125.39.108.69 () {42 vars in 755 bytes} [Mon Apr 21 10:37:34 2014] GET /get_feed_count => generated 639 bytes in 11 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5048|app: 0|req: 7/13] 125.39.108.69 () {42 vars in 770 bytes} [Mon Apr 21 10:37:34 2014] GET /get_feed_content/?id=0 => generated 75511 bytes in 19 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5047|app: 0|req: 7/14] 125.39.108.69 () {40 vars in 775 bytes} [Mon Apr 21 10:37:37 2014] GET /setting/ => generated 2545 bytes in 11 msecs (HTTP/1.1 200) 2 headers in 73 bytes (1 switches on core 0)
+[pid: 5048|app: 0|req: 8/15] 125.39.108.69 () {42 vars in 771 bytes} [Mon Apr 21 10:37:37 2014] GET /get_all_feed_list/ => generated 6442 bytes in 13 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5047|app: 0|req: 8/16] 125.39.108.69 () {42 vars in 762 bytes} [Mon Apr 21 10:37:39 2014] GET /del_feed?id=29 => generated 7 bytes in 11 msecs (HTTP/1.1 200) 2 headers in 73 bytes (1 switches on core 0)
+[pid: 5048|app: 0|req: 9/17] 125.39.108.69 () {40 vars in 767 bytes} [Mon Apr 21 10:37:41 2014] GET / => generated 2337 bytes in 13 msecs (HTTP/1.1 200) 5 headers in 392 bytes (1 switches on core 0)
+[pid: 5047|app: 0|req: 9/18] 125.39.108.69 () {42 vars in 763 bytes} [Mon Apr 21 10:37:41 2014] GET /get_all_feed_list/ => generated 6192 bytes in 13 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5048|app: 0|req: 10/19] 125.39.108.69 () {42 vars in 755 bytes} [Mon Apr 21 10:37:41 2014] GET /get_feed_count => generated 639 bytes in 6 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5047|app: 0|req: 10/20] 125.39.108.69 () {42 vars in 770 bytes} [Mon Apr 21 10:37:41 2014] GET /get_feed_content/?id=0 => generated 75511 bytes in 10 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5048|app: 0|req: 11/21] 125.39.108.69 () {42 vars in 808 bytes} [Mon Apr 21 10:37:46 2014] GET /add_feed?url=http%3A//chokstick.com/feed/ => generated 0 bytes in 1 msecs (HTTP/1.1 301) 2 headers in 154 bytes (1 switches on core 0)
+200
+[pid: 5048|app: 0|req: 12/22] 125.39.108.69 () {42 vars in 810 bytes} [Mon Apr 21 10:37:46 2014] GET /add_feed/?url=http%3A//chokstick.com/feed/ => generated 7 bytes in 6553 msecs (HTTP/1.1 200) 2 headers in 73 bytes (1 switches on core 0)
+[pid: 5047|app: 0|req: 11/23] 125.39.108.69 () {42 vars in 755 bytes} [Mon Apr 21 10:37:53 2014] GET /get_feed_count => generated 706 bytes in 7 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5047|app: 0|req: 12/24] 125.39.108.69 () {42 vars in 770 bytes} [Mon Apr 21 10:37:53 2014] GET /get_feed_content/?id=0 => generated 75511 bytes in 21 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5048|app: 0|req: 13/25] 125.39.108.69 () {42 vars in 763 bytes} [Mon Apr 21 10:37:53 2014] GET /get_all_feed_list/ => generated 6443 bytes in 31 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5047|app: 0|req: 13/26] 125.39.108.69 () {42 vars in 755 bytes} [Mon Apr 21 10:37:53 2014] GET /get_feed_count => generated 706 bytes in 8 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5048|app: 0|req: 14/27] 125.39.108.69 () {40 vars in 775 bytes} [Mon Apr 21 10:37:54 2014] GET /setting/ => generated 2545 bytes in 10 msecs (HTTP/1.1 200) 2 headers in 73 bytes (1 switches on core 0)
+[pid: 5047|app: 0|req: 14/28] 125.39.108.69 () {42 vars in 771 bytes} [Mon Apr 21 10:37:55 2014] GET /get_all_feed_list/ => generated 6443 bytes in 16 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+...gracefully killing workers...
+Gracefully killing worker 1 (pid: 5047)...
+Gracefully killing worker 2 (pid: 5048)...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+binary reloading uWSGI...
+chdir() to /home/tonghs/git/OnlyRSSWeb
+closing all non-uwsgi socket fds > 2 (max_fd = 1024)...
+found fd 3 mapped to socket 0 (:8000)
+running /usr/bin/uwsgi
+[uWSGI] parsing config file rss.xml
+open("./python_plugin.so"): No such file or directory [core/utils.c line 3614]
+!!! UNABLE to load uWSGI plugin: ./python_plugin.so: cannot open shared object file: No such file or directory !!!
+*** Starting uWSGI 1.9.20 (64bit) on [Mon Apr 21 10:41:30 2014] ***
+compiled with version: 4.6.3 on 09 December 2013 08:56:59
+os: Linux-3.7.10-gentoo-r1 #1 SMP Tue Mar 19 02:06:32 CST 2013
+nodename: vps1635
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /home/tonghs/git/OnlyRSSWeb
+detected binary path: /usr/bin/uwsgi
+your processes number limit is 15973
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 inherited INET address :8000 fd 3
+Python version: 2.7.5 (default, Dec 15 2013, 10:42:50)  [GCC 4.6.3]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x7f621e38fbf0
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 218424 bytes (213 KB) for 2 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x7f621e38fbf0 pid: 5045 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+gracefully (RE)spawned uWSGI master process (pid: 5045)
+spawned uWSGI worker 1 (pid: 5123, cores: 1)
+spawned uWSGI worker 2 (pid: 5124, cores: 1)
+[pid: 5123|app: 0|req: 1/1] 125.39.108.69 () {42 vars in 805 bytes} [Mon Apr 21 10:41:37 2014] GET /setting/ => generated 2545 bytes in 283 msecs (HTTP/1.1 200) 2 headers in 73 bytes (1 switches on core 0)
+[pid: 5124|app: 0|req: 1/2] 125.39.108.69 () {44 vars in 799 bytes} [Mon Apr 21 10:41:38 2014] GET /get_all_feed_list => generated 0 bytes in 286 msecs (HTTP/1.1 301) 2 headers in 130 bytes (1 switches on core 0)
+[pid: 5123|app: 0|req: 2/3] 125.39.108.69 () {44 vars in 801 bytes} [Mon Apr 21 10:41:39 2014] GET /get_all_feed_list/ => generated 6443 bytes in 91 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5124|app: 0|req: 2/4] 125.39.108.69 () {46 vars in 849 bytes} [Mon Apr 21 10:41:39 2014] GET /favicon.ico => generated 0 bytes in 8 msecs (HTTP/1.1 301) 2 headers in 139 bytes (1 switches on core 0)
+[pid: 5123|app: 0|req: 3/5] 125.39.108.69 () {44 vars in 790 bytes} [Mon Apr 21 10:41:45 2014] GET /del_feed?id=3 => generated 7 bytes in 13 msecs (HTTP/1.1 200) 2 headers in 73 bytes (1 switches on core 0)
+[pid: 5124|app: 0|req: 3/6] 125.39.108.69 () {40 vars in 766 bytes} [Mon Apr 21 10:41:46 2014] GET / => generated 2337 bytes in 26 msecs (HTTP/1.1 200) 5 headers in 392 bytes (1 switches on core 0)
+[pid: 5123|app: 0|req: 4/7] 125.39.108.69 () {42 vars in 762 bytes} [Mon Apr 21 10:41:46 2014] GET /get_all_feed_list/ => generated 6200 bytes in 8 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5124|app: 0|req: 4/8] 125.39.108.69 () {42 vars in 754 bytes} [Mon Apr 21 10:41:47 2014] GET /get_feed_count => generated 706 bytes in 8 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5123|app: 0|req: 5/9] 125.39.108.69 () {42 vars in 769 bytes} [Mon Apr 21 10:41:47 2014] GET /get_feed_content/?id=0 => generated 66295 bytes in 11 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5124|app: 0|req: 5/10] 125.39.108.69 () {42 vars in 817 bytes} [Mon Apr 21 10:41:49 2014] GET /add_feed?url=http%3A//macoolife.com/blog/feed/ => generated 0 bytes in 1 msecs (HTTP/1.1 301) 2 headers in 159 bytes (1 switches on core 0)
+Internal Server Error: /add_feed/
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/django/core/handlers/base.py", line 114, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./OnlyRSS/views.py", line 120, in add_feed
+    home_url = feed_manager.get_home_url(d.feed.link)
+  File "/usr/lib64/python2.7/site-packages/feedparser.py", line 416, in __getattr__
+    raise AttributeError, "object has no attribute '%s'" % key
+AttributeError: object has no attribute 'link'
+[pid: 5124|app: 0|req: 6/11] 125.39.108.69 () {42 vars in 819 bytes} [Mon Apr 21 10:41:49 2014] GET /add_feed/?url=http%3A//macoolife.com/blog/feed/ => generated 8574 bytes in 2665 msecs (HTTP/1.1 500) 1 headers in 64 bytes (1 switches on core 0)
+[pid: 5123|app: 0|req: 6/12] 125.39.108.69 () {40 vars in 774 bytes} [Mon Apr 21 10:41:54 2014] GET /setting/ => generated 2545 bytes in 8 msecs (HTTP/1.1 200) 2 headers in 73 bytes (1 switches on core 0)
+[pid: 5124|app: 0|req: 7/13] 125.39.108.69 () {42 vars in 770 bytes} [Mon Apr 21 10:41:55 2014] GET /get_all_feed_list/ => generated 6200 bytes in 54 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+[pid: 5123|app: 0|req: 7/14] 125.39.108.69 () {42 vars in 805 bytes} [Mon Apr 21 10:42:50 2014] GET /setting/ => generated 2545 bytes in 6 msecs (HTTP/1.1 200) 2 headers in 73 bytes (1 switches on core 0)
+[pid: 5124|app: 0|req: 8/15] 125.39.108.69 () {44 vars in 800 bytes} [Mon Apr 21 10:42:51 2014] GET /get_all_feed_list => generated 0 bytes in 1 msecs (HTTP/1.1 301) 2 headers in 130 bytes (1 switches on core 0)
+[pid: 5124|app: 0|req: 9/16] 125.39.108.69 () {44 vars in 802 bytes} [Mon Apr 21 10:42:51 2014] GET /get_all_feed_list/ => generated 6200 bytes in 8 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+*** Starting uWSGI 1.9.20 (64bit) on [Mon Apr 21 10:49:34 2014] ***
+compiled with version: 4.6.3 on 09 December 2013 08:56:59
+os: Linux-3.7.10-gentoo-r1 #1 SMP Tue Mar 19 02:06:32 CST 2013
+nodename: vps1635
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /home/tonghs/git/OnlyRSSWeb
+writing pidfile to ./uwsgi.pid
+detected binary path: /usr/bin/uwsgi
+your processes number limit is 15973
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (:8000).
+bind(): Address already in use [core/socket.c line 779]
+[pid: 5124|app: 0|req: 10/17] 125.39.108.69 () {40 vars in 767 bytes} [Mon Apr 21 10:49:43 2014] GET / => generated 2337 bytes in 7 msecs (HTTP/1.1 200) 5 headers in 392 bytes (1 switches on core 0)
+[pid: 5123|app: 0|req: 8/18] 125.39.108.69 () {42 vars in 763 bytes} [Mon Apr 21 10:49:44 2014] GET /get_all_feed_list/ => generated 6179 bytes in 12 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5124|app: 0|req: 11/19] 125.39.108.69 () {42 vars in 755 bytes} [Mon Apr 21 10:49:44 2014] GET /get_feed_count => generated 706 bytes in 7 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5123|app: 0|req: 9/20] 125.39.108.69 () {42 vars in 770 bytes} [Mon Apr 21 10:49:44 2014] GET /get_feed_content/?id=0 => generated 58047 bytes in 16 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5124|app: 0|req: 12/21] 125.39.108.69 () {40 vars in 775 bytes} [Mon Apr 21 10:49:46 2014] GET /setting/ => generated 2545 bytes in 11 msecs (HTTP/1.1 200) 2 headers in 73 bytes (1 switches on core 0)
+[pid: 5123|app: 0|req: 10/22] 125.39.108.69 () {42 vars in 770 bytes} [Mon Apr 21 10:49:46 2014] GET /get_all_feed_list/ => generated 6179 bytes in 13 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5124|app: 0|req: 13/23] 125.39.108.69 () {42 vars in 762 bytes} [Mon Apr 21 10:49:54 2014] GET /del_feed?id=63 => generated 7 bytes in 16 msecs (HTTP/1.1 200) 2 headers in 73 bytes (1 switches on core 0)
+[pid: 5123|app: 0|req: 11/24] 125.39.108.69 () {40 vars in 767 bytes} [Mon Apr 21 10:49:56 2014] GET / => generated 2337 bytes in 13 msecs (HTTP/1.1 200) 5 headers in 392 bytes (1 switches on core 0)
+[pid: 5124|app: 0|req: 14/25] 125.39.108.69 () {42 vars in 762 bytes} [Mon Apr 21 10:49:56 2014] GET /get_all_feed_list/ => generated 5949 bytes in 19 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5123|app: 0|req: 12/26] 125.39.108.69 () {42 vars in 754 bytes} [Mon Apr 21 10:49:56 2014] GET /get_feed_count => generated 639 bytes in 9 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5124|app: 0|req: 15/27] 125.39.108.69 () {42 vars in 769 bytes} [Mon Apr 21 10:49:56 2014] GET /get_feed_content/?id=0 => generated 53155 bytes in 11 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5123|app: 0|req: 13/28] 125.39.108.69 () {42 vars in 809 bytes} [Mon Apr 21 10:50:00 2014] GET /add_feed/?url=http%3A//chokstick.com/feed/ => generated 7 bytes in 10850 msecs (HTTP/1.1 200) 2 headers in 73 bytes (1 switches on core 0)
+[pid: 5124|app: 0|req: 16/29] 125.39.108.69 () {42 vars in 770 bytes} [Mon Apr 21 10:50:11 2014] GET /get_feed_content/?id=0 => generated 45994 bytes in 21 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5123|app: 0|req: 14/30] 125.39.108.69 () {42 vars in 754 bytes} [Mon Apr 21 10:50:11 2014] GET /get_feed_count => generated 706 bytes in 14 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5124|app: 0|req: 17/31] 125.39.108.69 () {42 vars in 763 bytes} [Mon Apr 21 10:50:11 2014] GET /get_all_feed_list/ => generated 6179 bytes in 17 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5123|app: 0|req: 15/32] 125.39.108.69 () {42 vars in 755 bytes} [Mon Apr 21 10:50:11 2014] GET /get_feed_count => generated 706 bytes in 9 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5124|app: 0|req: 18/33] 125.39.108.69 () {42 vars in 770 bytes} [Mon Apr 21 10:50:11 2014] GET /get_feed_content/?id=0 => generated 45994 bytes in 11 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)
+[pid: 5123|app: 0|req: 16/34] 125.39.108.69 () {40 vars in 775 bytes} [Mon Apr 21 10:50:17 2014] GET /setting/ => generated 2545 bytes in 10 msecs (HTTP/1.1 200) 2 headers in 73 bytes (1 switches on core 0)
+[pid: 5124|app: 0|req: 19/35] 125.39.108.69 () {42 vars in 771 bytes} [Mon Apr 21 10:50:17 2014] GET /get_all_feed_list/ => generated 6179 bytes in 15 msecs (HTTP/1.1 200) 1 headers in 59 bytes (1 switches on core 0)

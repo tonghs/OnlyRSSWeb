@@ -1,8 +1,10 @@
 #coding=utf-8
 import threading
+import urllib
 import xml
 from django.core import serializers
 import sys
+import logging
 from Common.ThreadManager import ThreadManager
 from OnlyRSS.models import Feed
 
@@ -14,6 +16,7 @@ sys.setdefaultencoding('utf-8')
 订阅管理
 '''
 
+logger = logging.getLogger("django")
 
 class FeedManager:
     thread_manager = ThreadManager()
@@ -44,6 +47,21 @@ class FeedManager:
 
         return home_url
 
+    def get_icon(self, home_url):
+        default_icon = "/favicon.ico"
+        ico_url = "{0}/{1}".format(home_url, "/favicon.ico")
+        c = urllib.urlopen(ico_url)
+        # 验证 ico 是否存在
+        if c:
+            if c.code == 404:
+                ico_url = default_icon 
+            else:
+                html = c.read()
+                if not html or '404' in html or 'Not Found' in html or 'not found' in html:
+                    ico_url = default_icon
+
+        return ico_url
+
     def handle_opml(self, req):
         try:
             xml_str = req.FILES['file'].read()
@@ -55,7 +73,7 @@ class FeedManager:
                     home_url = self.get_home_url(node.getAttribute('htmlUrl'))
 
                     feed = Feed(title=node.getAttribute('title'), url=home_url, feed_url=node.getAttribute('xmlUrl'),
-                                icon=home_url + '/favicon.ico', user_id=1)
+                                icon=get_icon(home_url), user_id=1)
                     feed.save()
 
                     while int(self.thread_manager.thread_count_dic['import_thread_count']) == \

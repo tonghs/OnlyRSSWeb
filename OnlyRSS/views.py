@@ -119,7 +119,7 @@ def add_feed(request):
     if feed_list.count() == 0:
         home_url = feed_manager.get_home_url(d.feed.link)
 
-        feed = Feed(title=d.feed.title, url=d.feed.link, feed_url=url, icon=home_url + '/favicon.ico', user_id=1)
+        feed = Feed(title=d.feed.title, url=d.feed.link, feed_url=url, icon=feed_manager.get_icon(home_url), user_id=1)
         feed.save()
         if len(d.entries) > 0:
             item_manager.insert_to_item(d, feed)
