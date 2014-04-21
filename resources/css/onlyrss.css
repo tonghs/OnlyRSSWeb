@@ -66,11 +66,12 @@ a:hover{
     cursor: pointer;
     float: right;
     font-size: 40px;
+    color: #aaa;
     text-decoration: none;
 }
 
 .menu_more:hover{
-    color: #dddddd;
+    color: #000;
     cursor: pointer;
     float: right;
     font-size: 40px;
