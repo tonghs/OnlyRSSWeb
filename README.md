@@ -92,3 +92,11 @@ Web 端：可使用 `nginx` + `uWSGI` 部署，`ubuntu 12.10` 测试可正常部
 * update_service 遇到 badurl block 长期占用资源 bug
 * 去除某些文章中的广告
 * 其他 bug
+
+2014
+* bug：feed 列表过长时，没有滚动条
+* bug：订阅管理 url 过长时导致现实不正确
+* 优化：menu 中 “更多” 图标的颜色
+* 其他
+
+
