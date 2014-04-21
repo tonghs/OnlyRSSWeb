@@ -2,8 +2,6 @@
 
 一个 `RSS` 阅读器的 Web 版本，基于 `Python`、`Django` 和 `MySQL`。
 
-demo：[rss.tonghs.com](http://rss.tonghs.com)，用户名密码均为 tonghs，请不要删除已有项目，多谢。
-
 **部署**
 
 分 Web 端和后台脚本两部分。
