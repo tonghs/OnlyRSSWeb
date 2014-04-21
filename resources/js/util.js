@@ -326,7 +326,7 @@ function closeLoad() {
 function setHeightAndWidth(){
     var height = $('html').height() - $('.header').height() - 30;
     $('#content_container').height(height);
-
+    $('#feed_list').height(height);
     $("#tipDiv").css('left', ($('html').width() - 170) / 2 + 'px');
 }
 

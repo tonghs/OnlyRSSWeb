@@ -228,6 +228,7 @@ a:hover{
     border-width: 1px 10px 1px 0;
     border-color: #dddddd;
     border-style: solid ;
+    overflow-y: auto;
 }
 
 
