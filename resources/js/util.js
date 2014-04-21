@@ -181,12 +181,19 @@ function getAllFeedManageList(){
             var arrObj = JSON.parse(data);
             for (var i = 0; i < arrObj.length; i++){
                 var url = arrObj[i].fields.feed_url;
+                var url_txt = '';
+                var max_length = 60;
+                if (url.length > max_length){
+                    url_txt = url.substr(0, max_length) + '...';
+                } else {
+                    url_txt = url;
+                }
                 $('#feed_manage_list ul').append('<li class="feed">' +
                     '<div class="feed_manage_item" style="background-image: url(\'' + arrObj[i].fields.icon + '\'); min-width:350px;">' +
                     '<input type="checkbox" class="feed_id" name="feed_id" value="' +
                     arrObj[i].pk + '"/>'+
                     arrObj[i].fields.title + '</div>' +
-                    '<div style="min-width:450px;"><a href="' + url + '">' + url +
+                    '<div style="min-width:450px;"><a title="' + url +  '" href="' + url + '">' + url_txt +
                     '</a></div><div><a href="javascript:void(0);" onclick="delFeed(' + arrObj[i].pk +
                     ', $(this));">删除</a></div></li><div class="clear"></div>')
             }

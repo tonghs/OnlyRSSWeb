@@ -89,5 +89,9 @@
             title="无忌摄影论坛 - 人文与纪实" type="rss"
             htmlUrl="http://forum.xitek.com/forum.php?mod=forumdisplay&amp;fid=46"
             xmlUrl="http://forum.xitek.com/forum.php?mod=rss&amp;fid=46&amp;auth=90a6qZU05%2FFvKYMd5zTvuxrqsh8%2FUODACcCX4%2BnfdhAoINBHpnKVCYdfl04W%2BwOW" />
+        <outline text="相机入魔"
+            title="相机入魔" type="rss"
+            htmlUrl="http://xjrumo.com"
+            xmlUrl="http://xjrumo.com/feed/" />
     </body>
 </opml>
