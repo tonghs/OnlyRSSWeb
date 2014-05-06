@@ -53,6 +53,10 @@
             title="所有文章 - UCD大社区" type="rss"
             htmlUrl="http://ucdchina.com/rss/all"
             xmlUrl="http://ucdchina.com/rss/all" />
+        <outline text="什么值得买"
+            title="什么值得买" type="rss"
+            htmlUrl="http://www.smzdm.com"
+            xmlUrl="http://www.smzdm.com/fenlei/diannaoshuma/feed" />
         <outline text="Chiphell - 分享与交流用户体验的最佳平台"
             title="Chiphell - 分享与交流用户体验的最佳平台" type="rss"
             htmlUrl="http://www.chiphell.com/forum.php"
@@ -80,7 +84,11 @@
         <outline text="无忌摄影论坛 - 人文与纪实"
             title="无忌摄影论坛 - 人文与纪实" type="rss"
             htmlUrl="http://forum.xitek.com/forum.php?mod=forumdisplay&amp;fid=46"
-            xmlUrl="http://forum.xitek.com/forum.php?mod=rss&amp;fid=46&amp;auth=90a6qZU05%2FFvKYMd5zTvuxrqsh8%2FUODACcCX4%2BnfdhAoINBHpnKVCYdfl04W%2BwOW" />
+            xmlUrl="http://forum.xitek.com/forum.php?mod=rss&amp;fid=46" />
+        <outline text="Leica中文摄影杂志"
+            title="Leica中文摄影杂志" type="rss"
+            htmlUrl="http://www.leica.org.cn/index.php"
+            xmlUrl="http://feed.feedsky.com/leica" />
         <outline text="相机入魔"
             title="相机入魔" type="rss"
             htmlUrl="http://xjrumo.com"
