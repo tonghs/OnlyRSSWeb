@@ -263,13 +263,21 @@ a:hover{
 }
 
 .item{
-    border: 1px solid #ffffff;
+    border: 1px solid #dddddd;
     margin-bottom: 10px;
     padding-top: 5px;
+    transition: all 0.2s;
+    -moz-transition: all 0.2s; /* Firefox 4 */
+    -webkit-transition: all 0.2s; /* Safari 和 Chrome */
+    -o-transition: all 0.2s; /* Opera */
 }
 
 .item:hover{
-    border: 1px solid #dddddd;
+    box-shadow:4px 2px 3px 2px #aaaaaa;
+    transition: all 0.2s;
+    -moz-transition: all 0.2s; /* Firefox 4 */
+    -webkit-transition: all 0.2s; /* Safari 和 Chrome */
+    -o-transition: all 0.2s; /* Opera */
 }
 
 .item_title{
@@ -335,7 +343,13 @@ a:hover{
     background-color: black;
     float: left;
     height: 16px;
-    width: 5px;
+    width: 16px;
+    padding: 2px;
+    margin-right: 7px;
+}
+
+.unread a{
+    color: #fff;
 }
 
 
@@ -343,9 +357,15 @@ a:hover{
     background-color: #dddddd;
     float: left;
     height: 16px;
-    width: 5px;
+    width: 16px;
+    color: #fff;
+    padding: 2px;
+    margin-right: 7px;
 }
 
+.read a{
+    color: #fff;
+}
 
 .app_content{
     background: url('/resources/image/phone.png') no-repeat 0 80px;

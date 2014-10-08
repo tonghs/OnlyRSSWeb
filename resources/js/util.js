@@ -23,13 +23,17 @@ function getItem(id, obj, isShowLoading){
 function parseContent(data){
     var arrObj = JSON.parse(data);
     for (var i = 0; i < arrObj.length; i++){
-        $('#content_container').append('<div class="item" onclick="delItem('
+        $('#content_container').append('<div class="item" id="item_'
+            + arrObj[i].id
+            + '"onclick="delItem('
             + arrObj[i].id
             + ', document.getElementById(\''
             + arrObj[i].id
             + '\'))"><div class="unread" id="'
             + arrObj[i].id
-            + '">&nbsp;</div><div class="item_title"><a href=" '
+            + '">&nbsp;<a href="javascript:hide('
+            + arrObj[i].id
+            + ');">X</a></div><div class="item_title"><a href=" '
             + arrObj[i].url + ' " target="_blank">'
             + arrObj[i].title + '</a></div>'
             + '<div class="item_content">' + arrObj[i].content + '</div>'
@@ -39,6 +43,10 @@ function parseContent(data){
     $('#content_container').append('<div class="next" id="next_page" onclick="getMore(0, $(this))">加载更多</div>');
    	showImg();
     closeLoad();
+}
+
+function hide(id){
+    $("#item_" + id).slideUp();
 }
 
 function showImg(){
