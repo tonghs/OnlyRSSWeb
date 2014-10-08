@@ -250,6 +250,10 @@ a:hover{
     background-size: 14px 14px;
     padding: 5px 0 5px 28px;
     width:180px;
+    transition: all 0.3s;
+    -moz-transition: all 0.3s; /* Firefox 4 */
+    -webkit-transition: all 0.3s; /* Safari 和 Chrome */
+    -o-transition: all 0.3s; /* Opera */
 }
 
 .feed_manage_item{
@@ -259,25 +263,29 @@ a:hover{
 }
 
 .feed_item:hover{
-     background-color: gray;
+     background-color: #ddd;
+    transition: all 0.3s;
+    -moz-transition: all 0.3s; /* Firefox 4 */
+    -webkit-transition: all 0.3s; /* Safari 和 Chrome */
+    -o-transition: all 0.3s; /* Opera */
 }
 
 .item{
     border: 1px solid #dddddd;
     margin-bottom: 10px;
     padding-top: 5px;
-    transition: all 0.2s;
-    -moz-transition: all 0.2s; /* Firefox 4 */
-    -webkit-transition: all 0.2s; /* Safari 和 Chrome */
-    -o-transition: all 0.2s; /* Opera */
+    transition: all 0.3s;
+    -moz-transition: all 0.3s; /* Firefox 4 */
+    -webkit-transition: all 0.3s; /* Safari 和 Chrome */
+    -o-transition: all 0.3s; /* Opera */
 }
 
 .item:hover{
     box-shadow:4px 2px 3px 2px #aaaaaa;
-    transition: all 0.2s;
-    -moz-transition: all 0.2s; /* Firefox 4 */
-    -webkit-transition: all 0.2s; /* Safari 和 Chrome */
-    -o-transition: all 0.2s; /* Opera */
+    transition: all 0.3s;
+    -moz-transition: all 0.3s; /* Firefox 4 */
+    -webkit-transition: all 0.3s; /* Safari 和 Chrome */
+    -o-transition: all 0.3s; /* Opera */
 }
 
 .item_title{

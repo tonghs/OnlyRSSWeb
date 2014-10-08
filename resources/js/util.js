@@ -80,18 +80,22 @@ function getMore(unreadCount, obj){
 
         for (var i = 0; i < arrObj.length; i++){
             if($('#' + arrObj[i].id).size() <= 0){
-                $('#content_container').append('<div class="item" onclick="delItem('
-                + arrObj[i].id
-                + ', document.getElementById(\''
-                + arrObj[i].id
-                + '\'))"><div class="unread" id="'
-                + arrObj[i].id
-                + '">&nbsp;</div><div class="item_title"><a href=" '
-                + arrObj[i].url + ' " target="_blank">'
-                + arrObj[i].title + '</a></div>'
-                + '<div class="item_content">' + arrObj[i].content + '</div>'
-                + '<div class="item_ops">来自:<a href="' + arrObj[i].feed_url + '" target="_blank">'
-                + arrObj[i].feed_title + '</a>');
+                $('#content_container').append('<div class="item" id="item_'
+                    + arrObj[i].id
+                    + '"onclick="delItem('
+                    + arrObj[i].id
+                    + ', document.getElementById(\''
+                    + arrObj[i].id
+                    + '\'))"><div class="unread" id="'
+                    + arrObj[i].id
+                    + '">&nbsp;<a href="javascript:hide('
+                    + arrObj[i].id
+                    + ');">X</a></div><div class="item_title"><a href=" '
+                    + arrObj[i].url + ' " target="_blank">'
+                    + arrObj[i].title + '</a></div>'
+                    + '<div class="item_content">' + arrObj[i].content + '</div>'
+                    + '<div class="item_ops">来自:<a href="' + arrObj[i].feed_url + '" target="_blank">'
+                    + arrObj[i].feed_title + '</a>')
             }
         }
         if (obj != null){
