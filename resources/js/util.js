@@ -31,9 +31,9 @@ function parseContent(data){
             + arrObj[i].id
             + '\'))"><div class="unread" id="'
             + arrObj[i].id
-            + '">&nbsp;<a href="javascript:hide('
+            + '"><a href="javascript:hide('
             + arrObj[i].id
-            + ');">X</a></div><div class="item_title"><a href=" '
+            + ');">x</a></div><div class="item_title"><a href=" '
             + arrObj[i].url + ' " target="_blank">'
             + arrObj[i].title + '</a></div>'
             + '<div class="item_content">' + arrObj[i].content + '</div>'
@@ -88,9 +88,9 @@ function getMore(unreadCount, obj){
                     + arrObj[i].id
                     + '\'))"><div class="unread" id="'
                     + arrObj[i].id
-                    + '">&nbsp;<a href="javascript:hide('
+                    + '"><a href="javascript:hide('
                     + arrObj[i].id
-                    + ');">X</a></div><div class="item_title"><a href=" '
+                    + ');">x</a></div><div class="item_title"><a href=" '
                     + arrObj[i].url + ' " target="_blank">'
                     + arrObj[i].title + '</a></div>'
                     + '<div class="item_content">' + arrObj[i].content + '</div>'

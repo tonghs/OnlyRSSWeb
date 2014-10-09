@@ -20,7 +20,7 @@ li{
 }
 
 .total_width{
-    width: 940px;
+    /*width: 940px;*/
     margin: auto;
 }
 
@@ -272,7 +272,7 @@ a:hover{
 
 .item{
     border: 1px solid #dddddd;
-    margin-bottom: 10px;
+    margin: 15px 0 15px 10px;
     padding-top: 5px;
     transition: all 0.3s;
     -moz-transition: all 0.3s; /* Firefox 4 */
@@ -325,8 +325,82 @@ a:hover{
 }
 
 #ops{
-    border-bottom: 1px solid #dddddd;
-    padding-right: 15px;
+    /*border-bottom: 1px solid #dddddd;
+    padding-right: 15px;*/
+    float: left;
+    padding-top: 4px;
+    margin-left: 35px;
+
+}
+
+#ops .icon{
+    background-repeat: no-repeat;
+    float: left;
+    width: 50px;
+    height: 50px;
+    display: block;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    -o-transition: background  0.3s ease-in-out;
+    transition: background  0.3s ease-in-out;
+}
+
+#ops .icon:hover{
+    background-repeat: no-repeat;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    -o-transition: background  0.3s ease-in-out;
+    transition: background  0.3s ease-in-out;
+}
+
+
+#ops .icon_{
+    background-size: 50px;
+}
+
+#ops .icon__{
+    background-size: 40px;
+    background-position: center;
+}
+
+#ops #read_all{
+    background-image: url('http://dn-rsscdn.qbox.me/check1.png');
+}
+
+#ops #read_all:hover{
+    background-image: url('http://dn-rsscdn.qbox.me/check2.png');
+}
+
+#ops #refresh{
+    background-image: url('http://dn-rsscdn.qbox.me/refresh1.png');
+}
+
+#ops #refresh:hover{
+    background-image: url('http://dn-rsscdn.qbox.me/refresh2.png');
+}
+
+#ops #more{
+    background-image: url('http://dn-rsscdn.qbox.me/more1.png');
+}
+
+#ops #more:hover{
+    background-image: url('http://dn-rsscdn.qbox.me/more2.png');
+}
+
+#ops #setting{
+    background-image: url('http://dn-rsscdn.qbox.me/setting1.png');
+}
+
+#ops #setting:hover{
+    background-image: url('http://dn-rsscdn.qbox.me/setting2.png');
+}
+
+#ops #exit{
+    background-image: url('http://dn-rsscdn.qbox.me/exit1.png');
+}
+
+#ops #exit:hover{
+    background-image: url('http://dn-rsscdn.qbox.me/exit2.png');
 }
 
 #feed_ops ul{
@@ -352,8 +426,10 @@ a:hover{
     float: left;
     height: 16px;
     width: 16px;
-    padding: 2px;
-    margin-right: 7px;
+    padding: 1px;
+    text-align: center;
+    margin: -13px 0 0 -10px;
+    border-radius: 10px;
 }
 
 .unread a{
@@ -366,9 +442,10 @@ a:hover{
     float: left;
     height: 16px;
     width: 16px;
-    color: #fff;
-    padding: 2px;
-    margin-right: 7px;
+    padding: 1px;
+    text-align: center;
+    margin: -13px 0 0 -10px;
+    border-radius: 10px;
 }
 
 .read a{
