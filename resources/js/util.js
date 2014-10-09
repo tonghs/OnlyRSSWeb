@@ -124,19 +124,29 @@ function changeBgColor(obj){
 }
 
 function showAddFeedContainer(){
-    if ($("#txt_feed_container").css("display") == "none"){
-        $("#txt_feed_container").css("display", "block");
-        $("#txt_feed").focus();
-    } else {
-        $("#txt_feed_container").css("display", "none");
-    }
-
+    // if ($("#txt_feed_container").css("display") == "none"){
+    //     $("#txt_feed_container").css("display", "block");
+    //     $("#txt_feed").focus();
+    // } else {
+    //     $("#txt_feed_container").css("display", "none");
+    // }
+    $.blockUI({ 
+            message: $('#txt_feed_container'), 
+            css: { 
+                top:        '50%',
+                left:       '50%',
+                textAlign:  'center',
+                width: '300px',
+                background:'none'
+            } 
+    }); 
+    $('.blockOverlay').attr('title','单击关闭').click($.unblockUI); 
 }
 
 function addFeed(){
     showLoad('正在加载...');
     var url = $("#txt_feed").val();
-    $("#txt_feed_container").css("display", "none");
+    //$("#txt_feed_container").css("display", "none");
 
     if (url != null){
         ajaxRequest('/add_feed?url=' + escape(url), function (data){
@@ -146,6 +156,7 @@ function addFeed(){
                 }
                 $("#txt_feed").val("");
                 closeLoad();
+                $.unblockUI();
             });
     }
 }
@@ -336,7 +347,8 @@ function closeLoad() {
 
 
 function setHeightAndWidth(){
-    var height = $('html').height() - $('.header').height() - 30;
+    //var height = $('html').height() - $('.header').height() - 30;
+    var height = $('html').height() - $('#ops').height() - 30;
     $('#content_container').height(height);
     $('#feed_list').height(height);
     $("#tipDiv").css('left', ($('html').width() - 170) / 2 + 'px');

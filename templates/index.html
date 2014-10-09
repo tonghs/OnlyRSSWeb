@@ -11,20 +11,18 @@
 <!--{% include 'menu.html' %}-->
 <div class="wrap">
     <div class="left">
-        <!--<div id="feed_ops">
+        <div id="txt_feed_container">
+            <div id="dialog_title">添加订阅</div>
             <ul>
-                <li id="add_area">
-                    <div id="txt_feed_container">
-                        <input type="text" id="txt_feed" onkeypress="keyboardHandler(13, addFeed)"/>
-                        <a href="javascript:void(0);" onclick="addFeed()">添加</a>
-                    </div>
+                <li>
+                    <input type="text" id="txt_feed" placeholder="请输入订阅源" onkeypress="keyboardHandler(13, addFeed)"/>
                 </li>
-
-            </ul>
-            <div class="clear"></div>
+                <li>
+                    <a href="javascript:void(0);" onclick="addFeed()">添加</a>&nbsp;&nbsp;
+                    <a href="javascript:$.unblockUI();">取消</a>
+                </li>
+            <ul>
         </div>
-        <br>
-        -->
         <div class="logo" title="Only RSS" onclick="window.location.href='/'">Only RSS</div>
 
         <div class="clear"></div>
