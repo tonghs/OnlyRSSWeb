@@ -116,9 +116,9 @@ function changeBgColor(obj){
     });
 
     if(obj.style != null){
-        obj.style.backgroundColor = '#dddddd';
+        obj.style.backgroundColor = '#E8E9EB';
     } else {
-        obj.css('background', '#dddddd');
+        obj.css('background', '#E8E9EB');
     }
 
 }
@@ -166,9 +166,9 @@ function getAllFeedList(){
     ajaxRequest('/get_all_feed_list', function (data){
             $('#feed_list ul').empty();
             var arrObj = JSON.parse(data);
-            $('#feed_list ul').append('<li class="feed" id="get_all" style="background-color: #dddddd">' +
+            $('#feed_list ul').append('<li class="feed" id="get_all" style="background-color: #E8E9EB">' +
                 '<div class="feed_item bold"  onclick="getItem(null, $(\'#get_all\'), true);"' +
-                ' style="padding-left: 10px;">查看所有</div></li>');
+                ' ">查看所有</div></li>');
             for (var i = 0; i < arrObj.length; i++){
                 var title = arrObj[i].fields.title;
                 var titleTemp = title.replace(/[^\x00-\xff]/g,"**");

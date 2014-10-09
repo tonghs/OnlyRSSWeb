@@ -13,6 +13,10 @@ body, ul{
     overflow-x: hidden;
 }
 
+body{
+    background-color: #E8E9EB;
+}
+
 li{
     border: 0;
     cursor: pointer;
@@ -42,7 +46,7 @@ a:hover{
 }
 
 .header{
-    background: #E8E9EB;
+    background: #222429;
     border-bottom: 1px solid #dddddd;
     color: black;
     font-family: 'Open Sans Condensed';
@@ -191,9 +195,14 @@ a:hover{
 
 
 .logo{
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: #ddd;
     cursor: pointer;
-    float: left;
     font-size: 40px;
+    padding: 13px;
+    font-family: 'Open Sans Condensed';
+    text-align: center;
 }
 
 .title{
@@ -207,6 +216,9 @@ a:hover{
 }
 
 .left{
+    border-width: 0px 1px 0px 0;
+    border-color: #ddd;
+    border-style: solid;
     position: absolute;
     width: 200px;
 }
@@ -225,9 +237,10 @@ a:hover{
 }
 
 #feed_list{
-    border-width: 1px 10px 1px 0;
+    /*border-width: 1px 2px 2px 0;
     border-color: #dddddd;
-    border-style: solid ;
+    border-style: solid ;*/
+    background-color: #fff;
     overflow-y: auto;
 }
 
@@ -244,11 +257,14 @@ a:hover{
     width: 930px;
 }
 
-.feed_item{
+.feed{
+    background-color: #fff;
+}
 
+.feed_item{
     background: no-repeat 10px center;
     background-size: 14px 14px;
-    padding: 5px 0 5px 28px;
+    padding: 10px 0 10px 28px;
     width:180px;
     transition: all 0.3s;
     -moz-transition: all 0.3s; /* Firefox 4 */
@@ -271,9 +287,10 @@ a:hover{
 }
 
 .item{
-    border: 1px solid #dddddd;
-    margin: 15px 0 15px 10px;
-    padding-top: 5px;
+    background-color: #fff;
+    box-shadow: 0px 0px 1px 1px #aaaaaa;
+    margin: 3px 0 25px 3px;
+    padding-top: 25px;
     transition: all 0.3s;
     -moz-transition: all 0.3s; /* Firefox 4 */
     -webkit-transition: all 0.3s; /* Safari 和 Chrome */
@@ -281,7 +298,7 @@ a:hover{
 }
 
 .item:hover{
-    box-shadow:4px 2px 3px 2px #aaaaaa;
+    box-shadow: 0px 0px 10px 1px #aaaaaa;
     transition: all 0.3s;
     -moz-transition: all 0.3s; /* Firefox 4 */
     -webkit-transition: all 0.3s; /* Safari 和 Chrome */
@@ -293,14 +310,14 @@ a:hover{
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 8px;
-    padding: 0 10px 0 10px;
+    padding: 0 10px 0 25px;
     word-break: break-all;
 }
 
 .item_content{
-    line-height: 16px;
+    line-height: 20px;
     margin-bottom: 5px;
-    padding: 0 10px 0 10px;
+    padding: 10px 10px 10px 25px;
     word-break: break-all;
 }
 
@@ -309,9 +326,9 @@ a:hover{
     border-color: #dddddd;
     border-style: solid;
     border-width: 1px 0 1px 0;
-    height: 25px;
-    line-height: 25px;
-    padding: 0 10px 0 10px;
+    /* height: 25px; */
+    /* line-height: 25px; */
+    padding: 10px 10px 10px 25px;
 }
 
 .loading{
@@ -325,12 +342,10 @@ a:hover{
 }
 
 #ops{
-    /*border-bottom: 1px solid #dddddd;
-    padding-right: 15px;*/
-    float: left;
-    padding-top: 4px;
-    margin-left: 35px;
-
+    padding: 15px 0;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: #ddd;
 }
 
 #ops .icon{
@@ -395,6 +410,14 @@ a:hover{
     background-image: url('http://dn-rsscdn.qbox.me/setting2.png');
 }
 
+#ops #add{
+    background-image: url('http://dn-rsscdn.qbox.me/plus1.png');
+}
+
+#ops #add:hover{
+    background-image: url('http://dn-rsscdn.qbox.me/plus2.png');
+}
+
 #ops #exit{
     background-image: url('http://dn-rsscdn.qbox.me/exit1.png');
 }
@@ -428,7 +451,7 @@ a:hover{
     width: 16px;
     padding: 1px;
     text-align: center;
-    margin: -13px 0 0 -10px;
+    margin: -22px 0 0 4px;
     border-radius: 10px;
 }
 
@@ -444,7 +467,7 @@ a:hover{
     width: 16px;
     padding: 1px;
     text-align: center;
-    margin: -13px 0 0 -10px;
+    margin: -22px 0 0 4px;
     border-radius: 10px;
 }
 
