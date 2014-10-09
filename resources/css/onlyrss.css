@@ -24,7 +24,7 @@ li{
 }
 
 .total_width{
-    /*width: 940px;*/
+    width: 940px;
     margin: auto;
 }
 
@@ -46,7 +46,7 @@ a:hover{
 }
 
 .header{
-    background: #222429;
+    /*background: #222429;*/
     border-bottom: 1px solid #dddddd;
     color: black;
     font-family: 'Open Sans Condensed';

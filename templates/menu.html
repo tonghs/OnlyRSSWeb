@@ -1,35 +1,5 @@
 <div class="header">
     <div class="total_width">
         <div class="logo" title="Only RSS" onclick="window.location.href='/'">Only RSS</div>
-        <div class="title">做好阅读这件事</div>
-        <div id="ops">
-            <a href="javascript:void(0);" id="refresh" class="icon icon_" onclick="getItem(null, $('#get_all'), true);" title="刷新"></a>
-            <a href="javascript:void(0);" id="more" class="icon icon__" onclick="getMore(0, $('#next_page'));" title="加载更多"></a>
-            <a href="javascript:void(0);" id="read_all" class="icon icon_" onclick="delAllItem();" title="全部标记为已读"></a>
-            <a href="/setting" id="setting" class="icon icon__" onclick="getMore(0, $('#next_page'));" title="订阅管理"></a>
-            <a href="javascript:void(0);" id="add" class="icon icon_" onclick="showAddFeedContainer();" title="添加"></a>
-            <a href="javascript:void(0);" id="exit" class="icon icon__" onclick="logout();" title="退出"></a>
-        </div>
-        <ul>
-            <li class="menu_more">
-                <div class="detail">
-                    +
-                </div>
-                <ul>
-                    <li>
-                        <div class="sub_menu" onclick="window.location.href='/setting'">
-                            订阅管理
-                        </div>
-                    </li>
-                    <li>
-                        <div class="sub_menu" onclick="logout()">
-                            退出
-                        </div>
-                    </li>
-                </ul>
-            </li>
-            <li class="menu" >{{ username }}</li>
-        </ul>
-
     </div>
 </div>
