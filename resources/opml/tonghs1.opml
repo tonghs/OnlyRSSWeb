@@ -9,8 +9,8 @@
             title="V2EX" type="rss"
             htmlUrl="http://www.v2ex.com"
             xmlUrl="http://www.v2ex.com/index.xml" />
-        <outline text="Engadget 中国版"
-            title="Engadget 中国版" type="rss"
+        <outline text="Engadget 中国版 RSS Feed"
+            title="Engadget 中国版 RSS Feed" type="rss"
             htmlUrl="http://cn.engadget.com"
             xmlUrl="http://cn.engadget.com/rss.xml" />
         <outline text="MacIdea - OS X Mountain Lion"
