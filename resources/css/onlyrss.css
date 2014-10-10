@@ -228,7 +228,7 @@ a:hover{
 }
 
 #content_container{
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
@@ -312,7 +312,7 @@ a:hover{
 .item{
     background-color: #fff;
     box-shadow: 0px 0px 1px 1px #aaaaaa;
-    margin: 3px 0 25px 3px;
+    margin: 3px 15px 25px 3px;
     padding-top: 25px;
     transition: all 0.3s;
     -moz-transition: all 0.3s; /* Firefox 4 */
@@ -366,9 +366,14 @@ a:hover{
 
 #ops{
     padding: 15px 0;
+    margin-right: 15px;
     border-width: 0 0 1px 0;
     border-style: solid;
     border-color: #ddd;
+}
+
+#ops #ops_other{
+    float: right;
 }
 
 #ops .icon{
@@ -591,6 +596,7 @@ a:hover{
     height: 40px;
     line-height: 40px;
     text-align: center;
+    margin-right: 15px;
     transition: all 0.3s;
     -moz-transition: all 0.3s; /* Firefox 4 */
     -webkit-transition: all 0.3s; /* Safari 和 Chrome */
