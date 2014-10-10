@@ -1,2 +1,2 @@
 uwsgi --reload ./uwsgi.pid
-nginx -s reload
+sudo nginx -s reload

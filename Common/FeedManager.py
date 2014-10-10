@@ -73,7 +73,7 @@ class FeedManager:
                     home_url = self.get_home_url(node.getAttribute('htmlUrl'))
 
                     feed = Feed(title=node.getAttribute('title'), url=home_url, feed_url=node.getAttribute('xmlUrl'),
-                                icon=get_icon(home_url), user_id=1)
+                                icon=self.get_icon(home_url), user_id=1)
                     feed.save()
 
                     while int(self.thread_manager.thread_count_dic['import_thread_count']) == \
@@ -90,7 +90,9 @@ class FeedManager:
             for th in th_list:
                 th.join()
 
-        except Exception:
+        except Exception as e:
+            import logging
+            logging.error(e)
             return
 
     def create_opml(self, request):

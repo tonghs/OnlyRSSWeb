@@ -5,26 +5,38 @@
         <ownerName>tonghuashuai</ownerName>
     </head>
     <body>
-        <outline text="V2EX"
-            title="V2EX" type="rss"
-            htmlUrl="http://www.v2ex.com"
-            xmlUrl="http://www.v2ex.com/index.xml" />
-        <outline text="Engadget 中国版 RSS Feed"
-            title="Engadget 中国版 RSS Feed" type="rss"
-            htmlUrl="http://cn.engadget.com"
-            xmlUrl="http://cn.engadget.com/rss.xml" />
-        <outline text="MacIdea - OS X Mountain Lion"
-            title="MacIdea - OS X Mountain Lion" type="rss"
-            htmlUrl="http://mac.pcbeta.com"
-            xmlUrl="http://mac.pcbeta.com/rss.php?fid=88&amp;auth=0" />
-        <outline text="MacX - 新闻,讨论,活动"
-            title="MacX - 新闻,讨论,活动" type="rss"
-            htmlUrl="http://www.macx.cn"
-            xmlUrl="http://www.macx.cn/forum.php?mod=rss&amp;fid=4000" />
-        <outline text="CSDN最新资讯"
-            title="CSDN最新资讯" type="rss"
-            htmlUrl="http://news.csdn.net"
-            xmlUrl="http://www.csdn.net/article/rss_lastnews" />
+        <outline text="善用佳软"
+            title="善用佳软" type="rss"
+            htmlUrl="http://xbeta.info"
+            xmlUrl="http://feed.xbeta.info/" />
+        <outline text="Matrix67: My Blog"
+            title="Matrix67: My Blog" type="rss"
+            htmlUrl="http://www.matrix67.com"
+            xmlUrl="http://feed.feedsky.com/matrix67" />
+        <outline text="Leica中文摄影杂志"
+            title="Leica中文摄影杂志" type="rss"
+            htmlUrl="http://www.leica.org.cn"
+            xmlUrl="http://feed.feedsky.com/leica" />
+        <outline text="相机入魔"
+            title="相机入魔" type="rss"
+            htmlUrl="http://xjrumo.com"
+            xmlUrl="http://xjrumo.com/feed/" />
+        <outline text="极客公园-GeekPark"
+            title="极客公园-GeekPark" type="rss"
+            htmlUrl="http://www.geekpark.net"
+            xmlUrl="http://feeds.geekpark.net/" />
+        <outline text="所有文章 - UCD大社区"
+            title="所有文章 - UCD大社区" type="rss"
+            htmlUrl="http://ucdchina.com"
+            xmlUrl="http://ucdchina.com/rss/all" />
+        <outline text="Startup News"
+            title="Startup News" type="rss"
+            htmlUrl="http://news.dbanotes.net"
+            xmlUrl="http://news.dbanotes.net/rss" />
+        <outline text="ChokStick 骚货"
+            title="ChokStick 骚货" type="rss"
+            htmlUrl="http://chokstick.com"
+            xmlUrl="http://chokstick.com/feed/" />
         <outline text="OSX玩意 / OSXToy"
             title="OSX玩意 / OSXToy" type="rss"
             htmlUrl="http://www.osxtoy.com"
@@ -49,37 +61,25 @@
             title="谷奥——探寻谷歌的奥秘" type="rss"
             htmlUrl="http://www.guao.hk"
             xmlUrl="http://feed-all.google.org.cn/" />
-        <outline text="极客公园-GeekPark"
-            title="极客公园-GeekPark" type="rss"
-            htmlUrl="http://www.geekpark.net"
-            xmlUrl="http://feeds.geekpark.net/" />
-        <outline text="所有文章 - UCD大社区"
-            title="所有文章 - UCD大社区" type="rss"
-            htmlUrl="http://ucdchina.com/rss/all"
-            xmlUrl="http://ucdchina.com/rss/all" />
-        <outline text="Startup News"
-            title="Startup News" type="rss"
-            htmlUrl="http://news.dbanotes.net/"
-            xmlUrl="http://news.dbanotes.net/rss" />
-        <outline text="ChokStick 骚货"
-            title="ChokStick 骚货" type="rss"
-            htmlUrl="http://chokstick.com"
-            xmlUrl="http://chokstick.com/feed/" />
-        <outline text="Leica中文摄影杂志"
-            title="Leica中文摄影杂志" type="rss"
-            htmlUrl="http://www.leica.org.cn/index.php"
-            xmlUrl="http://feed.feedsky.com/leica" />
-        <outline text="相机入魔"
-            title="相机入魔" type="rss"
-            htmlUrl="http://xjrumo.com"
-            xmlUrl="http://xjrumo.com/feed/" />
-        <outline text="Matrix67: My Blog"
-            title="Matrix67: My Blog" type="rss"
-            htmlUrl="http://www.matrix67.com/blog"
-            xmlUrl="http://feed.feedsky.com/matrix67" />
-        <outline text="善用佳软"
-            title="善用佳软" type="rss"
-            htmlUrl="http://xbeta.info"
-            xmlUrl="http://feed.xbeta.info/" />
+        <outline text="CSDN最新资讯"
+            title="CSDN最新资讯" type="rss"
+            htmlUrl="http://news.csdn.net"
+            xmlUrl="http://www.csdn.net/article/rss_lastnews" />
+        <outline text="MacX - 新闻,讨论,活动"
+            title="MacX - 新闻,讨论,活动" type="rss"
+            htmlUrl="http://www.macx.cn"
+            xmlUrl="http://www.macx.cn/forum.php?mod=rss&amp;fid=4000" />
+        <outline text="MacIdea - OS X Mountain Lion"
+            title="MacIdea - OS X Mountain Lion" type="rss"
+            htmlUrl="http://mac.pcbeta.com"
+            xmlUrl="http://mac.pcbeta.com/rss.php?fid=88&amp;auth=0" />
+        <outline text="V2EX"
+            title="V2EX" type="rss"
+            htmlUrl="http://www.v2ex.com"
+            xmlUrl="http://www.v2ex.com/index.xml" />
+        <outline text="Engadget 中国版 RSS Feed"
+            title="Engadget 中国版 RSS Feed" type="rss"
+            htmlUrl="http://cn.engadget.com"
+            xmlUrl="http://cn.engadget.com/rss.xml" />
     </body>
 </opml>

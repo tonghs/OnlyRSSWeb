@@ -237,21 +237,28 @@ a:hover{
 }
 
 #feed_list{
-    /*border-width: 1px 2px 2px 0;
-    border-color: #dddddd;
-    border-style: solid ;*/
     background-color: #fff;
     overflow-y: auto;
 }
 
+.area{
+    background: #fff; 
+    box-shadow: 0px 0px 1px 1px #aaaaaa;
+    margin: 15px 0px;
+    padding: 15px 0px;
+}
 
-#feed_manage_list ul li div{
-    border-top: 1px solid #dddddd;
+.area form{
+    padding: 0 15px;
+}
+
+#feed_manage_list ul li .li{
     float: left;
     height: 28px;
     line-height: 28px;
     padding-left: 28px;
 }
+
 
 #feed_manage_list ul li{
     width: 930px;
@@ -259,6 +266,22 @@ a:hover{
 
 .feed{
     background-color: #fff;
+}
+
+.feed_li{
+    padding: 10px 0px;
+    transition: all 0.3s;
+    -moz-transition: all 0.3s; /* Firefox 4 */
+    -webkit-transition: all 0.3s; /* Safari 和 Chrome */
+    -o-transition: all 0.3s; /* Opera */
+}
+
+.feed_li:hover{
+    background-color: #ddd;
+    transition: all 0.3s;
+    -moz-transition: all 0.3s; /* Firefox 4 */
+    -webkit-transition: all 0.3s; /* Safari 和 Chrome */
+    -o-transition: all 0.3s; /* Opera */
 }
 
 .feed_item{
@@ -275,7 +298,7 @@ a:hover{
 .feed_manage_item{
     background: no-repeat 10px center;
     background-size: 14px 14px;
-
+    margin-left: 15px;
 }
 
 .feed_item:hover{
@@ -568,6 +591,10 @@ a:hover{
     height: 40px;
     line-height: 40px;
     text-align: center;
+    transition: all 0.3s;
+    -moz-transition: all 0.3s; /* Firefox 4 */
+    -webkit-transition: all 0.3s; /* Safari 和 Chrome */
+    -o-transition: all 0.3s; /* Opera */
 }
 
 .next:hover{
@@ -578,6 +605,10 @@ a:hover{
     height: 40px;
     line-height: 40px;
     text-align: center;
+    transition: all 0.3s;
+    -moz-transition: all 0.3s; /* Firefox 4 */
+    -webkit-transition: all 0.3s; /* Safari 和 Chrome */
+    -o-transition: all 0.3s; /* Opera */
 }
 
 .about_content{
