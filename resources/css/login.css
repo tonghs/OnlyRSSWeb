@@ -15,9 +15,25 @@ a:hover{
     text-decoration: underline;
 }
 
+input{
+    outline: none;
+}
+
+
+#main{
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    margin-left: -166px;
+    margin-top: -320px;
+}
+
+#main #container{
+
+}
+
 .total_width{
-    width: 940px;
-    margin: auto;
+    text-align: center;
 }
 
 .clear{
@@ -30,7 +46,6 @@ a:hover{
     color: black;
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 40px;
-    margin-bottom: 50px;
     padding: 0 10px 0 10px;
 }
 .login_area{
@@ -68,18 +83,13 @@ a:hover{
     width: 29px;
 }
 
-#left{
-    float: left;
+#slogan{
     font-family: 'Open Sans Condensed';
-    font-size: 35px;
-    line-height: 70px;
-    width: 630px;
+    font-size: 30px;
+    padding: 50px 0 0 0;
+    text-align: center;
 }
 
-#right{
-    float: left;
-    width: 300px;
-}
 
 #btn{
     background-color: #5a5a5a;
