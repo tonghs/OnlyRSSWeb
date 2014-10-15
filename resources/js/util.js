@@ -21,21 +21,40 @@ function keyboardHandler(keyCode, fun){
     }
 }
 
-function ajaxRequest(url, fun, funErr){
-     $.ajax({
+function ajaxRequest(url, fun, funErr, isShowLoad){
+    if (isShowLoad != false){
+        showLoad();
+    }
+    $.ajax({
         url: url,
-        error: funErr != null ? funErr : showErr,
-        success: fun
+        error: function(){
+            closeLoad();
+            funErr != null ? funErr() : showErr()
+        },
+        success: function(data){
+            fun(data);
+            closeLoad();
+        } 
     });
 }
 
-function ajaxRequestPost(url, data, fun, funErr){
-     $.ajax({
+function ajaxRequestPost(url, data, fun, funErr, isShowLoad){
+    if (isShowLoad != false){
+        showLoad();
+    }
+
+    $.ajax({
         type: 'POST',
         data: data,
         url: url,
-        error: funErr != null ? funErr : showErr,
-        success: fun
+        error: function(){
+            closeLoad();
+            funErr != null ? funErr() : showErr()
+        },
+        success: function(data){
+            fun(data);
+            closeLoad();
+        } 
     });
 }
 

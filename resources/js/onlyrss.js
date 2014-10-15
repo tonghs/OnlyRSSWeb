@@ -153,9 +153,7 @@ function showAddFeedContainer(){
 }
 
 function addFeed(){
-    showLoad('正在加载...');
     var url = $("#txt_feed").val();
-    //$("#txt_feed_container").css("display", "none");
 
     if (url != null){
         ajaxRequest('/add_feed?url=' + escape(url), function (data){
@@ -165,21 +163,21 @@ function addFeed(){
                 }
                 $("#txt_feed").val("");
                 closeLoad();
-                $.unblockUI();
-            });
+        });
+
+        $.unblockUI();
     }
 }
 
 function delFeed(feedId, obj){
-    showLoad('正在加载...');
-    ajaxRequest('/del_feed?id=' + feedId,function(data){
+    ajaxRequest('/del_feed?id=' + feedId, function(data){
         if (data == "success"){
             obj.parent().parent().fadeOut('normal', function(){
                 obj.parent().parent().remove();
                 closeLoad();
             });
         }
-    })
+    });
 }
 
 function getAllFeedList(){
@@ -252,12 +250,11 @@ function delItem(id, obj){
         if (obj != null){
             obj.className = 'read';
         }
-    });
+    }, null, false);
 
 }
 
 function delAllItem(){
-    showLoad('正在加载...');
     ajaxRequest('/del_item', function(data){
         getItem(null, $('#get_all'), false);
         $('.feed_item').css('font-weight', 'normal');
@@ -283,7 +280,6 @@ function getFeedCount(){
 
 
 function delAll(){
-    showLoad('正在加载...');
     ajaxRequest('/del_feed',function(data){
         if (data == "success"){
            $('.feed').fadeOut('normal', function(){
@@ -295,7 +291,6 @@ function delAll(){
 }
 
 function delBat(){
-    showLoad('正在加载...');
     var ids_str = '';
     var ids = new Array();
     var i = 0;

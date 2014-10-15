@@ -75,7 +75,7 @@
             xmlUrl="http://mac.pcbeta.com/rss.php?fid=88&amp;auth=0" />
         <outline text="V2EX"
             title="V2EX" type="rss"
-            htmlUrl="http://www.v2ex.com"
+            htmlUrl="http://www.v2ex.com/"
             xmlUrl="http://www.v2ex.com/index.xml" />
         <outline text="Engadget 中国版 RSS Feed"
             title="Engadget 中国版 RSS Feed" type="rss"

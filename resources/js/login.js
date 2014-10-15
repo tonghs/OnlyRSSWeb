@@ -61,7 +61,6 @@ function login(){
             if (data == 'success'){
                 $.cookie('username', username, { expires: 30 });
                 $.cookie('password', password, { expires: 30 });
-
                 window.location.href = '/';
             } else {
                 showMsg('登录失败，请重试！');
