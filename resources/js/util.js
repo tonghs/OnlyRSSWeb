@@ -47,7 +47,26 @@ function showErr(req, msg, errorThrown){
 }
 
 function showLoad(tipInfo) {
-    showMsg(tipInfo, true, true);
+    if ($("#alertDiv").size() == 0){
+        var eTip = document.createElement('div');
+        eTip.setAttribute('id', 'alertDiv');
+        eTip.style.position = 'absolute';
+        eTip.style.display = 'none';
+        eTip.style.textAlign = 'center';
+        eTip.style.padding = '5px 15px';
+        eTip.style.left = ($('html').width() - 190) / 2 + 'px';
+        eTip.style.top = ($('html').height() / 2) - 150 + 'px';
+        eTip.style.height = '70px';
+        eTip.style.lineHeight = '35px';
+        eTip.style.width = '190px';
+        eTip.innerHTML = '<div class="spinner"> <div class="rect1"></div> <div class="rect2"></div> <div class="rect3"></div> <div class="rect4"></div> <div class="rect5"></div> </div><div class="loading_logo bold">Only RSS</div>';
+        try {
+            document.body.appendChild(eTip);
+        } catch (e) { }
+        $("#alertDiv").css("z-index", "99");
+        $('#alertDiv').fadeIn();
+    }
+
 }
 
 function closeLoad() {
