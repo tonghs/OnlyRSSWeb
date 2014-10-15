@@ -321,7 +321,7 @@ a:hover{
 }
 
 .item:hover{
-    box-shadow: 0px 0px 10px 1px #aaaaaa;
+    box-shadow: 0px 0px 6px 1px #aaaaaa;
     transition: all 0.3s;
     -moz-transition: all 0.3s; /* Firefox 4 */
     -webkit-transition: all 0.3s; /* Safari 和 Chrome */
