@@ -33,8 +33,8 @@ Web 端：可使用 `nginx` + `uWSGI` 部署，`ubuntu 12.10` 测试可正常部
 
 **重启**
 
-uwsgi --reload uwsgi.pid
-sudo nginx -s reload
+    uwsgi --reload uwsgi.pid
+    sudo nginx -s reload
 
 **To do list**
 
