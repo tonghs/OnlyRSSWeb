@@ -30,6 +30,12 @@ Web 端：可使用 `nginx` + `uWSGI` 部署，`ubuntu 12.10` 测试可正常部
 
 首次使用，使用用户名密码登录后可在设置中导入订阅列表或在首页输入订阅地址添加订阅。
 
+
+**重启**
+
+uwsgi --reload uwsgi.pid
+sudo nginx -s reload
+
 **To do list**
 
 0. 继续 bug 修改
