@@ -344,6 +344,10 @@ a:hover{
     word-break: break-all;
 }
 
+.item_content img{
+    max-width: 100%;
+}
+
 .item_ops{
     background-color: #efefef;
     border-color: #dddddd;
