@@ -15,6 +15,7 @@ from Common.ThreadManager import ThreadManager
 from Common.UserManager import UserManager
 from models import *
 from forms import UploadFileForm
+from Only.settings import APP, SLOGAN
 
 
 #cookie超时时间 秒
@@ -30,7 +31,7 @@ def login(request):
         username = request.COOKIES['username']
         password = request.COOKIES['password']
         if user_manager.valid(request, username, password):
-            response = render_to_response('index.html', {'username': request.session['username']})
+            response = render_to_response('index.html', dict(username=request.session['username'], app=APP, slogan=SLOGAN))
             response.set_cookie('username', username, max_age)
             response.set_cookie('password', password, max_age)
         else:

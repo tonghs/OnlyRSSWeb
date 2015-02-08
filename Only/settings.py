@@ -1,6 +1,12 @@
 # Django settings for OnlyRSS project.
+#coding=utf-8
 
 DEBUG = False
+
+APP = 'OnlyRSS'
+
+SLOGAN = '仅仅是一个阅读器'
+
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (

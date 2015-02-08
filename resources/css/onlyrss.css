@@ -199,10 +199,16 @@ a:hover{
     border-style: solid;
     border-color: #ddd;
     cursor: pointer;
-    font-size: 40px;
+    font-size: 16px;
     padding: 13px;
     font-family: 'Open Sans Condensed';
     text-align: center;
+}
+
+.logo span{
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 4px;
 }
 
 .title{
@@ -230,6 +236,7 @@ a:hover{
 #content_container{
     overflow-y: auto;
     overflow-x: hidden;
+    padding-top: 5px;
 }
 
 .clear{
@@ -363,7 +370,7 @@ a:hover{
 }
 
 #ops{
-    padding: 15px 0;
+    padding: 7px 0;
     margin-right: 15px;
     border-width: 0 0 1px 0;
     border-style: solid;
@@ -377,8 +384,8 @@ a:hover{
 #ops .icon{
     background-repeat: no-repeat;
     float: left;
-    width: 50px;
-    height: 50px;
+    width: 34px;
+    height: 34px;
     display: block;
     -webkit-transition: background 0.3s ease-in-out;
     -moz-transition: background 0.3s ease-in-out;
@@ -396,11 +403,11 @@ a:hover{
 
 
 #ops .icon_{
-    background-size: 50px;
+    background-size: 34px;
 }
 
 #ops .icon__{
-    background-size: 40px;
+    background-size: 28px;
     background-position: center;
 }
 

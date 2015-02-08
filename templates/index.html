@@ -2,12 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta content="仅仅是一个RSS阅读器而已。" name="description">
-    <title>Only RSS</title>
+    <meta content="{{slogan}}" name="description">
+    <title>{{app}}</title>
     {% include 'header.html' %}
 </head>
 <body style="overflow-y: hidden;">
-<!--{% include 'menu.html' %}-->
 <div class="wrap">
     <div class="left">
         <div id="txt_feed_container">
@@ -22,7 +21,10 @@
                 </li>
             <ul>
         </div>
-        <div class="logo" title="Only RSS" onclick="window.location.href='/'">Only RSS</div>
+        <div class="logo" title="{{app}}" onclick="window.location.href='/'">
+            {{app}}
+            <span clss="slogan">{{slogan}}</span>
+        </div>
 
         <div class="clear"></div>
         <div id="feed_list">
