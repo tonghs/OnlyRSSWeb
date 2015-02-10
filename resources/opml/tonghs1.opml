@@ -5,18 +5,6 @@
         <ownerName>tonghuashuai</ownerName>
     </head>
     <body>
-        <outline text="善用佳软"
-            title="善用佳软" type="rss"
-            htmlUrl="http://xbeta.info"
-            xmlUrl="http://feed.xbeta.info/" />
-        <outline text="Matrix67: My Blog"
-            title="Matrix67: My Blog" type="rss"
-            htmlUrl="http://www.matrix67.com"
-            xmlUrl="http://feed.feedsky.com/matrix67" />
-        <outline text="Leica中文摄影杂志"
-            title="Leica中文摄影杂志" type="rss"
-            htmlUrl="http://www.leica.org.cn"
-            xmlUrl="http://feed.feedsky.com/leica" />
         <outline text="相机入魔"
             title="相机入魔" type="rss"
             htmlUrl="http://xjrumo.com"
@@ -25,18 +13,10 @@
             title="极客公园-GeekPark" type="rss"
             htmlUrl="http://www.geekpark.net"
             xmlUrl="http://feeds.geekpark.net/" />
-        <outline text="Startup News"
-            title="Startup News" type="rss"
-            htmlUrl="http://news.dbanotes.net"
-            xmlUrl="http://news.dbanotes.net/rss" />
         <outline text="V2EX"
             title="V2EX" type="rss"
             htmlUrl="http://www.v2ex.com/"
             xmlUrl="http://www.v2ex.com/read.xml" />
-        <outline text="LinuxTOY"
-            title="LinuxTOY" type="rss"
-            htmlUrl="https://linuxtoy.org"
-            xmlUrl="https://linuxtoy.org/feed" />
         <outline text="ChokStick 骚货"
             title="ChokStick 骚货" type="rss"
             htmlUrl="http://chokstick.com"
