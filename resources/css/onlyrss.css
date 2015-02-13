@@ -1,8 +1,9 @@
 @import url(http://fonts.useso.com/css?family=Open+Sans+Condensed:300);
+@font-face { font-family:noto; src:url(http://tonghs-cdn-static.qiniudn.com/NotoSansHans-Light.otf);}
 
 html{
     height: 100%;
-    font-family: Arial, Helvetica;
+    font-family: noto, Helvetica, Arial ;
 }
 
 body, ul{
@@ -23,6 +24,14 @@ li{
     list-style: none;
 }
 
+.block{
+    background-color: #fff;
+    box-shadow: #ccc 0 0 4px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
 .total_width{
     width: 940px;
     margin: auto;
@@ -39,10 +48,18 @@ li{
 a {
     color: black;
     text-decoration: none;
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease; /* Firefox 4 */
+    -webkit-transition: all 0.3s ease; /* Safari 和 Chrome */
+    -o-transition: all 0.3s ease; /* Opera */
 }
 
 a:hover{
-    text-decoration: underline;
+    transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease; /* Firefox 4 */
+    -webkit-transition: all 0.3s ease; /* Safari 和 Chrome */
+    -o-transition: all 0.3s ease; /* Opera */
 }
 
 .header{
@@ -203,6 +220,7 @@ a:hover{
     padding: 13px;
     font-family: 'Open Sans Condensed';
     text-align: center;
+    margin-top: 0;
 }
 
 .logo span{
@@ -218,13 +236,11 @@ a:hover{
 }
 
 .wrap{
-    padding: 0;
+    padding: 0 15px;
 }
 
 .left{
-    border-width: 0px 1px 0px 0;
-    border-color: #ddd;
-    border-style: solid;
+    border: 0;
     position: absolute;
     width: 200px;
 }
@@ -236,7 +252,6 @@ a:hover{
 #content_container{
     overflow-y: auto;
     overflow-x: hidden;
-    padding-top: 5px;
 }
 
 .clear{
@@ -317,18 +332,16 @@ a:hover{
 }
 
 .item{
-    background-color: #fff;
-    box-shadow: 0px 0px 1px 1px #aaaaaa;
-    margin: 3px 15px 25px 3px;
+    margin: 0 0 25px 0;
     padding-top: 25px;
+    border-top: solid 1px #ccc;
     transition: all 0.3s;
-    -moz-transition: all 0.3s; /* Firefox 4 */
-    -webkit-transition: all 0.3s; /* Safari 和 Chrome */
-    -o-transition: all 0.3s; /* Opera */
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
 }
 
 .item:hover{
-    box-shadow: 0px 0px 6px 1px #aaaaaa;
     transition: all 0.3s;
     -moz-transition: all 0.3s; /* Firefox 4 */
     -webkit-transition: all 0.3s; /* Safari 和 Chrome */
@@ -342,6 +355,14 @@ a:hover{
     margin-bottom: 8px;
     padding: 0 10px 0 25px;
     word-break: break-all;
+}
+
+.item a{
+    border-bottom: 1px solid #fff;
+}
+
+.item a:hover{
+    border-bottom: 1px solid #000;
 }
 
 .item_content{
@@ -370,11 +391,8 @@ a:hover{
 }
 
 #ops{
-    padding: 7px 0;
-    margin-right: 15px;
-    border-width: 0 0 1px 0;
-    border-style: solid;
-    border-color: #ddd;
+    padding: 7px 15px;
+    border: 0;
 }
 
 #ops #ops_other{
@@ -409,54 +427,55 @@ a:hover{
 #ops .icon__{
     background-size: 28px;
     background-position: center;
+    margin-top: -1px;
 }
 
 #ops #read_all{
-    background-image: url('http://dn-rsscdn.qbox.me/check1.png');
+    background-image: url('http://dn-rsscdn.qbox.me/check1.png?imageMogr2/thumbnail/68x');
 }
 
 #ops #read_all:hover{
-    background-image: url('http://dn-rsscdn.qbox.me/check2.png');
+    background-image: url('http://dn-rsscdn.qbox.me/check2.png?imageMogr2/thumbnail/68x');
 }
 
 #ops #refresh{
-    background-image: url('http://dn-rsscdn.qbox.me/refresh1.png');
+    background-image: url('http://dn-rsscdn.qbox.me/refresh1.png?imageMogr2/thumbnail/68x');
 }
 
 #ops #refresh:hover{
-    background-image: url('http://dn-rsscdn.qbox.me/refresh2.png');
+    background-image: url('http://dn-rsscdn.qbox.me/refresh2.png?imageMogr2/thumbnail/68x');
 }
 
 #ops #more{
-    background-image: url('http://dn-rsscdn.qbox.me/more1.png');
+    background-image: url('http://dn-rsscdn.qbox.me/more1.png?imageMogr2/thumbnail/68x');
 }
 
 #ops #more:hover{
-    background-image: url('http://dn-rsscdn.qbox.me/more2.png');
+    background-image: url('http://dn-rsscdn.qbox.me/more2.png?imageMogr2/thumbnail/68x');
 }
 
 #ops #setting{
-    background-image: url('http://dn-rsscdn.qbox.me/setting1.png');
+    background-image: url('http://dn-rsscdn.qbox.me/setting1.png?imageMogr2/thumbnail/68x');
 }
 
 #ops #setting:hover{
-    background-image: url('http://dn-rsscdn.qbox.me/setting2.png');
+    background-image: url('http://dn-rsscdn.qbox.me/setting2.png?imageMogr2/thumbnail/68x');
 }
 
 #ops #add{
-    background-image: url('http://dn-rsscdn.qbox.me/plus1.png');
+    background-image: url('http://dn-rsscdn.qbox.me/plus1.png?imageMogr2/thumbnail/68x');
 }
 
 #ops #add:hover{
-    background-image: url('http://dn-rsscdn.qbox.me/plus2.png');
+    background-image: url('http://dn-rsscdn.qbox.me/plus2.png?imageMogr2/thumbnail/68x');
 }
 
 #ops #exit{
-    background-image: url('http://dn-rsscdn.qbox.me/exit1.png');
+    background-image: url('http://dn-rsscdn.qbox.me/exit1.png?imageMogr2/thumbnail/68x');
 }
 
 #ops #exit:hover{
-    background-image: url('http://dn-rsscdn.qbox.me/exit2.png');
+    background-image: url('http://dn-rsscdn.qbox.me/exit2.png?imageMogr2/thumbnail/68x');
 }
 
 #feed_ops ul{
@@ -500,14 +519,16 @@ a:hover{
     float: left;
     height: 16px;
     width: 16px;
+    line-height: 16px;
     padding: 1px;
     text-align: center;
-    margin: -22px 0 0 4px;
+    margin: -19px 0 0 5px;
     border-radius: 10px;
 }
 
 .unread a{
     color: #fff;
+    border: 0;
 }
 
 
@@ -518,7 +539,7 @@ a:hover{
     width: 16px;
     padding: 1px;
     text-align: center;
-    margin: -22px 0 0 4px;
+    margin: -19px 0 0 5px;
     border-radius: 10px;
 }
 
@@ -601,7 +622,6 @@ a:hover{
     height: 40px;
     line-height: 40px;
     text-align: center;
-    margin-right: 15px;
     transition: all 0.3s;
     -moz-transition: all 0.3s; /* Firefox 4 */
     -webkit-transition: all 0.3s; /* Safari 和 Chrome */
@@ -661,10 +681,9 @@ a:hover{
 .spinner > div {
     background-color: green;
     height: 100%;
-    width: 7px;
-    margin: 0 3px;
+    width: 3px;
+    margin: 0 1px;
     display: inline-block;
-
     -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
     animation: stretchdelay 1.2s infinite ease-in-out;
 }
@@ -687,6 +706,21 @@ a:hover{
 .spinner .rect5 {
     -webkit-animation-delay: -0.8s;
     animation-delay: -0.8s;
+}
+
+.spinner .rect6 {
+    -webkit-animation-delay: -0.7s;
+    animation-delay: -0.7s;
+}
+
+.spinner .rect7 {
+    -webkit-animation-delay: -0.6s;
+    animation-delay: -0.6s;
+}
+
+.spinner .rect8 {
+    -webkit-animation-delay: -0.5s;
+    animation-delay: -0.5s;
 }
 
 @-webkit-keyframes stretchdelay {
