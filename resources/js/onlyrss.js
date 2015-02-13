@@ -45,7 +45,7 @@ function parseContent(data){
             + arrObj[i].url + ' " target="_blank">'
             + dealTitle(arrObj[i].title) + '</a></div>'
             + '<div class="item_content">' + arrObj[i].content + '</div>'
-            + '<div class="item_ops">来自:<a href="' + arrObj[i].feed_url + '" target="_blank">'
+            + '<div class="item_ops">来自: <a href="' + arrObj[i].feed_url + '" target="_blank">'
             + arrObj[i].feed_title + '</a>')
     }
     $('#content_container').append('<div class="next" id="next_page" onclick="getMore(0, $(this))">加载更多</div>');
@@ -106,7 +106,7 @@ function getMore(unreadCount, obj){
                     + arrObj[i].url + ' " target="_blank">'
                     + dealTitle(arrObj[i].title) + '</a></div>'
                     + '<div class="item_content">' + arrObj[i].content + '</div>'
-                    + '<div class="item_ops">来自:<a href="' + arrObj[i].feed_url + '" target="_blank">'
+                    + '<div class="item_ops">来自: <a href="' + arrObj[i].feed_url + '" target="_blank">'
                     + arrObj[i].feed_title + '</a>')
             }
         }
