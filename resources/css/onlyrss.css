@@ -541,14 +541,16 @@ a:hover{
     float: left;
     height: 16px;
     width: 16px;
+    line-height: 16px;
     padding: 1px;
     text-align: center;
-    margin: -19px 0 0 5px;
+    margin: -22px 0 0 7px;
     border-radius: 10px;
 }
 
 .read a{
     color: #fff;
+    border: 0;
 }
 
 .app_content{
