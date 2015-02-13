@@ -2,6 +2,8 @@
 
 一个 `RSS` 阅读器的 Web 版本，基于 `Python`、`Django` 和 `MySQL`。
 
+![预览](http://tonghs-cdn-static.qiniudn.com/new_rss_style_20150213-1.png)
+
 **部署**
 
 分 Web 端和后台脚本两部分。
@@ -38,13 +40,12 @@ Web 端：可使用 `nginx` + `uWSGI` 部署，`ubuntu 12.10` 测试可正常部
 
 **To do list**
 
-0. 继续 bug 修改
 1. 密码加密
 2. 代码进一步优化
-3. 操作方式优化
-4. 有可能加入分类
-5. 有可能加入未读条数显示
 6. 订阅管理中可修改 url 和名称
+7. 图标使用高清或 svg
+8. 有可能加入分类
+5. 有可能加入未读条数显示
 
 **已知问题**
 
