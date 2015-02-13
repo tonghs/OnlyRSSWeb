@@ -180,7 +180,6 @@ a:hover{
     background: #E8E9EB;
     border: 0 solid #ddd;
     border-top-width: 1px;
-    font-family: 'Open Sans Condensed';
     height: 100px;
     line-height: 100px;
     padding: 0 10px 0 10px;
@@ -193,10 +192,9 @@ a:hover{
 }
 
 .footer .footer_left{
-    font-family: 'Open Sans Condensed', sans-serif;
     font-size: 40px;
-    font-weight: bold;
     text-align: left;
+    font-family: 'Open Sans Condensed';
 }
 
 
@@ -267,13 +265,16 @@ a:hover{
 
 .area{
     background: #fff; 
-    box-shadow: 0px 0px 1px 1px #aaaaaa;
-    margin: 15px 0px;
     padding: 15px 0px;
 }
 
 .area form{
     padding: 0 15px;
+}
+
+#feed_manage_list{
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 #feed_manage_list ul li .li{

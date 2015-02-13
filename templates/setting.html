@@ -10,7 +10,7 @@
 <div class="wrap">
     <div style="width:930px;margin:auto;">
         <div>导入</div>
-        <div class="area">
+        <div class="area block">
             <form enctype="multipart/form-data" method="post" action="/import_opml/">
                 <input type="file" name="file"/>
                 <input type="submit" value="导入" onclick="showLoad('正在加载...')"/>
@@ -23,7 +23,7 @@
             &nbsp;
             <a href="{{ opml_url }}" id="opml">全部导出</a>
         </div>
-        <div id="feed_manage_list" class="area">
+        <div id="feed_manage_list" class="area block">
             <ul>
 
             </ul>
