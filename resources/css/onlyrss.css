@@ -744,3 +744,29 @@ a:hover{
     -webkit-transform: scaleY(1.0);
     }
 }
+
+/* 自定义 crollbar */
+#content_container::-webkit-scrollbar-track{
+    background-color: #ccc;
+    border-radius: 8px;
+}
+
+#content_container::-webkit-scrollbar{
+    width: 6px;
+    background-color: #ccc;
+}
+
+#content_container::-webkit-scrollbar-thumb{
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+#content_container::-webkit-scrollbar-track-piece{
+    border-color: #E8E9EB;
+    border-style: solid;
+    border-width: 0 2px 0 2px;
+}
+
+/* 自定义 crollbar */
+
+
