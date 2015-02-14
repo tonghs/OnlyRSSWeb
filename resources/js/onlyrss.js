@@ -58,7 +58,9 @@ function dealTitle(title){
 }
 
 function hide(id){
-    $("#item_" + id).slideUp();
+    $("#item_" + id).fadeOut(function(){
+        $("#item_" + id).css('height', 0)
+    });
 }
 
 function showImg(){
@@ -79,8 +81,7 @@ function getMore(unreadCount, obj){
 
     ajaxRequest(url, function parseContent(data){
         var arrObj = JSON.parse(data);
-
-        if (arrObj.length == 0 && $('.unread').size() == 0){
+if (arrObj.length == 0 && $('.unread').size() == 0){
             var id = $('#temp_feed_id').val();
             if (id == '0' || id == '') {
                 $('.feed_item').css('font-weight', 'normal');
