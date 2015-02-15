@@ -1,0 +1,5 @@
+deb http://debian.bjtu.edu.cn/debian/ jessie main non-free contrib
+deb-src http://debian.bjtu.edu.cn/debian/ jessie main non-free contrib
+
+deb http://security.debian.org/ jessie/updates main contrib non-free
+deb-src http://security.debian.org/ jessie/updates main contrib non-free
