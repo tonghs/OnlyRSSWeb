@@ -17,6 +17,9 @@ InitData()
     python manage.py syncdb
 
     mysql -u rss -prstfsgbcedh -e "insert into onlyrss.OnlyRSS_user (username, password, name) values ('tonghs', 'tonghs', 'tonghs');"
+
+    echo '*/5 * * * * python /root/rss/update_service.py' >> /var/spool/cron/crontabs/root
+
 }
 
 Start()

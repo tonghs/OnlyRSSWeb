@@ -8,7 +8,7 @@ COPY ./bjt.list /etc/apt/sources.list
 
 # 更新源 && 安装必要软件
 # RUN apt-get update && apt-get install -y python mlocate wget vim tmux silversearcher-ag git mercurial  nginx  redis-server openssh-server python-pip uwsgi
-RUN apt-get update && apt-get install -y openssh-server nginx python git python-pip uwsgi python-mysqldb python-django supervisor
+RUN apt-get update && apt-get install -y openssh-server nginx python git python-pip uwsgi python-mysqldb python-django supervisor cron
 
 
 ########### 安装 mysql 及 rss 数据###########
