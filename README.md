@@ -10,7 +10,7 @@
 
 1. [下载 docker 镜像](#docker_image)
 2. [使用 dockerfile 编译 docker 镜像](#dockerfile)
-3. 手动部署
+3. [手动部署](#manually)
 
 <a name='docker_image'></a>
 ### 1. docker image
@@ -29,6 +29,7 @@ cd DOCKERFILE DIR
 docker build -t rss-demo .
 ```
 
+<a name='manually'></a>
 ### 3. 手动部署
 
 分 Web 端和后台脚本两部分。
@@ -107,6 +108,6 @@ docker build -t rss-demo .
 5. 有可能加入未读条数显示
 6. 删除动态效果
 
-## 已知问题**
+## 已知问题
 
 
