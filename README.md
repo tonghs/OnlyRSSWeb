@@ -4,13 +4,28 @@
 
 ![预览](http://tonghs-cdn-static.qiniudn.com/new_rss_style_20150213-1.png)
 
-**部署**
+## 部署
+### docker image
+[https://registry.hub.docker.com/u/tonghuashuai/rss-deploy/](https://registry.hub.docker.com/u/tonghuashuai/rss-deploy/)
+
+### dockerfile
+[https://github.com/tonghuashuai/OnlyRSSWeb/tree/master/dockerfile](https://github.com/tonghuashuai/OnlyRSSWeb/tree/master/dockerfile)
+
+### 手动部署
 
 分 Web 端和后台脚本两部分。
 
-Web 端：可使用 `nginx` + `uWSGI` 部署，`ubuntu 12.10` 测试可正常部署，其他发行版本未试。
+#### 相关与依赖：
+* django
+* feedparser
+* uwsgi
+* nginx
+* mysql
 
-后台脚本：用于定时获取订阅内容，可配合任务计划工作。
+
+#### 后台脚本：
+
+用于定时获取订阅内容，可配合任务计划工作。
 
     crontab -e
 
@@ -18,27 +33,53 @@ Web 端：可使用 `nginx` + `uWSGI` 部署，`ubuntu 12.10` 测试可正常部
 
     */5 * * * * python /home/username/update_service.py
 
-**配置**
+#### Web 端：
+
+使用 `nginx` + `uWSGI` 部署，`ubuntu 12.10`, `debian 7.8` 测试可正常部署，其他发行版本未试。
+
+**配置：**
 
 1. 修改 `Django` 配置文件，配置数据库，以 `MySQL` 为例。
 2. 新建数据库 onlyrss 并同步数据表到 `MySQL`，注意，编码方式请选择 utf8。
+
+    ``` shell
+    python manage.py syncdb
+    ```
+
 3. 新建用户。可执行以下 SQL 脚本添加用户。
 
+    ``` sql
+    use onlyrss;
+    insert into OnlyRSS_user （username, password, name) values ('username', 'password', 'name');
+    ```
 
-            use onlyrss;
-            insert into OnlyRSS_user （username, password, name) values ('username', 'password', 'name');
+**启动**
+    
+    ``` shell
+    uwsgi -x rss.xml
+    nginx -s reload
+    ```
+
+**重启**
+
+    ``` shell
+    uwsgi --reload uwsgi.pid
+    sudo nginx -s reload
+    ```
+    
+**调试**
+
+    ``` shell
+    python manage.py runserver 0.0.0.0:8080
+    ```
 
 **使用**
 
 首次使用，使用用户名密码登录后可在设置中导入订阅列表或在首页输入订阅地址添加订阅。
 
 
-**重启**
 
-    uwsgi --reload uwsgi.pid
-    sudo nginx -s reload
-
-**To do list**
+## To do list
 
 1. 密码加密
 2. 代码进一步优化
@@ -48,6 +89,6 @@ Web 端：可使用 `nginx` + `uWSGI` 部署，`ubuntu 12.10` 测试可正常部
 5. 有可能加入未读条数显示
 6. 删除动态效果
 
-**已知问题**
+## 已知问题**
 
 
