@@ -109,6 +109,10 @@ docker build -t rss-demo .
 
 ## License
 
-This projected is licensed under the terms of the MIT license
+Copyright (c) 2013-2015 tonghs.
+
+This project is licensed under the terms of the MIT license.
+
+See the [LICENSE.txt](LICENSE.txt) file for license rights and limitations.
 
 
