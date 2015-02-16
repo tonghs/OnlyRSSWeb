@@ -107,4 +107,8 @@ docker build -t rss-demo .
 
 ## 已知问题
 
+## License
+
+This projected is licensed under the terms of the MIT license
+
 
