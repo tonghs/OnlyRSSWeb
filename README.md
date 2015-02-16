@@ -74,23 +74,20 @@ docker build -t rss-demo .
 
 **启动**
     
-    ``` shell
     uwsgi -x rss.xml
     nginx -s reload
-    ```
+
 
 **重启**
 
-    ``` shell
     uwsgi --reload uwsgi.pid
     sudo nginx -s reload
-    ```
+
     
 **调试**
 
-    ``` shell
     python manage.py runserver 0.0.0.0:8080
-    ```
+
 
 **使用**
 
