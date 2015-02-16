@@ -5,13 +5,31 @@
 ![预览](http://tonghs-cdn-static.qiniudn.com/new_rss_style_20150213-1.png)
 
 ## 部署
-### docker image
-[https://registry.hub.docker.com/u/tonghuashuai/rss-deploy/](https://registry.hub.docker.com/u/tonghuashuai/rss-deploy/)
 
-### dockerfile
-[https://github.com/tonghuashuai/OnlyRSSWeb/tree/master/dockerfile](https://github.com/tonghuashuai/OnlyRSSWeb/tree/master/dockerfile)
+有三种部署方式：
 
-### 手动部署
+1. [下载 docker 镜像](#docker_image)
+2. [使用 dockerfile 编译 docker 镜像](#dockerfile)
+3. 手动部署
+
+<a name='docker_image'></a>
+### 1. docker image
+
+地址：[https://registry.hub.docker.com/u/tonghuashuai/rss-deploy/](https://registry.hub.docker.com/u/tonghuashuai/rss-deploy/)
+
+``` shell
+docker pull tonghuashuai/rss-deploy
+```
+<a name='dockerfile'></a>
+### 2. dockerfile
+dockerfile及相关文件：[https://github.com/tonghuashuai/OnlyRSSWeb/tree/master/dockerfile](https://github.com/tonghuashuai/OnlyRSSWeb/tree/master/dockerfile)
+
+``` shell
+cd DOCKERFILE DIR
+docker build -t rss-demo .
+```
+
+### 3. 手动部署
 
 分 Web 端和后台脚本两部分。
 
@@ -35,7 +53,7 @@
 
 #### Web 端：
 
-使用 `nginx` + `uWSGI` 部署，`ubuntu 12.10`, `debian 7.8` 测试可正常部署，其他发行版本未试。
+使用 `nginx` + `uWSGI` 部署，`ubuntu 12.10`, `debian 7.8`, `gentto` 测试可正常部署，其他发行版本未试。
 
 **配置：**
 
