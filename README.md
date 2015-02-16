@@ -59,8 +59,14 @@ docker build -t rss-demo .
 **配置：**
 
 1. 修改 `Django` 配置文件，配置数据库，以 `MySQL` 为例。
-2. 新建数据库 onlyrss 并同步数据表到 `MySQL`，注意，编码方式请选择 utf8。
+2. 新建数据库 onlyrss 并同步数据表到 `MySQL`。
 
+    ``` sql
+    CREATE USER 'rss'@'%' IDENTIFIED BY 'rstfsgbcedh';
+    GRANT ALL PRIVILEGES ON *.* TO 'rss'@'%' WITH GRANT OPTION;
+    CREATE DATABASE onlyrss DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+    ```
+    
     ``` shell
     python manage.py syncdb
     ```
@@ -69,7 +75,7 @@ docker build -t rss-demo .
 
     ``` sql
     use onlyrss;
-    insert into OnlyRSS_user （username, password, name) values ('username', 'password', 'name');
+    insert into OnlyRSS_user (username, password, name) values ('username', 'password', 'name');
     ```
 
 **启动**
