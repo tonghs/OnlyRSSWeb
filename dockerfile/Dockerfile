@@ -29,6 +29,8 @@ RUN mkdir -p /var/run/sshd
 RUN mkdir -p /root/.ssh
 ADD authorized_keys /root/.ssh/authorized_keys
 
+RUN apt-get autoremove && apt-get autoclean && apt-get clean
+
 ADD run.sh /run.sh
 RUN chmod 755 /run.sh
 
