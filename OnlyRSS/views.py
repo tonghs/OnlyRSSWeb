@@ -9,13 +9,13 @@ from django.template import RequestContext
 import feedparser
 
 
-from Common.FeedManager import FeedManager
-from Common.ItemManager import ItemManager
-from Common.ThreadManager import ThreadManager
-from Common.UserManager import UserManager
+from mgr.feed_mgr import FeedManager
+from mgr.item_mgr import ItemManager
+from mgr.thread_mgr import ThreadManager
+from mgr.user_mgr import UserManager
 from models import *
 from forms import UploadFileForm
-from Only.settings import APP, SLOGAN
+from OnlyRSS.settings import APP, SLOGAN
 
 
 #cookie超时时间 秒
@@ -24,6 +24,10 @@ user_manager = UserManager()
 feed_manager = FeedManager()
 thread_manager = ThreadManager()
 item_manager = ItemManager()
+
+
+def page_not_found(request):
+    return render_to_response('404.html')
 
 
 def login(request):

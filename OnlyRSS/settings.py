@@ -1,7 +1,7 @@
 # Django settings for OnlyRSS project.
 #coding=utf-8
 
-DEBUG = False
+DEBUG = True
 
 APP = 'OnlyRSS'
 
@@ -20,8 +20,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'onlyrss',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': 'rss',
-        'PASSWORD': 'rstfsgbcedh',
+        'USER': 'root',
+        'PASSWORD': 'admin',
         'HOST': '127.0.0.1',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '3306',                      # Set to empty string for default.
     }
@@ -108,10 +108,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'Only.urls'
+ROOT_URLCONF = 'OnlyRSS.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'Only.wsgi.application'
+WSGI_APPLICATION = 'OnlyRSS.wsgi.application'
 
 import os
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),)

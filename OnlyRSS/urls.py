@@ -2,12 +2,11 @@ from django.conf.urls import patterns, url
 from django.views.generic.base import RedirectView
 
 from OnlyRSS.views import *
-from Common.views import *
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
-handler404 = 'Common.views.page_not_found'
+handler404 = 'OnlyRSS.views.page_not_found'
 
 urlpatterns = patterns('',
     (r'^resources/(?P<path>.*)', "django.views.static.serve", {'document_root': './resources'}),

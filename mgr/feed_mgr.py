@@ -5,7 +5,7 @@ import xml
 from django.core import serializers
 import sys
 import logging
-from Common.ThreadManager import ThreadManager
+from mgr.thread_mgr import ThreadManager
 from OnlyRSS.models import Feed
 
 

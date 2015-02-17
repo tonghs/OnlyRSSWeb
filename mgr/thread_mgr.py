@@ -1,6 +1,6 @@
 #coding=utf-8
 import feedparser
-from Common.ItemManager import ItemManager
+from mgr.item_mgr import ItemManager
 
 '''
 线程处理，简单线程池
