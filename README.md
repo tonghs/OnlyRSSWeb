@@ -50,7 +50,7 @@ docker build -t rss-demo .
 
 添加以下语句：
 
-    */5 * * * * python /home/username/update_service.py
+    */5 * * * * python /YOUR_RSS_DIR/misc/update_service.py
 
 #### Web 端：
 
@@ -80,13 +80,13 @@ docker build -t rss-demo .
 
 **启动**
     
-    uwsgi -x rss.xml
+    uwsgi -x misc/rss.xml
     nginx -s reload
 
 
 **重启**
 
-    uwsgi --reload uwsgi.pid
+    uwsgi --reload misc/uwsgi.pid
     sudo nginx -s reload
 
     
