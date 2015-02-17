@@ -1,0 +1,12 @@
+<uwsgi>
+	<socket>:8000</socket>
+	<master>true</master>
+    <single-interpreter></single-interpreter>
+    <enable-threads></enable-threads>
+	<chdir>./</chdir>
+	<env>DJANGO_SETTINGS_MODULE=OnlyRSS.settings</env>
+	<module>django.core.wsgi:get_wsgi_application()</module>
+	<processes>2</processes>
+	<daemonize>misc/uwsgi.log</daemonize>
+    <pidfile>misc/uwsgi.pid</pidfile>
+</uwsgi>
