@@ -11,7 +11,7 @@ COPY ./bjt.list /etc/apt/sources.list
 RUN apt-get update && apt-get install -y openssh-server nginx python git python-pip uwsgi python-mysqldb python-django supervisor cron
 
 
-########### 安装 mysql 及 rss 数据###########
+########### 安装 mysql ###########
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get -yq install mysql-server
 
@@ -19,8 +19,6 @@ RUN pip install feedparser
 
 ADD ./mysql.sql /root/mysql.sql
 ########### 安装 mysql 结束 ###########
-
-ADD ./rss.conf /etc/supervisor/conf.d/rss.conf
 
 # 配置 sshd
 RUN mkdir -p /var/run/sshd
