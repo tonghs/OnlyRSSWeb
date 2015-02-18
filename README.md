@@ -63,7 +63,7 @@ docker build -t rss-demo .
 
     ``` sql
     CREATE USER 'rss'@'%' IDENTIFIED BY 'rstfsgbcedh';
-    GRANT ALL PRIVILEGES ON *.* TO 'rss'@'%' WITH GRANT OPTION;
+    GRANT ALL PRIVILEGES ON *.* TO 'rss'@'%' IDENTIFIED BY 'rstfsgbcedh' WITH GRANT OPTION;
     CREATE DATABASE onlyrss DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
     ```
     
