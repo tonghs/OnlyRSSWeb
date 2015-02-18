@@ -7,6 +7,7 @@ import sys
 import logging
 from mgr.thread_mgr import ThreadManager
 from OnlyRSS.models import Feed
+from OnlyRSS.settings import STATIC_URL
 
 
 reload(sys)
@@ -114,6 +115,6 @@ class FeedManager:
         xml += '    </body>\n' \
             '</opml>'
 
-        file_object = open('static/opml/' + request.session['username'] + str(request.session['user_id']) + '.opml', 'w')
+        file_object = open('%sopml/%s%s.opml' % (STATIC_URL, request.session['username'], str(request.session['user_id']), 'w'))
         file_object.write(xml)
         file_object.close()

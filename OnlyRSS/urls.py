@@ -1,16 +1,14 @@
 from django.conf.urls import patterns, url
 from django.views.generic.base import RedirectView
+from OnlyRSS import settings
 
 from OnlyRSS.views import *
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
 
 handler404 = 'OnlyRSS.views.page_not_found'
 
 urlpatterns = patterns('',
-    (r'^static/(?P<path>.*)', "django.views.static.serve", {'document_root': './static'}),
-    (r'^favicon\.ico$', RedirectView.as_view(url='static/image/favicon.ico')),
+    (r'^%s(?P<path>.*)' % settings.STATIC_URL, "django.views.static.serve", {'document_root': settings.STATIC_URL}),
+    (r'^favicon\.ico$', RedirectView.as_view(url='%simage/favicon.ico' % settings.STATIC_URL)),
 
     url(r'^$', login),
     url(r'^404/$', page_not_found),

@@ -1,8 +1,11 @@
 @font-face { font-family:noto; src:url(http://tonghs-cdn-static.qiniudn.com/NotoSansHans-Light.otf);}
 
+*{
+    font-family: noto, Helvetica, 'Microsoft Yahei Light', Arial ;
+}
+
 html{
     height: 100%;
-    font-family: noto, Helvetica, 'Microsoft Yahei Light', Arial ;
 }
 
 body, ul{

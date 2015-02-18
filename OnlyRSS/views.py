@@ -15,7 +15,8 @@ from mgr.thread_mgr import ThreadManager
 from mgr.user_mgr import UserManager
 from models import *
 from forms import UploadFileForm
-from OnlyRSS.settings import APP, SLOGAN
+from OnlyRSS.settings import APP, SLOGAN, STATIC_URL
+from OnlyRSS import settings
 
 
 #cookie超时时间 秒
@@ -26,8 +27,13 @@ thread_manager = ThreadManager()
 item_manager = ItemManager()
 
 
+def render(html, args):
+    args.update(dict(settings=settings))
+    return render_to_response(html, args)
+
+
 def page_not_found(request):
-    return render_to_response('404.html')
+    return render('404.html')
 
 
 def login(request):
@@ -35,15 +41,15 @@ def login(request):
         username = request.COOKIES['username']
         password = request.COOKIES['password']
         if user_manager.valid(request, username, password):
-            response = render_to_response('index.html', dict(username=request.session['username'], app=APP, slogan=SLOGAN))
+            response = render('index.html', dict(username=request.session['username'], app=APP, slogan=SLOGAN))
             response.set_cookie('username', username, max_age)
             response.set_cookie('password', password, max_age)
         else:
-            response = render_to_response('login.html')
+            response = render('login.html')
             response.delete_cookie('username')
             response.delete_cookie('password')
     else:
-        response = render_to_response('login.html')
+        response = render('login.html')
 
     return response
 
@@ -179,8 +185,8 @@ def del_feed_bat(request):
 def setting(request):
     if 'user_id' in request.session:
         username = request.session['username']
-        opml_url = '/static/opml/' + request.session['username'] + str(request.session['user_id']) + '.opml'
-        response = render_to_response('setting.html', {'username': username, 'app': APP, 'opml_url': opml_url},
+        opml_url = '/%sopml/%s%s.opml' %  (STATIC_URL, request.session['username'], str(request.session['user_id']))
+        response = render('setting.html', {'username': username, 'app': APP, 'opml_url': opml_url},
                                       context_instance=RequestContext(request))
     else:
         response = HttpResponseRedirect('/')
@@ -189,7 +195,7 @@ def setting(request):
 
 
 def about(request):
-    return render_to_response('about.html')
+    return render('about.html')
 
 
 def app(request):
@@ -198,7 +204,7 @@ def app(request):
     else:
         username = request.session['username']
 
-    return render_to_response('app.html', {'username': username})
+    return render('app.html', {'username': username})
 
 
 def import_opml(request):

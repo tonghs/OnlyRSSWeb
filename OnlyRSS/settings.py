@@ -1,7 +1,7 @@
 # Django settings for OnlyRSS project.
 #coding=utf-8
 
-DEBUG = False
+DEBUG = True
 
 APP = 'OnlyRSS'
 
@@ -73,7 +73,7 @@ STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
