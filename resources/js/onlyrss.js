@@ -37,11 +37,11 @@ function parseContent(data){
             + arrObj[i].id
             + ', document.getElementById(\''
             + arrObj[i].id
-            + '\'))"><div class="unread" id="'
+            + '\'))"><div class="unread" onclick="hide('
             + arrObj[i].id
-            + '"><a href="javascript:hide('
+            + ');" id="'
             + arrObj[i].id
-            + ');">x</a></div><div class="item_title"><a href=" '
+            + '"><a href="javascript:void(0);">x</a></div><div class="item_title"><a href=" '
             + arrObj[i].url + ' " target="_blank">'
             + dealTitle(arrObj[i].title) + '</a></div>'
             + '<div class="item_content">' + arrObj[i].content + '</div>'
@@ -99,11 +99,11 @@ if (arrObj.length == 0 && $('.unread').size() == 0){
                     + arrObj[i].id
                     + ', document.getElementById(\''
                     + arrObj[i].id
-                    + '\'))"><div class="unread" id="'
+                    + '\'))"><div class="unread" onlick="hide('
                     + arrObj[i].id
-                    + '"><a href="javascript:hide('
+                    + ');" id="'
                     + arrObj[i].id
-                    + ');">x</a></div><div class="item_title"><a href=" '
+                    + '"><a href="javascript:void(0);">x</a></div><div class="item_title"><a href=" '
                     + arrObj[i].url + ' " target="_blank">'
                     + dealTitle(arrObj[i].title) + '</a></div>'
                     + '<div class="item_content">' + arrObj[i].content + '</div>'

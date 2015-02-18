@@ -523,6 +523,7 @@ a:hover{
     text-align: center;
     margin: -22px 0 0 7px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .unread a{
@@ -533,6 +534,7 @@ a:hover{
 
 .read{
     background-color: #dddddd;
+    cursor: pointer;
     float: left;
     height: 16px;
     width: 16px;
