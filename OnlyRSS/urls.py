@@ -9,8 +9,8 @@ from OnlyRSS.views import *
 handler404 = 'OnlyRSS.views.page_not_found'
 
 urlpatterns = patterns('',
-    (r'^resources/(?P<path>.*)', "django.views.static.serve", {'document_root': './resources'}),
-    (r'^favicon\.ico$', RedirectView.as_view(url='resources/image/favicon.ico')),
+    (r'^static/(?P<path>.*)', "django.views.static.serve", {'document_root': './static'}),
+    (r'^favicon\.ico$', RedirectView.as_view(url='static/image/favicon.ico')),
 
     url(r'^$', login),
     url(r'^404/$', page_not_found),

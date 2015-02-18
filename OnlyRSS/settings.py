@@ -116,7 +116,7 @@ ROOT_URLCONF = 'OnlyRSS.urls'
 WSGI_APPLICATION = 'OnlyRSS.wsgi.application'
 
 import os
-TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),)
+TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'html').replace('\\','/'),)
 
 INSTALLED_APPS = (
     #'django.contrib.auth',

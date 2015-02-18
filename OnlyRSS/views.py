@@ -179,7 +179,7 @@ def del_feed_bat(request):
 def setting(request):
     if 'user_id' in request.session:
         username = request.session['username']
-        opml_url = '/resources/opml/' + request.session['username'] + str(request.session['user_id']) + '.opml'
+        opml_url = '/static/opml/' + request.session['username'] + str(request.session['user_id']) + '.opml'
         response = render_to_response('setting.html', {'username': username, 'app': APP, 'opml_url': opml_url},
                                       context_instance=RequestContext(request))
     else:
