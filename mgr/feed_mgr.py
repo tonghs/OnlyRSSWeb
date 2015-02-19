@@ -115,6 +115,6 @@ class FeedManager:
         xml += '    </body>\n' \
             '</opml>'
 
-        file_object = open('%sopml/%s%s.opml' % (STATIC_URL, request.session['username'], str(request.session['user_id']), 'w'))
+        file_object = open('%sopml/%s%s.opml' % (STATIC_URL, request.session['username'], str(request.session['user_id'])), 'w')
         file_object.write(xml)
         file_object.close()

@@ -250,7 +250,6 @@ a:hover{
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 15px;
-    border-radius: 8px;
 }
 
 .clear{
@@ -503,12 +502,11 @@ a:hover{
     font-weight: bold;
     font-size: 15px;
     text-align: left;
-    background: #ddd;
     padding: 10px;
 }
 
 #txt_feed{
-    width: 100%;
+    width: 270px;
     height: 25px;
 }
 

@@ -19,7 +19,6 @@ from OnlyRSS.settings import APP, SLOGAN, STATIC_URL
 from OnlyRSS import settings
 
 
-#cookie超时时间 秒
 max_age = 2592000
 user_manager = UserManager()
 feed_manager = FeedManager()
@@ -27,9 +26,9 @@ thread_manager = ThreadManager()
 item_manager = ItemManager()
 
 
-def render(html, args):
+def render(html, args, **kwargs):
     args.update(dict(settings=settings))
-    return render_to_response(html, args)
+    return render_to_response(html, args, **kwargs)
 
 
 def page_not_found(request):

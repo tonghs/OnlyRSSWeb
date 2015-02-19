@@ -138,12 +138,6 @@ function changeBgColor(obj){
 }
 
 function showAddFeedContainer(){
-    // if ($("#txt_feed_container").css("display") == "none"){
-    //     $("#txt_feed_container").css("display", "block");
-    //     $("#txt_feed").focus();
-    // } else {
-    //     $("#txt_feed_container").css("display", "none");
-    // }
     $.blockUI({ 
             message: $('#txt_feed_container'), 
             css: { 
