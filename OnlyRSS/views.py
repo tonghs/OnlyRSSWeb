@@ -2,18 +2,18 @@
 import json
 import re
 import urllib
+import feedparser
+
 from django.db.models import Count
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import RequestContext
-import feedparser
 
-
+from models import *
 from mgr.feed_mgr import FeedManager
 from mgr.item_mgr import ItemManager
 from mgr.thread_mgr import ThreadManager
 from mgr.user_mgr import UserManager
-from models import *
 from forms import UploadFileForm
 from OnlyRSS.settings import APP, SLOGAN, STATIC_URL
 from OnlyRSS import settings
@@ -26,29 +26,38 @@ thread_manager = ThreadManager()
 item_manager = ItemManager()
 
 
-def render(html, args, **kwargs):
-    args.update(dict(settings=settings))
-    return render_to_response(html, args, **kwargs)
+def render(html, request, **kwargs):
+    username = request.COOKIES['username']
+    password = request.COOKIES['password']
+
+    kwargs.update(dict(settings=settings))
+    kwargs.update(dict(username=username))
+    kwargs.update(dict(password=password))
+    kwargs.update(dict(app=APP))
+    kwargs.update(dict(logan=SLOGAN))
+
+    return render_to_response(html, kwargs, context_instance=RequestContext(request))
 
 
 def page_not_found(request):
-    return render('404.html')
+    return render('404.html', request)
 
 
 def login(request):
     if 'username' in request.COOKIES and 'password' in request.COOKIES:
         username = request.COOKIES['username']
         password = request.COOKIES['password']
+
         if user_manager.valid(request, username, password):
-            response = render('index.html', dict(username=request.session['username'], app=APP, slogan=SLOGAN))
+            response = render('index.html', request)
             response.set_cookie('username', username, max_age)
             response.set_cookie('password', password, max_age)
         else:
-            response = render('login.html')
+            response = render('login.html', request)
             response.delete_cookie('username')
             response.delete_cookie('password')
     else:
-        response = render('login.html')
+        response = render('login.html', request)
 
     return response
 
@@ -183,10 +192,8 @@ def del_feed_bat(request):
 
 def setting(request):
     if 'user_id' in request.session:
-        username = request.session['username']
         opml_url = '/%sopml/%s%s.opml' %  (STATIC_URL, request.session['username'], str(request.session['user_id']))
-        response = render('setting.html', {'username': username, 'app': APP, 'opml_url': opml_url},
-                                      context_instance=RequestContext(request))
+        response = render('setting.html', request, opml_url=opml_url)
     else:
         response = HttpResponseRedirect('/')
 
@@ -194,16 +201,7 @@ def setting(request):
 
 
 def about(request):
-    return render('about.html')
-
-
-def app(request):
-    if 'username' not in request.session:
-        username = ''
-    else:
-        username = request.session['username']
-
-    return render('app.html', {'username': username})
+    return render('about.html', request)
 
 
 def import_opml(request):

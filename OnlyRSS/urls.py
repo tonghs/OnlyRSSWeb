@@ -15,7 +15,6 @@ urlpatterns = patterns('',
 
     url(r'^about/$', about),
     url(r'^add_feed/$', add_feed),
-    url(r'^app/$', app),
 
     url(r'^del_feed_bat$', del_feed_bat),
     url(r'^del_item/$', del_item),

@@ -48,7 +48,6 @@ function parseContent(data){
             + '<div class="item_ops">来自: <a href="' + arrObj[i].feed_url + '" target="_blank">'
             + arrObj[i].feed_title + '</a>')
     }
-    $('#content_container').append('<div class="next" id="next_page" onclick="getMore(0, $(this))">加载更多</div>');
    	showImg();
     closeLoad();
 }
@@ -70,13 +69,8 @@ function showImg(){
     });
 }
 
-function getMore(unreadCount, obj){
-    if (obj != null){
-        obj.html('加载中...');
-        obj.removeAttr('onclick');
-    }
+function getMore(){
     var id = $('#temp_feed_id').val();
-
     var url = '/get_feed_content?id=' + id;
 
     ajaxRequest(url, function parseContent(data){
@@ -111,15 +105,7 @@ if (arrObj.length == 0 && $('.unread').size() == 0){
                     + arrObj[i].feed_title + '</a>')
             }
         }
-        if (obj != null){
-            obj.fadeOut('normal', function(){
-                obj.remove();
-                $('#content_container').append('<div class="next" id="next_page" onclick="getMore(' + unreadCount + ', $(this))">加载更多</div>');
-
-            });
-        }
         showImg();
-        //closeLoad();
     });
 }
 
@@ -239,9 +225,11 @@ function setStatus(){
         }
     });
 
-    if ($('#next_page') != null && $('#next_page').offset() != null && $('#next_page').offset().top <= $('html').height()){
-        $('#next_page').click();
-    }
+    obj = $('#content_container')
+    if(obj.get(0).scrollHeight - obj.scrollTop() <= $('html').height()){
+        getMore();
+    };
+
 }
 
 function delItem(id, obj){
