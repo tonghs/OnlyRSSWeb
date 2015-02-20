@@ -27,12 +27,13 @@ item_manager = ItemManager()
 
 
 def render(html, request, **kwargs):
-    username = request.COOKIES['username']
-    password = request.COOKIES['password']
+    if 'username' in request.COOKIES and 'password' in request.COOKIES:
+        username = request.COOKIES['username']
+        password = request.COOKIES['password']
+        kwargs.update(dict(username=username))
+        kwargs.update(dict(password=password))
 
     kwargs.update(dict(settings=settings))
-    kwargs.update(dict(username=username))
-    kwargs.update(dict(password=password))
     kwargs.update(dict(app=APP))
     kwargs.update(dict(logan=SLOGAN))
 

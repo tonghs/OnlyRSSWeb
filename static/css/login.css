@@ -21,11 +21,10 @@ input{
 
 
 #main{
-    top: 50%;
     position: absolute;
     left: 50%;
     margin-left: -166px;
-    margin-top: -320px;
+    margin-top: 110px;
 }
 
 #main #container{
@@ -52,11 +51,18 @@ input{
     background-color: #E8E9EB;
     border: 1px solid #dddddd;
     margin:auto;
-    padding-top: 20px;
+    padding-top: 33px;
     padding-bottom: 10px;
     text-align: center;
     width:300px;
+    border-radius: 8px;
 }
+
+.login_area .login_area_content{
+    width: 232px;
+    margin: auto;
+}
+
 .txt{
     background-color: #ffffff;
     border: 1px solid #dddddd;
