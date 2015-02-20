@@ -28,29 +28,34 @@ function getItem(id, obj, isShowLoading){
     }
 }
 
+function render(o){
+    $('#content_container').append('<div class="item" id="item_'
+        + o.id
+        + '"onclick="delItem('
+        + o.id
+        + ', document.getElementById(\''
+        + o.id
+        + '\'))"><div class="unread" onclick="hide('
+        + o.id
+        + ');" id="'
+        + o.id
+        + '"><a href="javascript:void(0);">x</a></div><div class="item_title"><a href=" '
+        + o.url + ' " target="_blank">'
+        + dealTitle(o.title) + '</a></div>'
+        + '<div class="item_content">' + o.content + '</div>'
+        + '<div class="item_ops">来自: <a href="' + o.feed_url + '" target="_blank">'
+        + o.feed_title + '</a>')
+}
+
 function parseContent(data){
     var arrObj = JSON.parse(data);
     for (var i = 0; i < arrObj.length; i++){
-        $('#content_container').append('<div class="item" id="item_'
-            + arrObj[i].id
-            + '"onclick="delItem('
-            + arrObj[i].id
-            + ', document.getElementById(\''
-            + arrObj[i].id
-            + '\'))"><div class="unread" onclick="hide('
-            + arrObj[i].id
-            + ');" id="'
-            + arrObj[i].id
-            + '"><a href="javascript:void(0);">x</a></div><div class="item_title"><a href=" '
-            + arrObj[i].url + ' " target="_blank">'
-            + dealTitle(arrObj[i].title) + '</a></div>'
-            + '<div class="item_content">' + arrObj[i].content + '</div>'
-            + '<div class="item_ops">来自: <a href="' + arrObj[i].feed_url + '" target="_blank">'
-            + arrObj[i].feed_title + '</a>')
+        render(arrObj[i]);
     }
-   	showImg();
+   	renderImg();
     closeLoad();
 }
+
 
 function dealTitle(title){
     return title == '' ? '----' : title
@@ -62,7 +67,7 @@ function hide(id){
     });
 }
 
-function showImg(){
+function renderImg(){
     $('img').each(function(){
         $(this).attr('src', $(this).attr('src_no'));
         $(this).removeAttr('src_no');
@@ -87,25 +92,10 @@ if (arrObj.length == 0 && $('.unread').size() == 0){
 
         for (var i = 0; i < arrObj.length; i++){
             if($('#' + arrObj[i].id).size() <= 0){
-                $('#content_container').append('<div class="item" id="item_'
-                    + arrObj[i].id
-                    + '"onclick="delItem('
-                    + arrObj[i].id
-                    + ', document.getElementById(\''
-                    + arrObj[i].id
-                    + '\'))"><div class="unread" onlick="hide('
-                    + arrObj[i].id
-                    + ');" id="'
-                    + arrObj[i].id
-                    + '"><a href="javascript:void(0);">x</a></div><div class="item_title"><a href=" '
-                    + arrObj[i].url + ' " target="_blank">'
-                    + dealTitle(arrObj[i].title) + '</a></div>'
-                    + '<div class="item_content">' + arrObj[i].content + '</div>'
-                    + '<div class="item_ops">来自: <a href="' + arrObj[i].feed_url + '" target="_blank">'
-                    + arrObj[i].feed_title + '</a>')
+                render(arrObj[i]);
             }
         }
-        showImg();
+        renderImg();
     });
 }
 
