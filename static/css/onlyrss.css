@@ -621,6 +621,7 @@ a:hover{
     line-height: 40px;
     text-align: center;
     transition: all 0.3s;
+    border-radius: 8px;
     -moz-transition: all 0.3s; /* Firefox 4 */
     -webkit-transition: all 0.3s; /* Safari 和 Chrome */
     -o-transition: all 0.3s; /* Opera */

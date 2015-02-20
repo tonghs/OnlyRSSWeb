@@ -72,7 +72,7 @@ function showImg(){
 
 function getMore(unreadCount, obj){
     if (obj != null){
-        obj.html('正在加载...');
+        obj.html('加载中...');
         obj.removeAttr('onclick');
     }
     var id = $('#temp_feed_id').val();
