@@ -307,6 +307,14 @@ a:hover{
     -o-transition: all 0.3s; /* Opera */
 }
 
+
+.feed_li .li a{
+    border-bottom: 1px solid #fff;
+}
+.feed_li .li a:hover{
+    border-bottom: 1px solid #000;
+}
+
 .feed_item{
     background: no-repeat 17px 9px;
     background-size: 14px 14px;
