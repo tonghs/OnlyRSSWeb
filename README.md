@@ -65,23 +65,20 @@ docker build -t rss-demo .
 
 脚本中会有如下动作：
 
-    ``` sql
+    # mysql
     # 新建数据库 onlyrss 并同步数据表到 `MySQL`。
     CREATE USER 'rss'@'%' IDENTIFIED BY 'rstfsgbcedh';
     GRANT ALL PRIVILEGES ON *.* TO 'rss'@'%' IDENTIFIED BY 'rstfsgbcedh' WITH GRANT OPTION;
     CREATE DATABASE onlyrss DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-    ```
     
-    ``` shell
+    # shell
     # 同步数据结构
     python manage.py syncdb
-    ```
 
-    ``` sql
+    # mysql
     # 新建用户。可执行以下 SQL 脚本添加用户。
-    use onlyrss;
-    insert into OnlyRSS_user (username, password, name) values ('username', 'password', 'name');
-    ```
+    USE ONLYRSS;
+    INSERT INTO OnlyRSS_user (username, password, name) VALUES ('username', 'password', 'name');
 
 **启动**
     
