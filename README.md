@@ -94,13 +94,11 @@ docker build -t rss-demo .
     
 **调试**
 
-    ```
     python manage.py runserver 0.0.0.0:8080
 
     或者
 
     ./dev.sh
-    ```
 
 
 **使用**
