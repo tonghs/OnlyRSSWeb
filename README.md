@@ -91,6 +91,10 @@ docker build -t rss-demo .
     uwsgi --reload misc/uwsgi.pid
     sudo nginx -s reload
 
+    或者
+
+    misc/restart.sh
+
     
 **调试**
 
@@ -98,7 +102,7 @@ docker build -t rss-demo .
 
     或者
 
-    ./dev.sh
+    misc/dev.sh
 
 
 **使用**
