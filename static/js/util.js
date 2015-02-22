@@ -89,7 +89,7 @@ function showLoad(tipInfo) {
 }
 
 function closeLoad() {
-    $('#alertDiv').fadeOut(function(){
+    $('#alertDiv').fadeOut(1050, function(){
         $('#alertDiv').remove();
     });
 }

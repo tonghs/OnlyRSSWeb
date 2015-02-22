@@ -247,7 +247,7 @@ a:hover{
 }
 
 #content_container{
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
     padding-right: 15px;
 }
@@ -687,7 +687,7 @@ a:hover{
     background-color: green;
     height: 100%;
     width: 3px;
-    margin: 0 1px;
+    margin: 0 4px;
     display: inline-block;
     -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
     animation: stretchdelay 1.2s infinite ease-in-out;
