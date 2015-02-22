@@ -671,7 +671,7 @@ a:hover{
 /******** loading **********/
 .loading_logo{
     color: green;
-    font-size: 25px;
+    font-size: 19px;
 }
 
 
@@ -687,7 +687,7 @@ a:hover{
     background-color: green;
     height: 100%;
     width: 3px;
-    margin: 0 4px;
+    margin: 0 1px;
     display: inline-block;
     -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
     animation: stretchdelay 1.2s infinite ease-in-out;
