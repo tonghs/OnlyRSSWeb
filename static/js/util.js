@@ -78,7 +78,7 @@ function showLoad(tipInfo) {
         eTip.style.height = '70px';
         eTip.style.lineHeight = '35px';
         eTip.style.width = '190px';
-        eTip.innerHTML = '<div class="spinner"> <div class="rect1"></div> <div class="rect2"></div> <div class="rect3"></div> <div class="rect4"></div> <div class="rect5"></div> <div class="rect6"></div> <div class="rect7"></div> <div class="rect8"></div></div><div class="loading_logo bold">Only RSS</div>';
+        eTip.innerHTML = '<div class="spinner"> <div class="rect1"></div> <div class="rect2"></div> <div class="rect3"></div> <div class="rect4"></div> <div class="rect5"></div> <div class="rect6"></div> <div class="rect7"></div> <div class="rect8"></div></div><div class="loading_logo bold">loading</div>';
         try {
             document.body.appendChild(eTip);
         } catch (e) { }
@@ -89,7 +89,7 @@ function showLoad(tipInfo) {
 }
 
 function closeLoad() {
-    $('#alertDiv').fadeOut(function(){
+    $('#alertDiv').fadeOut(1050, function(){
         $('#alertDiv').remove();
     });
 }
