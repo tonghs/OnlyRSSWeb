@@ -3,9 +3,9 @@
 
 PORT = 8888
 
-HOST = 'http://s.tonghs.me/'
+HOST = 'rss.tonghs.com'
 
-DB = 'ANGELCRUNCH'
+DB = 'RSS'
 
 MONGO_CONFIG = dict( 
 )

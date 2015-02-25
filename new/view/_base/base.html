@@ -3,18 +3,22 @@
     <meta charset="utf-8">
     <title>
         <%block name="title">
-            天使汇短域名服务
+            OnlyRSSWeb
         </%block>
     </title>
     <%block name="css">
-    <link href="${css('main')}" rel="stylesheet" type="text/css">
+    <link href="/static/css/onlyrss.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/login.css" rel="stylesheet" type="text/css">
     </%block>
 </head>
 <body>
-    <div>
+    <div class="wrap">
     </div>
 </body>
     <%block name="js">
-
+        <script type="text/javascript" src="/static/js/jquery.js"></script>
+        <script type="text/javascript" src="/static/js/util.js"></script>
+        <script type="text/javascript" src="/static/js/onlyrss.js"></script>
+        <script type="text/javascript" src="/static/js/jquery-blockui.js"></script>
     </%block>
 </html>

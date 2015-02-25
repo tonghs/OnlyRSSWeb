@@ -5,9 +5,8 @@ import mongokit
 from mongokit import Document, Connection
 from mongokit.document import DocumentProperties
 from bson.objectid import ObjectId
-import redis as _redis
 
-from misc.config import MONGO_CONFIG, DB, REDIS_CONFIG
+from misc.config import MONGO_CONFIG, DB
 
 
 _iterables = (list, tuple, set, frozenset)
@@ -82,8 +81,6 @@ class Doc(Document):
             {'$set': update},
             upsert=True
         )
-        #print spec
-        #print {'$set': dict((k,v) for k,v in self.iteritems() if v is not None )},
         return self
 
     def save(self, *args, **kwds):
@@ -127,8 +124,6 @@ class Doc(Document):
         if spec_or_id:
             cls._collection.remove(spec_or_id=spec_or_id, safe=safe, multi=multi, **kwargs)
 
-
-redis = _redis.StrictRedis(**REDIS_CONFIG)
 
 
 if __name__ == "__main__":
