@@ -74,7 +74,7 @@ def insert_to_item(d, feed):
         pass
 
 def get_conn():
-    conn = MySQLdb.connect(host='localhost', user='root', passwd='admin', db='onlyrss', charset="utf8")
+    conn = MySQLdb.connect(host='localhost', user='rss', passwd='rstfsgbcedh', db='onlyrss', charset="utf8")
 
     return conn
 
