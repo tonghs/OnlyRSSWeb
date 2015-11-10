@@ -1,7 +1,8 @@
-@font-face { font-family:noto; src:url(http://tonghs-cdn-static.qiniudn.com/NotoSansHans-Light.otf);}
 
 *{
-    font-family: noto, Helvetica, 'Microsoft Yahei Light', Arial ;
+    font-family: 'Microsoft Yahei Light', 'Microsoft Yahei', 微软雅黑, 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif, 'Roboto Condensed';
+    -webkit-font-smoothing: antialiased;
+    font-weight: 200;
 }
 
 html{
@@ -10,7 +11,7 @@ html{
 
 body, ul{
     border: 0;
-    font-size: 13px;
+    font-size: 14px;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -40,7 +41,7 @@ li{
 }
 
 .bold {
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .float_right{
@@ -217,7 +218,7 @@ a:hover{
     padding: 8px;
     text-align: center;
     margin-top: 0;
-    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
 }
 
 .logo span{
@@ -357,11 +358,15 @@ a:hover{
 
 .item_title{
     cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 18px;
     margin-bottom: 8px;
     padding: 0 10px 0 25px;
     word-break: break-all;
+}
+
+
+.item_title a{
+    font-weight: 400;
 }
 
 .item a{

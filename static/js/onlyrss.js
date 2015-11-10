@@ -249,7 +249,7 @@ function getFeedCount(){
             var count = parseInt(arrObj[i].count);
 
             if (count > 0){
-                $('#' + id).css('font-weight', 'bold')
+                $('#' + id).css('font-weight', '500')
             }
         }
     });
