@@ -1,4 +1,9 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+*{
+    font-family: 'Microsoft Yahei Light', 'Microsoft Yahei', 微软雅黑, 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif, 'Roboto Condensed';
+    -webkit-font-smoothing: antialiased;
+    font-weight: 200;
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -33,6 +38,7 @@ input{
 
 .total_width{
     text-align: center;
+    font-family: 'Oswald', sans-serif;
 }
 
 .clear{
@@ -67,7 +73,7 @@ input{
     background-color: #ffffff;
     border: 1px solid #dddddd;
     float: left;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-size: 16px;
     height:25px;
     padding: 1px 5px;
@@ -90,7 +96,6 @@ input{
 }
 
 #slogan{
-    font-family: 'Open Sans Condensed';
     font-size: 30px;
     padding: 50px 0 0 0;
     text-align: center;
