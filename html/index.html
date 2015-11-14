@@ -7,24 +7,38 @@
     {% include 'header.html' %}
 </head>
 <body style="overflow-y: hidden;">
+<div id="txt_feed_container" class="block">
+    <div id="dialog_title">添加订阅</div>
+    <ul>
+        <li>
+            <input type="text" id="txt_feed" placeholder="请输入订阅源" onkeypress="keyboardHandler(13, addFeed)"/>
+        </li>
+        <li>
+            <a href="javascript:void(0);" onclick="addFeed()">添加</a>&nbsp;&nbsp;
+            <a href="javascript:$.unblockUI();">取消</a>
+        </li>
+    <ul>
+</div>
+<div id="header">
+    <div class="logo left" title="{{app}}" onclick="window.location.href='/'">
+        {{app}}
+    </div>
+
+    <div id="ops" class="">
+        <a href="javascript:void(0);" id="refresh" class="icon icon_" onclick="getItem(null, $('#get_all'), true);" title="刷新">Reload</a>
+        <a href="javascript:void(0);" id="more" class="icon icon__" onclick="getMore();" title="加载更多">More</a>
+        <a href="javascript:void(0);" id="read_all" class="icon icon_" onclick="delAllItem();" title="全部标记为已读">MR</a>
+        <div id="ops_other">
+            <a href="javascript:void(0);" id="add" class="icon icon_" onclick="showAddFeedContainer();" title="添加">Add</a>
+            <a href="/setting" id="setting" class="icon icon__" title="订阅管理">Setting</a>
+            <a href="javascript:void(0);" id="exit" class="icon icon__" onclick="logout();" title="退出">Logout</a>
+        </div>
+        <div class="clear"></div>
+    </div>
+    
+</div>
 <div class="wrap">
     <div class="left">
-        <div id="txt_feed_container" class="block">
-            <div id="dialog_title">添加订阅</div>
-            <ul>
-                <li>
-                    <input type="text" id="txt_feed" placeholder="请输入订阅源" onkeypress="keyboardHandler(13, addFeed)"/>
-                </li>
-                <li>
-                    <a href="javascript:void(0);" onclick="addFeed()">添加</a>&nbsp;&nbsp;
-                    <a href="javascript:$.unblockUI();">取消</a>
-                </li>
-            <ul>
-        </div>
-        <div class="logo block" title="{{app}}" onclick="window.location.href='/'">
-            {{app}}
-        </div>
-
         <div class="clear"></div>
         <div id="feed_list" class="block">
             <input type="hidden" id="temp_feed_id"/>
@@ -35,18 +49,6 @@
     </div>
 
     <div class="right">
-        <div id="ops" class="block">
-            <a href="javascript:void(0);" id="refresh" class="icon icon_" onclick="getItem(null, $('#get_all'), true);" title="刷新"></a>
-            <a href="javascript:void(0);" id="more" class="icon icon__" onclick="getMore();" title="加载更多"></a>
-            <a href="javascript:void(0);" id="read_all" class="icon icon_" onclick="delAllItem();" title="全部标记为已读"></a>
-            <div id="ops_other">
-                <a href="javascript:void(0);" id="add" class="icon icon_" onclick="showAddFeedContainer();" title="添加"></a>
-                <a href="/setting" id="setting" class="icon icon__" title="订阅管理"></a>
-                <a href="javascript:void(0);" id="exit" class="icon icon__" onclick="logout();" title="退出"></a>
-            </div>
-            <div class="clear"></div>
-        </div>
-        
         <div id="content_container" onscroll="setStatus()">
             <div>
             </div>

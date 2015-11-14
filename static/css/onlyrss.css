@@ -21,6 +21,33 @@ body{
     background-color: #E8E9EB;
 }
 
+#header{
+    background-color: #000;
+    opacity: 0.8;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+#txt_feed_container{
+    display: none;
+    background-color: white;
+    border: 1px solid #dddddd;
+    padding-bottom: 7px;
+    box-shadow: 0px 0px 3px 0px #ddd;
+    text-align: center;
+}
+
+#txt_feed_container ul li{
+    padding: 10px;
+}
+
+#txt_feed_container #dialog_title{
+    font-weight: bold;
+    font-size: 15px;
+    text-align: left;
+    padding: 10px;
+}
+
 li{
     border: 0;
     cursor: pointer;
@@ -30,9 +57,7 @@ li{
 .block{
     background-color: #fff;
     box-shadow: #ccc 0 0 4px;
-    border-radius: 8px;
     margin-bottom: 15px;
-    margin-top: 15px;
 }
 
 .total_width{
@@ -250,7 +275,6 @@ a:hover{
 #content_container{
     overflow-y: scroll;
     overflow-x: hidden;
-    padding-right: 15px;
     background: url(http://tonghs-cdn-static.qiniudn.com/light.svg) no-repeat center 183px / 200px;
 }
 
@@ -347,7 +371,6 @@ a:hover{
     padding-top: 30px;
     background-color: #fff;
     box-shadow: #ccc 0 0 4px;
-    border-radius: 8px;
     transition: all 0.3s;
     -moz-transition: all 0.3s;
     -webkit-transition: all 0.3s;
@@ -402,14 +425,22 @@ a:hover{
 }
 
 #ops{
-    padding: 7px 15px;
+    padding: 7px 15px 7px 235px;;
     border: 0;
+}
+
+#ops a{
+    line-height: 37px;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    padding: 0px 10px;
 }
 
 #ops #ops_other{
     float: right;
 }
 
+/*
 #ops .icon{
     background-repeat: no-repeat;
     float: left;
@@ -489,6 +520,8 @@ a:hover{
     background-image: url('http://dn-rsscdn.qbox.me/exit2.png?imageMogr2/thumbnail/68x');
 }
 
+*/
+
 #feed_ops ul{
     position: absolute;
 }
@@ -496,27 +529,6 @@ a:hover{
 #feed_ops ul li{
     float: left;
     padding-left: 10px;
-}
-
-
-#txt_feed_container{
-    display: none;
-    background-color: white;
-    border: 1px solid #dddddd;
-    padding-bottom: 7px;
-    box-shadow: 0px 0px 3px 0px #ddd;
-    text-align: center;
-}
-
-#txt_feed_container ul li{
-    padding: 10px;
-}
-
-#txt_feed_container #dialog_title{
-    font-weight: bold;
-    font-size: 15px;
-    text-align: left;
-    padding: 10px;
 }
 
 #txt_feed{
@@ -529,7 +541,7 @@ a:hover{
     float: left;
     height: 16px;
     width: 16px;
-    line-height: 16px;
+    line-height: 13px;
     padding: 1px;
     text-align: center;
     margin: -22px 0 0 7px;
@@ -549,7 +561,7 @@ a:hover{
     float: left;
     height: 16px;
     width: 16px;
-    line-height: 16px;
+    line-height: 13px;
     padding: 1px;
     text-align: center;
     margin: -22px 0 0 7px;
@@ -751,22 +763,20 @@ a:hover{
 
 /* 自定义 crollbar */
 #content_container::-webkit-scrollbar-track{
-    background-color: #ccc;
-    border-radius: 8px;
+    background-color: #fff;
 }
 
 #content_container::-webkit-scrollbar{
     width: 6px;
-    background-color: #ccc;
+    background-color: #fff;
 }
 
 #content_container::-webkit-scrollbar-thumb{
-    border-radius: 8px;
     background-color: rgba(0, 0, 0, .5);
 }
 
 #content_container::-webkit-scrollbar-track-piece{
-    border-color: #E8E9EB;
+    border-color: #fff;
     border-style: solid;
     border-width: 0 2px 0 2px;
 }
