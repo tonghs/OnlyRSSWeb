@@ -243,7 +243,8 @@ a:hover{
     cursor: pointer;
     font-size: 23px;
     padding: 8px;
-    text-align: center;
+    padding-left: 20px;
+    text-align: left;
     margin-top: 0;
     font-family: 'Oswald', sans-serif;
 }
@@ -430,7 +431,7 @@ a:hover{
 }
 
 #ops{
-    padding: 7px 15px 7px 235px;;
+    padding: 7px 9px 7px 210px;
     border: 0;
 }
 
