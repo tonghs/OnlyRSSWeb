@@ -772,7 +772,7 @@ a:hover{
 }
 
 #content_container::-webkit-scrollbar{
-    width: 6px;
+    width: 2px;
     /*background-color: #fff;*/
 }
 
