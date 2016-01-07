@@ -22,6 +22,8 @@ body{
 }
 
 #header{
+    width: 1200px;
+    margin: auto;
     background-color: #000;
     opacity: 0.8;
     margin-bottom: 20px;
@@ -259,6 +261,8 @@ a:hover{
 }
 
 .wrap{
+    width: 1200px;
+    margin: auto;
     padding: 0 15px;
 }
 
