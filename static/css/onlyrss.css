@@ -277,6 +277,7 @@ a:hover{
 }
 
 #content_container{
+    box-shadow: #ccc 0 0 4px;
     overflow-y: scroll;
     overflow-x: hidden;
     background: url(http://tonghs-cdn-static.qiniudn.com/light.svg) no-repeat center 183px / 200px;
@@ -772,7 +773,7 @@ a:hover{
 
 #content_container::-webkit-scrollbar{
     width: 6px;
-    background-color: #fff;
+    /*background-color: #fff;*/
 }
 
 #content_container::-webkit-scrollbar-thumb{
