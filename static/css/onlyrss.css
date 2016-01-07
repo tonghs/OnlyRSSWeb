@@ -768,7 +768,7 @@ a:hover{
 
 /* 自定义 crollbar */
 #content_container::-webkit-scrollbar-track{
-    background-color: #fff;
+    /* background-color: #fff; */
 }
 
 #content_container::-webkit-scrollbar{
@@ -781,7 +781,8 @@ a:hover{
 }
 
 #content_container::-webkit-scrollbar-track-piece{
-    border-color: #fff;
+    /*border-color: #fff;*/
+    border-color: transparent;
     border-style: solid;
     border-width: 0 2px 0 2px;
 }
