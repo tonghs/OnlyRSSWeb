@@ -18,7 +18,7 @@
 地址：[https://registry.hub.docker.com/u/tonghuashuai/rss-deploy/](https://registry.hub.docker.com/u/tonghuashuai/rss-deploy/)
 
 ``` shell
-docker pull tonghuashuai/rss-deploy
+docker pull tonghuashuai/rss-deploy:0.1
 ```
 <a name='dockerfile'></a>
 ### 2. dockerfile
