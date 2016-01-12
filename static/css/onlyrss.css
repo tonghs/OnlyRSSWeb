@@ -695,7 +695,8 @@ a:hover{
 /******** loading **********/
 .loading_logo{
     color: green;
-    font-size: 24px;
+    font-size: 25px;
+    font-family: 'Oswald', sans-serif;
 }
 
 
@@ -710,7 +711,7 @@ a:hover{
 .spinner > div {
     background-color: green;
     height: 100%;
-    width: 3px;
+    width: 2px;
     margin: 0 1px;
     display: inline-block;
     -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
