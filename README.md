@@ -1,4 +1,19 @@
-##Only RSS Web 项目
+Only RSS Web 项目
+===================
+
+## 注意！！！该项目已经停止维护。
+## CAUTION!!! This repo is deprecated.
+
+这是我初学 Python 时练手的项目，当时 Google Reader 刚刚关闭，找不到合适的替代品，于是决定自己写一个，于是就有了这个项目。
+
+完成后一直使用了将近三年，现在回看当时的代码，觉得很幼稚，本决定重写一版，然后再开发全平台的客户端，无奈精力有限，计划搁浅。
+
+现在我发现了更完美的解决方案：[Tiny Tiny RSS](https://tt-rss.org/)，基于 PHP 开发，功能完善，而且支持各种插件，安装 [fever-plugin](https://github.com/dasmurphy/tinytinyrss-fever-plugin) 更是支持全平台的客户端。
+
+**鉴于本项目的代码是早期学习阶段写的，没有任何参考价值，并且有 `Tiny Tiny RSS` 这样的完美替代品，所以决定终止该项目的维护。**
+
+-----------------------------------------------------------------------------
+
 
 一个 `RSS` 阅读器的 Web 版本，基于 `Python`、`Django` 和 `MySQL`。
 
